@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Richard Powel",
+        "role": "Cleaner",
+        "image": "team-mem-img1.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 2,
+        "name": "Ashley Riordan",
+        "role": "Cleaner",
+        "image": "team-mem-img2.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 3,
+        "name": "Robina Smith",
+        "role": "Cleaner",
+        "image": "team-mem-img3.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 4,
+        "name": "Robert Michel",
+        "role": "Cleaner",
+        "image": "team-mem-img4.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 5,
+        "name": "Design Wen",
+        "role": "Cleaner",
+        "image": "team-mem-img5.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 6,
+        "name": "Aostal Athels",
+        "role": "Cleaner",
+        "image": "team-mem-img6.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 7,
+        "name": "Mery Athels",
+        "role": "Cleaner",
+        "image": "team-mem-img7.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    },
+    {
+        "id": 8,
+        "name": "Vini mior",
+        "role": "Cleaner",
+        "image": "team-mem-img8.png",
+        "instagram": "https://www.instagram.com",
+        "facebook": "https://www.facebook.com",
+        "whatsapp": "https://wa.me/+1234567890",
+        "twitter": "https://x.com"
+    }
+]

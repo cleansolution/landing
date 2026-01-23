@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "image": "blog-img1.jpg",
+        "date": "20 FEB 2025",
+        "title": "Things to know choosing a cleaning service.",
+        "desc": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum. Eu sed ante scelerisque massa.",
+        "link": "/BlogDetails1"
+    },
+    {
+        "id": 2,
+        "image": "blog-img2.jpg",
+        "date": "15 FEB 2025",
+        "title": "Step by step guide to clean your carpets.",
+        "desc": "Habitant quam at fermentum neque viverra at dignissim. Id adipiscing porttitor non vestibulum adipiscing.",
+        "link": "/BlogDetails2"
+    },
+    {
+        "id": 3,
+        "image": "blog-img3.jpg",
+        "date": "10 FEB 2025",
+        "title": "How you typically do your cleaning process",
+        "desc": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum sed ante scelerisque massa.",
+        "link": "/BlogDetails3"
+    },
+    {
+        "id": 4,
+        "image": "blog-img4.jpg",
+        "date": "18 FEB 2025",
+        "title": "Tips to keep your bedroom fresh and clean.",
+        "desc": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum sed ante scelerisque massa.",
+        "link": "/BlogDetails1"
+    },
+    {
+        "id": 5,
+        "image": "blog-img5.jpg",
+        "date": "10 March 2025",
+        "title": "How to use cleaning equipment properly.",
+        "desc": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum sed ante scelerisque massa.",
+        "link": "/BlogDetails2"
+    },
+    {
+        "id": 6,
+        "image": "blog-img6.jpg",
+        "date": "20 March 2025",
+        "title": "Things to know choosing a cleaning service.",
+        "desc": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum sed ante scelerisque massa.",
+        "link": "/BlogDetails3"
+    }
+]

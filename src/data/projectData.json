@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "title": "House Cleaning",
+        "description": "Professional residential cleaning service providing thorough and detailed home cleaning solutions.",
+        "image": "project-img1.jpg",
+        "link": "/Project1Single"
+    },
+    {
+        "id": 2,
+        "title": "Office Cleaning",
+        "description": "Commercial office cleaning services designed to maintain a clean and productive work environment.",
+        "image": "project-img2.jpg",
+        "link": "/Project2Single"
+    },
+    {
+        "id": 3,
+        "title": "Carpet Cleaning",
+        "description": "Deep carpet cleaning that removes stains, odors, and allergens to restore your carpet's appearance.",
+        "image": "project-img3.jpg",
+        "link": "/Project3Single"
+    },
+    {
+        "id": 4,
+        "title": "Kitchen Cleaning",
+        "description": "Comprehensive kitchen cleaning services ensuring a hygienic and spotless cooking environment.",
+        "image": "project-img4.jpg",
+        "link": "/Project1Single"
+    },
+    {
+        "id": 5,
+        "title": "Window Cleaning",
+        "description": "Expert window cleaning service delivering streak-free, crystal-clear results for all types of windows.",
+        "image": "project-img5.jpg",
+        "link": "/Project2Single"
+    },
+    {
+        "id": 6,
+        "title": "Corporate Cleaning",
+        "description": "Professional corporate cleaning solutions tailored for businesses and commercial facilities.",
+        "image": "project-img6.jpg",
+        "link": "/Project2Single"
+    }
+]
