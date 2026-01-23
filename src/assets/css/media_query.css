@@ -269,7 +269,25 @@
     }
 
     .home-img-clening {
-        display: none;
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto 0;
+    }
+
+    .owner-name-tag {
+        font-size: 14px !important;
+        padding: 6px 15px !important;
+    }
+
+    .owner-name-tag:first-of-type {
+        top: 40% !important;
+        left: 20px !important;
+    }
+
+    .owner-name-tag:last-of-type {
+        bottom: 80px !important;
+        right: 20px !important;
     }
 
     .main-swiper-row {
