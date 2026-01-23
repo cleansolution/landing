@@ -96,7 +96,7 @@ const HomeHeroVideo: React.FC = () => {
                                     <div className="row video-swiper-row">
                                         <div className="col-xxl-7 col-xl-7 col-lg-7 clearfix-space animate-slide">
                                             <p className="needs-text">needs professional cleaning</p>
-                                            <h1 className="lets-us-do">Crystal Cove Cleaning Service</h1>
+                                            <h1 className="lets-us-do">Clean Solutions Cleaning Service</h1>
                                             <h2 className="residents">Hire us! We are a professional cleaning company offering all
                                                 type of cleaning and maintenance services.</h2>
                                             <Link to="/Services" className="btn-quote our-services-btn">Our Services

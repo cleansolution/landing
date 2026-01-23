@@ -96,7 +96,7 @@ const HomeHeroSlider: React.FC = () => {
                                 <div className="row main-swiper-row">
                                     <div className="col-xxl-6 col-xl-6 col-lg-10 clearfix-space animate-slide">
                                         <p className="needs-text">needs professional cleaning</p>
-                                        <h1 className="lets-us-do">Crystal Cove Cleaning Service</h1>
+                                        <h1 className="lets-us-do">Clean Solutions Cleaning Service</h1>
                                         <h2 className="residents">Hire us! We are a professional cleaning company offering all
                                             type of cleaning and maintenance services.</h2>
                                         <Link to="/Services" className="btn-quote our-services-btn">Our Services
