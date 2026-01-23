@@ -1,6 +1,5 @@
 import React from 'react'
 import HomeHeroSolid from '../component/HomeHeroSolid.tsx';
-import { Link } from 'react-router-dom';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import Video2 from '../assets/video/video2.mp4';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
@@ -24,7 +23,6 @@ import CostCalculator from '../component/CostCalculator.tsx';
 import ProjectSlider from '../component/ProjectSlider.tsx';
 import TeamSection from '../component/TeamSection.tsx';
 import Testimonials from '../component/Testimonials.tsx';
-import BlogSec1 from '../component/BlogSec1.tsx';
 import ImageZoomScroll from '../component/ImageZoomScroll.tsx';
 
 const HomeSolid: React.FC = () => {

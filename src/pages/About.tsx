@@ -18,7 +18,6 @@ import HowWorkSvg3 from '../assets/images/svg/how-to-work-svg3.svg';
 import HowWorkArrow from '../assets/images/svg/how-to-work-arrow.svg';
 import TeamSection from '../component/TeamSection.tsx';
 import Testimonials from '../component/Testimonials.tsx';
-import BlogSec1 from '../component/BlogSec1.tsx';
 
 
 const About: React.FC = () => {

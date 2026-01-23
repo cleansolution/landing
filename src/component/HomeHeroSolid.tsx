@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { Link } from 'react-router-dom';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import HomeImg1 from '../assets/images/home/home-img1.png';
 import Customer1 from '../assets/images/home/customer1.jpg';

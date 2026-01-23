@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
-import BlogSec1 from '../component/BlogSec1.tsx';
 import servicesData from "../data/servicesData.json";
 
 import img1 from "../assets/images/services/slider-img1.jpg";

@@ -1,9 +1,4 @@
 import { Link } from 'react-router-dom';
-import CrossArrowSvg from '../assets/images/svg/cross-arrow.svg';
-import FooterImg1 from '../assets/images/footer/footer-img1.jpg';
-import FooterImg2 from '../assets/images/footer/footer-img2.jpg';
-import FooterImg3 from '../assets/images/footer/footer-img3.jpg';
-import InstaSvg from '../assets/images/svg/insta.svg';
 import WhiteLogoSvg from '../assets/images/svg/white-logo.svg';
 import CallWhite from '../assets/images/svg/callWhite.svg';
 import facebook from "../assets/images/svg/facebook.svg";

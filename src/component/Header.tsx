@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import LogoSvg from '../assets/images/svg/logo.svg';
 import menu2 from '../assets/images/svg/menu2.svg';
 import CloseIcon from '../assets/images/svg/close-icon.svg';
 import dsad from '../assets/images/home/dsad.png';
-import DropdownArrow from '../assets/images/svg/dropdown-arrow.svg';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 
@@ -12,7 +11,6 @@ import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const location = useLocation();
 
     const menuItems = [
         { label: "Home", link: "#home" },

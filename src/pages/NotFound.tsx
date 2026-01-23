@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import OopsErrorGif from '../assets/images/error/OopsError.gif';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
-import BlogSec1 from '../component/BlogSec1.tsx';
 
 const NotFound: React.FC = () => {
     return (
