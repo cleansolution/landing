@@ -1,0 +1,24 @@
+{
+  "buttons": {
+    "primaryCTA": {
+      "text": "Get Free Quote",
+      "link": "/GetQuote"
+    },
+    "secondaryCTA": {
+      "text": "Our Services",
+      "link": "/Services"
+    },
+    "contactCTA": {
+      "text": "Contact Us",
+      "link": "/Contact"
+    },
+    "aboutCTA": {
+      "text": "About Us",
+      "link": "/About"
+    }
+  },
+  "callToAction": {
+    "needHelp": "Need Help Now?",
+    "phoneLabel": "Call us at"
+  }
+}

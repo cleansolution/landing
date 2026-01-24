@@ -1,0 +1,53 @@
+{
+  "companyInfo": {
+    "name": "Clean Solutions CO. LLC",
+    "tagline": "Professional Cleaning Services",
+    "description": "We are a professional cleaning company offering all types of residential and commercial cleaning services.",
+    "address": "Chesapeake, Virginia",
+    "phone": "+1 (757) 305 8237",
+    "email": "info@cleansolutions91@gmail.com"
+  },
+  "quickLinks": [
+    {
+      "id": 1,
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "id": 2,
+      "label": "About Us",
+      "url": "/About"
+    },
+    {
+      "id": 3,
+      "label": "Services",
+      "url": "/Services"
+    },
+    {
+      "id": 4,
+      "label": "Contact",
+      "url": "/Contact"
+    }
+  ],
+  "socialMedia": [
+    {
+      "id": 1,
+      "platform": "Facebook",
+      "url": "https://facebook.com",
+      "icon": "facebook.svg"
+    },
+    {
+      "id": 2,
+      "platform": "Twitter",
+      "url": "https://twitter.com",
+      "icon": "twitter.svg"
+    },
+    {
+      "id": 3,
+      "platform": "Instagram",
+      "url": "https://instagram.com",
+      "icon": "insta.svg"
+    }
+  ],
+  "copyright": "© 2024 Clean Solutions CO. LLC. All rights reserved."
+}

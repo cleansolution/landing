@@ -1,0 +1,28 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "icon": "about-svg1.svg",
+      "title": "Experience Staff",
+      "description": "Professional and Experienced staff ready to help you anytime."
+    },
+    {
+      "id": 2,
+      "icon": "about-svg2.svg",
+      "title": "Natural Products",
+      "description": "We only use natural products in the process, No harmful chemicals are used."
+    },
+    {
+      "id": 3,
+      "icon": "about-svg3.svg",
+      "title": "Fast Service",
+      "description": "Set your schedule and get the regular and faster cleaning everyday."
+    },
+    {
+      "id": 4,
+      "icon": "about-svg4.svg",
+      "title": "Best Equipment",
+      "description": "We use the best and world class equipment for the cleaning process."
+    }
+  ]
+}

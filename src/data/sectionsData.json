@@ -1,0 +1,67 @@
+{
+  "featuredServices": {
+    "sectionTitle": "OUR FEATURED SERVICES",
+    "mainTitle": "The United Way For To Find Specialist Services",
+    "description": "We offer a comprehensive range of professional cleaning services tailored to meet your specific needs. Our experienced team delivers exceptional results with attention to detail and commitment to excellence."
+  },
+  "whyChooseUs": {
+    "sectionTitle": "why choose us",
+    "mainTitle": "We Will Make Absolutely Any Place Clean, Neat & Tidy.",
+    "description": "Eu nascetur vitae odio faucibus sed pharetra. Mus tempus risus purus diam orci mi. Amet cras urna amet tincidunt enim arcu aliquet massa enim. A aliquam quis sagittis sapien. Vel aliquam mi pulvinar pulvinar urna.",
+    "benefits": [
+      {
+        "id": 1,
+        "title": "Customer Focused Reviews",
+        "description": "Pulvinar sed nulla egestas elit. Massa et velit tellus quis eu. Maecenas natoque pellentesque volutpat amet tincidunt convallis scelerisque."
+      },
+      {
+        "id": 2,
+        "title": "We Are Committed",
+        "description": "Sit viverra vehicula elementum sed nisl semper. Id fermentum vitae fringilla donec tellus dignissim venenatis rhoncus elit nibh viverra."
+      },
+      {
+        "id": 3,
+        "title": "Regular & Monthly Cleaning",
+        "description": "Elementum eget volutpat blandit pretium. Tincidunt a in malesuada tortor aenean elit metus hac. Suspendisse blandit in aliquet porttitor."
+      }
+    ]
+  },
+  "howItWorks": {
+    "sectionTitle": "How it works",
+    "mainTitle": "Get Amazing Cleaning in 3 Simple Steps",
+    "description": "At amet in adipiscing hac suspendisse. Laoreet sit consectetur donec odio ornare elementum pellentesque. Ante gravida netus dignissim sed tristique mauris egestas egestas aenean turpis id eget.",
+    "steps": [
+      {
+        "id": 1,
+        "icon": "how-to-work-svg1.svg",
+        "title": "Pick a suitable plan",
+        "description": "Rule first third above first tree saw Grass subdue great eep saying forth rule hath to the replenish."
+      },
+      {
+        "id": 2,
+        "icon": "how-to-work-svg2.svg",
+        "title": "Set your schedule",
+        "description": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum. Eu sed ante scelerisque massa."
+      },
+      {
+        "id": 3,
+        "icon": "how-to-work-svg3.svg",
+        "title": "Get things done",
+        "description": "Urna praesent fusce risus pellentesque odio. Eget nulla volutpat proin sagittis lacus ornare sagittis risus."
+      }
+    ]
+  },
+  "ourWorks": {
+    "sectionTitle": "OUR works",
+    "mainTitle": "Our Recent Projects",
+    "description": "Take a look at some of our recent cleaning projects and see the quality of work we deliver to our valued clients."
+  },
+  "teamSection": {
+    "sectionTitle": "Our Expert Worker",
+    "mainTitle": "We Are Expert Team To Keep Your Vision"
+  },
+  "costCalculator": {
+    "sectionTitle": "Cost Calculator",
+    "mainTitle": "Be a Part of Hundreds of Happy Families."
+  }
+}

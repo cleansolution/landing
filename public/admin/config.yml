@@ -24,7 +24,7 @@ collections:
           - {label: "Ciudad", name: "city", widget: "string"}
           - {label: "Estado", name: "state", widget: "string"}
       
-      - label: "Hero Section"
+      - label: "Hero Section (Slider Principal)"
         name: "hero"
         file: "src/data/heroData.json"
         fields:
@@ -46,6 +46,79 @@ collections:
           - {label: "Descripción", name: "description", widget: "text"}
           - {label: "Años de Experiencia", name: "yearsExperience", widget: "number"}
       
+      - label: "Características/Features"
+        name: "features"
+        file: "src/data/featuresData.json"
+        fields:
+          - label: "Lista de Características"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Icono", name: "icon", widget: "string"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+      
+      - label: "Títulos de Secciones"
+        name: "sections"
+        file: "src/data/sectionsData.json"
+        fields:
+          - label: "Featured Services"
+            name: "featuredServices"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+          - label: "Why Choose Us"
+            name: "whyChooseUs"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - label: "Beneficios"
+                name: "benefits"
+                widget: "list"
+                fields:
+                  - {label: "ID", name: "id", widget: "number"}
+                  - {label: "Título", name: "title", widget: "string"}
+                  - {label: "Descripción", name: "description", widget: "text"}
+          - label: "How It Works"
+            name: "howItWorks"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - label: "Pasos"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - {label: "ID", name: "id", widget: "number"}
+                  - {label: "Icono", name: "icon", widget: "string"}
+                  - {label: "Título", name: "title", widget: "string"}
+                  - {label: "Descripción", name: "description", widget: "text"}
+          - label: "Our Works"
+            name: "ourWorks"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+          - label: "Team Section"
+            name: "teamSection"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+          - label: "Cost Calculator"
+            name: "costCalculator"
+            widget: "object"
+            fields:
+              - {label: "Título de Sección", name: "sectionTitle", widget: "string"}
+              - {label: "Título Principal", name: "mainTitle", widget: "string"}
+      
       - label: "Servicios"
         name: "services"
         file: "src/data/servicesData.json"
@@ -57,8 +130,8 @@ collections:
               - {label: "ID", name: "id", widget: "number"}
               - {label: "Título", name: "title", widget: "string"}
               - {label: "Descripción", name: "desc", widget: "text"}
-              - {label: "Imagen", name: "img", widget: "string"}
-              - {label: "Icono SVG", name: "svg", widget: "string"}
+              - {label: "Imagen", name: "img", widget: "string", hint: "Nombre del archivo (ej: slider-img1.jpg)"}
+              - {label: "Icono SVG", name: "svg", widget: "string", hint: "Nombre del archivo SVG"}
               - {label: "Enlace", name: "link", widget: "string", default: "/Services"}
       
       - label: "Proyectos"
@@ -72,7 +145,7 @@ collections:
               - {label: "ID", name: "id", widget: "number"}
               - {label: "Título", name: "title", widget: "string"}
               - {label: "Descripción", name: "description", widget: "text"}
-              - {label: "Imagen", name: "image", widget: "string"}
+              - {label: "Imagen", name: "image", widget: "string", hint: "Nombre del archivo"}
               - {label: "Enlace", name: "link", widget: "string"}
       
       - label: "Equipo"
@@ -87,7 +160,7 @@ collections:
               - {label: "Nombre", name: "name", widget: "string"}
               - {label: "Cargo", name: "designation", widget: "string"}
               - {label: "Descripción", name: "desc", widget: "text"}
-              - {label: "Imagen", name: "img", widget: "string"}
+              - {label: "Imagen", name: "img", widget: "string", hint: "Nombre del archivo"}
       
       - label: "Testimonios"
         name: "testimonials"
@@ -102,7 +175,110 @@ collections:
               - {label: "Cargo", name: "designation", widget: "string"}
               - {label: "Testimonio", name: "text", widget: "text"}
               - {label: "Rating (1-5)", name: "rating", widget: "number", min: 1, max: 5}
-              - {label: "Imagen", name: "img", widget: "string"}
+              - {label: "Imagen", name: "img", widget: "string", hint: "Nombre del archivo"}
+      
+      - label: "Footer"
+        name: "footer"
+        file: "src/data/footerData.json"
+        fields:
+          - label: "Información de la Empresa"
+            name: "companyInfo"
+            widget: "object"
+            fields:
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Tagline", name: "tagline", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Dirección", name: "address", widget: "string"}
+              - {label: "Teléfono", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+          - label: "Enlaces Rápidos"
+            name: "quickLinks"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Texto", name: "label", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+          - label: "Redes Sociales"
+            name: "socialMedia"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Plataforma", name: "platform", widget: "string"}
+              - {label: "URL", name: "url", widget: "string"}
+              - {label: "Icono", name: "icon", widget: "string"}
+          - {label: "Copyright", name: "copyright", widget: "string"}
+      
+      - label: "Botones y CTAs"
+        name: "cta"
+        file: "src/data/ctaData.json"
+        fields:
+          - label: "Botones"
+            name: "buttons"
+            widget: "object"
+            fields:
+              - label: "Botón Principal"
+                name: "primaryCTA"
+                widget: "object"
+                fields:
+                  - {label: "Texto", name: "text", widget: "string"}
+                  - {label: "Enlace", name: "link", widget: "string"}
+              - label: "Botón Secundario"
+                name: "secondaryCTA"
+                widget: "object"
+                fields:
+                  - {label: "Texto", name: "text", widget: "string"}
+                  - {label: "Enlace", name: "link", widget: "string"}
+              - label: "Botón de Contacto"
+                name: "contactCTA"
+                widget: "object"
+                fields:
+                  - {label: "Texto", name: "text", widget: "string"}
+                  - {label: "Enlace", name: "link", widget: "string"}
+              - label: "Botón About"
+                name: "aboutCTA"
+                widget: "object"
+                fields:
+                  - {label: "Texto", name: "text", widget: "string"}
+                  - {label: "Enlace", name: "link", widget: "string"}
+          - label: "Llamadas a la Acción"
+            name: "callToAction"
+            widget: "object"
+            fields:
+              - {label: "Texto 'Need Help'", name: "needHelp", widget: "string"}
+              - {label: "Etiqueta de Teléfono", name: "phoneLabel", widget: "string"}
+      
+      - label: "SEO Meta Tags"
+        name: "seo"
+        file: "src/data/seoData.json"
+        fields:
+          - label: "Página Principal"
+            name: "home"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Palabras Clave", name: "keywords", widget: "string"}
+          - label: "Página About"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Palabras Clave", name: "keywords", widget: "string"}
+          - label: "Página Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Palabras Clave", name: "keywords", widget: "string"}
+          - label: "Página Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Palabras Clave", name: "keywords", widget: "string"}
 
   - name: "blog"
     label: "Blog"
