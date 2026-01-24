@@ -79,8 +79,6 @@ collections:
 
   - name: "team"
     label: "Equipo"
-    files:
-      - label: "Miembros del Equipo"
     label_singular: "Miembro"
     file: "src/data/teamData.json"
     fields:
@@ -92,10 +90,10 @@ collections:
           - {label: "Nombre", name: "name", widget: "string"}
           - {label: "Cargo", name: "designation", widget: "string"}
           - {label: "Descripción", name: "desc", widget: "text"}
-          - {label: "Imagen", name: "img
+          - {label: "Imagen", name: "img", widget: "string"}
+
+  - name: "testimonials"
     label: "Testimonios"
-    files:
-      - label: "Lista de Testimonios"
     label_singular: "Testimonio"
     file: "src/data/testimonailData.json"
     fields:
@@ -108,7 +106,9 @@ collections:
           - {label: "Cargo", name: "designation", widget: "string"}
           - {label: "Testimonio", name: "text", widget: "text"}
           - {label: "Rating (1-5)", name: "rating", widget: "number", min: 1, max: 5}
-          - {label: "Imagen", name: "img
+          - {label: "Imagen", name: "img", widget: "string"}
+
+  - name: "blog"
     label: "Blog"
     folder: "src/data/blog"
     create: true
