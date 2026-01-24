@@ -11,8 +11,8 @@ public_folder: "/images/uploads"
 locale: "es"
 
 collections:
-  - name: "settings"
-    label: "Configuración General"
+  - name: "pages"
+    label: "Contenido del Sitio"
     files:
       - label: "Información de Contacto"
         name: "contact"
@@ -45,68 +45,64 @@ collections:
           - {label: "Título Principal", name: "mainTitle", widget: "string"}
           - {label: "Descripción", name: "description", widget: "text"}
           - {label: "Años de Experiencia", name: "yearsExperience", widget: "number"}
-
-  - name: "services"
-    label: "Servicios"
-    label_singular: "Servicio"
-    file: "src/data/servicesData.json"
-    fields:
-      - label: "Lista de Servicios"
+      
+      - label: "Servicios"
         name: "services"
-        widget: "list"
+        file: "src/data/servicesData.json"
         fields:
-          - {label: "ID", name: "id", widget: "number"}
-          - {label: "Título", name: "title", widget: "string"}
-          - {label: "Descripción", name: "desc", widget: "text"}
-          - {label: "Imagen", name: "img", widget: "string"}
-          - {label: "Icono SVG", name: "svg", widget: "string"}
-          - {label: "Enlace", name: "link", widget: "string", default: "/Services"}
-
-  - name: "projects"
-    label: "Proyectos"
-    label_singular: "Proyecto"
-    file: "src/data/projectData.json"
-    fields:
-      - label: "Lista de Proyectos"
+          - label: "Lista de Servicios"
+            name: "services"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
+              - {label: "Imagen", name: "img", widget: "string"}
+              - {label: "Icono SVG", name: "svg", widget: "string"}
+              - {label: "Enlace", name: "link", widget: "string", default: "/Services"}
+      
+      - label: "Proyectos"
         name: "projects"
-        widget: "list"
+        file: "src/data/projectData.json"
         fields:
-          - {label: "ID", name: "id", widget: "number"}
-          - {label: "Título", name: "title", widget: "string"}
-          - {label: "Descripción", name: "description", widget: "text"}
-          - {label: "Imagen", name: "image", widget: "string"}
-          - {label: "Enlace", name: "link", widget: "string"}
-
-  - name: "team"
-    label: "Equipo"
-    label_singular: "Miembro"
-    file: "src/data/teamData.json"
-    fields:
-      - label: "Miembros del Equipo"
+          - label: "Lista de Proyectos"
+            name: "projects"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Imagen", name: "image", widget: "string"}
+              - {label: "Enlace", name: "link", widget: "string"}
+      
+      - label: "Equipo"
         name: "team"
-        widget: "list"
+        file: "src/data/teamData.json"
         fields:
-          - {label: "ID", name: "id", widget: "number"}
-          - {label: "Nombre", name: "name", widget: "string"}
-          - {label: "Cargo", name: "designation", widget: "string"}
-          - {label: "Descripción", name: "desc", widget: "text"}
-          - {label: "Imagen", name: "img", widget: "string"}
-
-  - name: "testimonials"
-    label: "Testimonios"
-    label_singular: "Testimonio"
-    file: "src/data/testimonailData.json"
-    fields:
-      - label: "Lista de Testimonios"
+          - label: "Miembros del Equipo"
+            name: "team"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Cargo", name: "designation", widget: "string"}
+              - {label: "Descripción", name: "desc", widget: "text"}
+              - {label: "Imagen", name: "img", widget: "string"}
+      
+      - label: "Testimonios"
         name: "testimonials"
-        widget: "list"
+        file: "src/data/testimonailData.json"
         fields:
-          - {label: "ID", name: "id", widget: "number"}
-          - {label: "Nombre", name: "name", widget: "string"}
-          - {label: "Cargo", name: "designation", widget: "string"}
-          - {label: "Testimonio", name: "text", widget: "text"}
-          - {label: "Rating (1-5)", name: "rating", widget: "number", min: 1, max: 5}
-          - {label: "Imagen", name: "img", widget: "string"}
+          - label: "Lista de Testimonios"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "ID", name: "id", widget: "number"}
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Cargo", name: "designation", widget: "string"}
+              - {label: "Testimonio", name: "text", widget: "text"}
+              - {label: "Rating (1-5)", name: "rating", widget: "number", min: 1, max: 5}
+              - {label: "Imagen", name: "img", widget: "string"}
 
   - name: "blog"
     label: "Blog"
