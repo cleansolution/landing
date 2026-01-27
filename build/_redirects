@@ -1,0 +1,5 @@
+# Admin routes
+/admin/* /index.html 200
+
+# All other routes
+/* /index.html 200
