@@ -3,9 +3,7 @@ import AdminLayout from '../../component/AdminLayout.tsx';
 import servicesData from '../../data/servicesData.json';
 import teamData from '../../data/teamData.json';
 import testimonialData from '../../data/testimonailData.json';
-import featuresData from '../../data/featuresData.json';
 import projectData from '../../data/projectData.json';
-import sectionsData from '../../data/sectionsData.json';
 
 export default function AdminDashboard() {
   const stats = [

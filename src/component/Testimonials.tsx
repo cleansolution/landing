@@ -24,8 +24,6 @@ const testimonialImages: { [key: string]: string } = {
 };
 
 const Testimonials: React.FC = () => {
-    const testimonials = testimonailData;
-    
     const testimonialSlider = {
         loop: true,
         speed: 1000,

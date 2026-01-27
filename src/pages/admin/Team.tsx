@@ -30,7 +30,6 @@ export default function AdminTeam() {
   });
   const [imagePreview, setImagePreview] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [saving, setSaving] = useState(false);
 
   const handleEdit = (member) => {
     setFormData(member);

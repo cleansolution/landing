@@ -28,7 +28,6 @@ export default function AdminServices() {
   });
   const [imagePreview, setImagePreview] = useState('');
   const [showForm, setShowForm] = useState(false);
-  const [saving, setSaving] = useState(false);
 
   const handleEdit = (service) => {
     setFormData(service);
