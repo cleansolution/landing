@@ -5,52 +5,55 @@ import Insta from '../assets/images/svg/insta.svg';
 import Facebook from '../assets/images/svg/facebook.svg';
 import Whatsapp from '../assets/images/svg/whatsapp.svg';
 import Twitter from '../assets/images/svg/twitter.svg';
+import TeamMemberImg1 from '../assets/images/team/team-mem-img1.png';
+import TeamMemberImg2 from '../assets/images/team/team-mem-img2.png';
+import TeamMemberImg3 from '../assets/images/team/team-mem-img3.png';
+import TeamMemberImg4 from '../assets/images/team/team-mem-img4.png';
+import TeamMemberImg5 from '../assets/images/team/team-mem-img5.png';
+import TeamMemberImg6 from '../assets/images/team/team-mem-img6.png';
+import TeamMemberImg7 from '../assets/images/team/team-mem-img7.png';
+import TeamMemberImg8 from '../assets/images/team/team-mem-img8.png';
 import teamData from "../data/teamData.json";
-import img1 from "../assets/images/team/team-mem-img1.png";
-import img2 from "../assets/images/team/team-mem-img2.png";
-import img3 from "../assets/images/team/team-mem-img3.png";
-import img4 from "../assets/images/team/team-mem-img4.png";
-import img5 from "../assets/images/team/team-mem-img5.png";
-import img6 from "../assets/images/team/team-mem-img6.png";
-import img7 from "../assets/images/team/team-mem-img7.png";
-import img8 from "../assets/images/team/team-mem-img8.png";
-
-export const teamImageMap = {
-    "team-mem-img1.png": img1,
-    "team-mem-img2.png": img2,
-    "team-mem-img3.png": img3,
-    "team-mem-img4.png": img4,
-    "team-mem-img5.png": img5,
-    "team-mem-img6.png": img6,
-    "team-mem-img7.png": img7,
-    "team-mem-img8.png": img8,
-} as const;
-
 
 export interface TeamMember {
     id: number;
     name: string;
-    role: string;
-    image: keyof typeof teamImageMap;
-    instagram: string;
-    facebook: string;
-    whatsapp: string;
-    twitter: string;
+    position: string;
+    image: string;
+    social?: {
+        instagram?: string;
+        facebook?: string;
+        whatsapp?: string;
+        twitter?: string;
+    };
 }
 
+// Map para las imágenes del equipo
+const teamImages: { [key: string]: string } = {
+    'team-mem-img1.png': TeamMemberImg1,
+    'team-mem-img2.png': TeamMemberImg2,
+    'team-mem-img3.png': TeamMemberImg3,
+    'team-mem-img4.png': TeamMemberImg4,
+    'team-mem-img5.png': TeamMemberImg5,
+    'team-mem-img6.png': TeamMemberImg6,
+    'team-mem-img7.png': TeamMemberImg7,
+    'team-mem-img8.png': TeamMemberImg8,
+};
 
 type TeamSectionProps = {
     limit?: number;
 };
 
 const TeamSection: React.FC<TeamSectionProps> = ({ limit }) => {
+    const teamMembers = teamData;
+    
     const slicedData = limit
-        ? (teamData as TeamMember[]).slice(0, limit)
-        : (teamData as TeamMember[]);
+        ? teamMembers.slice(0, limit)
+        : teamMembers;
     return (
         <>
             <div className="row exper-team-row-home">
-                {slicedData.map((team) => (
+                {slicedData.map((team: TeamMember) => (
                     <div
                         className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6"
                         key={team.id}
@@ -59,38 +62,46 @@ const TeamSection: React.FC<TeamSectionProps> = ({ limit }) => {
                             <div className="team-circle-main">
                                 <Link to="/TeamDetails" className="inner-team-circle">
                                     <img
-                                        src={teamImageMap[team.image]}
+                                        src={teamImages[team.image] || TeamMemberImg1}
                                         alt={team.name}
                                     />
                                 </Link>
                                 <div className="share-icon-main">
                                     <img src={ShareIcon} alt="share-icon" />
                                     <ul className="social-icons">
-                                        <li>
-                                            <a href={team.instagram} target="_blank" rel="noreferrer">
-                                                <img src={Insta} alt="Instagram" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={team.facebook} target="_blank" rel="noreferrer">
-                                                <img src={Facebook} alt="Facebook" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={team.whatsapp} target="_blank" rel="noreferrer">
-                                                <img src={Whatsapp} alt="WhatsApp" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href={team.twitter} target="_blank" rel="noreferrer">
-                                                <img src={Twitter} alt="Twitter" />
-                                            </a>
-                                        </li>
+                                        {team.social?.instagram && (
+                                            <li>
+                                                <a href={team.social.instagram} target="_blank" rel="noreferrer">
+                                                    <img src={Insta} alt="Instagram" />
+                                                </a>
+                                            </li>
+                                        )}
+                                        {team.social?.facebook && (
+                                            <li>
+                                                <a href={team.social.facebook} target="_blank" rel="noreferrer">
+                                                    <img src={Facebook} alt="Facebook" />
+                                                </a>
+                                            </li>
+                                        )}
+                                        {team.social?.whatsapp && (
+                                            <li>
+                                                <a href={team.social.whatsapp} target="_blank" rel="noreferrer">
+                                                    <img src={Whatsapp} alt="WhatsApp" />
+                                                </a>
+                                            </li>
+                                        )}
+                                        {team.social?.twitter && (
+                                            <li>
+                                                <a href={team.social.twitter} target="_blank" rel="noreferrer">
+                                                    <img src={Twitter} alt="Twitter" />
+                                                </a>
+                                            </li>
+                                        )}
                                     </ul>
                                 </div>
                             </div>
                             <h3>{team.name}</h3>
-                            <p>{team.role}</p>
+                            <p>{team.position}</p>
                         </div>
                     </div>
                 ))}

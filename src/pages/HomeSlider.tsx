@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import Video2 from '../assets/video/video2.mp4';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
+import sectionsData from '../data/sectionsData.json';
 import AboutSvg1 from '../assets/images/svg/about-svg1.svg';
 import AboutSvg2 from '../assets/images/svg/about-svg2.svg';
 import AboutSvg3 from '../assets/images/svg/about-svg3.svg';
@@ -131,36 +132,19 @@ const HomeSlider: React.FC = () => {
                 <div className="container">
                     <div className="row why-choose-row">
                         <div className="col-xxl-6 col-xl-6 col-lg-6">
-                            <p className="cap-text fade_up">why choose us</p>
-                            <h2 className="sec-text fade_up">We Will Make Absolutely Any Place Clean, Neat & Tidy.</h2>
-                            <p className="sec-sub-text fade_up">Eu nascetur vitae odio faucibus sed pharetra. Mus tempus risus purus
-                                diam orci mi. Amet cras urna amet tincidunt enim arcu aliquet massa enim. A aliquam quis
-                                sagittis sapien. Vel aliquam mi pulvinar pulvinar urna.</p>
+                            <p className="cap-text fade_up">{sectionsData.whyChooseUs.sectionTitle}</p>
+                            <h2 className="sec-text fade_up">{sectionsData.whyChooseUs.mainTitle}</h2>
+                            <p className="sec-sub-text fade_up">{sectionsData.whyChooseUs.description}</p>
                             <div className="check-box-main">
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>Customer Focused Reviews</h2>
-                                        <p>Pulvinar sed nulla egestas elit. Massa et velit tellus quis eu. Maecenas natoque
-                                            pellentesque volutpat amet tincidunt convallis scelerisque.</p>
+                                {sectionsData.whyChooseUs.benefits.map((benefit) => (
+                                    <div className="check-box-main-sub fade_up" key={benefit.id}>
+                                        <img src={CheckTransparent} alt="check-transparent" />
+                                        <div>
+                                            <h2>{benefit.title}</h2>
+                                            <p>{benefit.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>We Are Committed</h2>
-                                        <p>Sit viverra vehicula elementum sed nisl semper. Id fermentum vitae fringilla donec
-                                            tellus dignissim venenatis rhoncus elit nibh viverra.</p>
-                                    </div>
-                                </div>
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>Regular & Monthly Cleaning</h2>
-                                        <p>Elementum eget volutpat blandit pretium. Tincidunt a in malesuada tortor aenean elit
-                                            metus hac. Suspendisse blandit in aliquet porttitor.</p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                         <div className="col-xxl-6 col-xl-6 col-lg-6 sec-video2">

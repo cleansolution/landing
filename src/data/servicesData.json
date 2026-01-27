@@ -1,4 +1,5 @@
-[
+{
+  "services": [
     {
         "id": 1,
         "img": "slider-img1.jpg",
@@ -63,4 +64,5 @@
         "desc": "Sanitization and deodorization of residential and commercial trash bins. Keep your bins clean, fresh, and pest-free year-round.",
         "link": "/Services"
     }
-]
+  ]
+}

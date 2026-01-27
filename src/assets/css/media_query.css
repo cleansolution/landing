@@ -1002,6 +1002,16 @@
 
     .team-circle-link h3 {
         margin-top: 20px;
+        font-size: 18px !important;
+        line-height: 26px !important;
+        display: block !important;
+        visibility: visible !important;
+    }
+
+    .team-circle-link p {
+        font-size: 14px !important;
+        display: block !important;
+        visibility: visible !important;
     }
 
     .testimonials-col-main {

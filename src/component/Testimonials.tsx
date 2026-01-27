@@ -3,22 +3,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import QuoteSvg from '../assets/images/svg/quote.svg';
 import ManCleaningHome from '../assets/images/testimonials/man-cleaning-home.jpg';
+import TestimonialClientImg1 from '../assets/images/testimonials/testimonial-client-img1.jpg';
 import testimonailData from '../data/testimonailData.json';
-import client1 from "../assets/images/testimonials/testimonial-client-img1.jpg";
-
-export const testimonialImageMap = {
-    "testimonial-client-img1.jpg": client1,
-} as const;
 
 export interface Testimonial {
     id: number;
-    text: string;
-    name: string;
-    role: string;
-    image: keyof typeof testimonialImageMap;
+    testimonial?: string;
+    text?: string;
+    clientName?: string;
+    name?: string;
+    clientTitle?: string;
+    role?: string;
+    avatar?: string;
+    image?: string;
 }
 
+// Map para las imágenes de testimonios
+const testimonialImages: { [key: string]: string } = {
+    'testimonial-client-img1.jpg': TestimonialClientImg1,
+};
+
 const Testimonials: React.FC = () => {
+    const testimonials = testimonailData;
+    
     const testimonialSlider = {
         loop: true,
         speed: 1000,
@@ -48,7 +55,7 @@ const Testimonials: React.FC = () => {
 
                                 <div className="client-details-main">
                                     <img
-                                        src={testimonialImageMap[item.image]}
+                                        src={testimonialImages[item.image] || TestimonialClientImg1}
                                         alt={item.name}
                                     />
                                     <div className="client-details">

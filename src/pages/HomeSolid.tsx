@@ -3,10 +3,13 @@ import HomeHeroSolid from '../component/HomeHeroSolid.tsx';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import Video2 from '../assets/video/video2.mp4';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
+import sectionsData from '../data/sectionsData.json';
 import AboutSvg1 from '../assets/images/svg/about-svg1.svg';
 import AboutSvg2 from '../assets/images/svg/about-svg2.svg';
 import AboutSvg3 from '../assets/images/svg/about-svg3.svg';
 import AboutSvg4 from '../assets/images/svg/about-svg4.svg';
+import featuresData from '../data/featuresData.json';
+import aboutData from '../data/aboutData.json';
 import AboutImg1 from '../assets/images/about/about-img1.jpg';
 import AboutImg2 from '../assets/images/about/about-img2.jpg';
 import AboutImg3 from '../assets/images/about/about-img3.jpg';
@@ -49,49 +52,29 @@ const HomeSolid: React.FC = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-xxl-6 col-xl-6 col-lg-6">
-                            <p className="cap-text fade_in">about Clean Solutions CO. LLC</p>
-                            <h2 className="sec-text fade_up">Let Us Handle The Mess, You Enjoy The Clean</h2>
-                            <p className="sec-sub-text fade_up">With 5 years of experience in professional cleaning services, we specialize in residential and commercial cleaning. Our expertise includes move in/out cleaning, Airbnb properties, post-construction cleanup, and detailed deep cleaning. We're committed to delivering spotless results for every client in Chesapeake, Virginia and surrounding areas.</p>
+                            <p className="cap-text fade_in">{aboutData.capText}</p>
+                            <h2 className="sec-text fade_up">{aboutData.mainTitle}</h2>
+                            <p className="sec-sub-text fade_up">{aboutData.description}</p>
                             <div className="about-grid-box-main">
-                                <div className="about-box-main zoom_in">
-                                    <div className="about-svg-main">
-                                        <img src={AboutSvg1} alt="about-svg1" />
-                                    </div>
-                                    <div>
-                                        <h3 className="expeStaff">Experience Staff</h3>
-                                        <p className="fessional">Professional and Experienced staff ready to help you anytime.</p>
-                                    </div>
-                                </div>
-                                <div className="about-box-main zoom_in">
-                                    <div className="about-svg-main">
-                                        <img src={AboutSvg2} alt="about-svg2" />
-                                    </div>
-                                    <div>
-                                        <h3 className="expeStaff">Natural Products</h3>
-                                        <p className="fessional">We only use natural products in the process, No harmful chemicals
-                                            are used.</p>
-                                    </div>
-                                </div>
-                                <div className="about-box-main zoom_in">
-                                    <div className="about-svg-main">
-                                        <img src={AboutSvg3} alt="about-svg3" />
-                                    </div>
-                                    <div>
-                                        <h3 className="expeStaff">Fast Service</h3>
-                                        <p className="fessional">Set your schedule and get the regular and faster cleaning everyday,
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="about-box-main zoom_in">
-                                    <div className="about-svg-main">
-                                        <img src={AboutSvg4} alt="about-svg4" />
-                                    </div>
-                                    <div>
-                                        <h3 className="expeStaff">Best Equipment</h3>
-                                        <p className="fessional">We use the best and world class equipment for the cleaning process.
-                                        </p>
-                                    </div>
-                                </div>
+                                {featuresData.features.map((feature, index) => {
+                                    const svgMap: { [key: string]: string } = {
+                                        'about-svg1.svg': AboutSvg1,
+                                        'about-svg2.svg': AboutSvg2,
+                                        'about-svg3.svg': AboutSvg3,
+                                        'about-svg4.svg': AboutSvg4,
+                                    };
+                                    return (
+                                        <div key={feature.id} className="about-box-main zoom_in">
+                                            <div className="about-svg-main">
+                                                <img src={svgMap[feature.icon] || AboutSvg1} alt={feature.icon} />
+                                            </div>
+                                            <div>
+                                                <h3 className="expeStaff">{feature.title}</h3>
+                                                <p className="fessional">{feature.description}</p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
                             <div className="about-sec-main">
                                 <a href="#about" className="btn-quote our-services-btn">About Us
@@ -135,36 +118,19 @@ const HomeSolid: React.FC = () => {
                 <div className="container">
                     <div className="row why-choose-row">
                         <div className="col-xxl-6 col-xl-6 col-lg-6">
-                            <p className="cap-text fade_up">why choose us</p>
-                            <h2 className="sec-text fade_up">We Will Make Absolutely Any Place Clean, Neat & Tidy.</h2>
-                            <p className="sec-sub-text fade_up">Eu nascetur vitae odio faucibus sed pharetra. Mus tempus risus purus
-                                diam orci mi. Amet cras urna amet tincidunt enim arcu aliquet massa enim. A aliquam quis
-                                sagittis sapien. Vel aliquam mi pulvinar pulvinar urna.</p>
+                            <p className="cap-text fade_up">{sectionsData.whyChooseUs.sectionTitle}</p>
+                            <h2 className="sec-text fade_up">{sectionsData.whyChooseUs.mainTitle}</h2>
+                            <p className="sec-sub-text fade_up">{sectionsData.whyChooseUs.description}</p>
                             <div className="check-box-main">
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>Customer Focused Reviews</h2>
-                                        <p>Pulvinar sed nulla egestas elit. Massa et velit tellus quis eu. Maecenas natoque
-                                            pellentesque volutpat amet tincidunt convallis scelerisque.</p>
+                                {sectionsData.whyChooseUs.benefits.map((benefit) => (
+                                    <div className="check-box-main-sub fade_up" key={benefit.id}>
+                                        <img src={CheckTransparent} alt="check-transparent" />
+                                        <div>
+                                            <h2>{benefit.title}</h2>
+                                            <p>{benefit.description}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>We Are Committed</h2>
-                                        <p>Sit viverra vehicula elementum sed nisl semper. Id fermentum vitae fringilla donec
-                                            tellus dignissim venenatis rhoncus elit nibh viverra.</p>
-                                    </div>
-                                </div>
-                                <div className="check-box-main-sub fade_up">
-                                    <img src={CheckTransparent} alt="check-transparent" />
-                                    <div>
-                                        <h2>Regular & Monthly Cleaning</h2>
-                                        <p>Elementum eget volutpat blandit pretium. Tincidunt a in malesuada tortor aenean elit
-                                            metus hac. Suspendisse blandit in aliquet porttitor.</p>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                         <div className="col-xxl-6 col-xl-6 col-lg-6 sec-video2">

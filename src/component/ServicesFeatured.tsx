@@ -1,51 +1,53 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
+import SliderImg1 from '../assets/images/services/slider-img1.jpg';
+import SliderImg2 from '../assets/images/services/slider-img2.jpg';
+import SliderImg3 from '../assets/images/services/slider-img3.jpg';
+import SliderImg4 from '../assets/images/services/slider-img4.jpg';
+import SliderImg5 from '../assets/images/services/slider-img5.jpg';
+import SliderImg6 from '../assets/images/services/slider-img6.jpg';
+import SliderImg7 from '../assets/images/services/slider-img7.jpg';
+import ServicesSvg1 from '../assets/images/svg/services-svg1.svg';
+import ServicesSvg2 from '../assets/images/svg/services-svg2.svg';
+import ServicesSvg3 from '../assets/images/svg/services-svg3.svg';
+import ServicesSvg4 from '../assets/images/svg/services-svg4.svg';
+import ServicesSvg5 from '../assets/images/svg/services-svg5.svg';
+import ServicesSvg6 from '../assets/images/svg/services-svg6.svg';
 import servicesData from "../data/servicesData.json";
-import img1 from "../assets/images/services/slider-img1.jpg";
-import img2 from "../assets/images/services/slider-img2.jpg";
-import img3 from "../assets/images/services/slider-img3.jpg";
-import img4 from "../assets/images/services/slider-img4.jpg";
-import img5 from "../assets/images/services/slider-img5.jpg";
-import img6 from "../assets/images/services/slider-img6.jpg";
-import img7 from "../assets/images/services/slider-img7.jpg";
-
-import svg1 from "../assets/images/svg/services-svg1.svg";
-import svg2 from "../assets/images/svg/services-svg2.svg";
-import svg3 from "../assets/images/svg/services-svg3.svg";
-import svg4 from "../assets/images/svg/services-svg4.svg";
-import svg5 from "../assets/images/svg/services-svg5.svg";
-import svg6 from "../assets/images/svg/services-svg6.svg";
-
-export const serviceImageMap = {
-    "slider-img1.jpg": img1,
-    "slider-img2.jpg": img2,
-    "slider-img3.jpg": img3,
-    "slider-img4.jpg": img4,
-    "slider-img5.jpg": img5,
-    "slider-img6.jpg": img6,
-    "slider-img7.jpg": img7,
-} as const;
-
-export const serviceSvgMap = {
-    "services-svg1.svg": svg1,
-    "services-svg2.svg": svg2,
-    "services-svg3.svg": svg3,
-    "services-svg4.svg": svg4,
-    "services-svg5.svg": svg5,
-    "services-svg6.svg": svg6,
-} as const;
 
 export interface ServiceItem {
     id: number;
-    img: keyof typeof serviceImageMap;
-    svg: keyof typeof serviceSvgMap;
+    img: string;
+    svg?: string;
     title: string;
     desc: string;
     link: string;
 }
 
+// Map para las imágenes de servicios
+const serviceImages: { [key: string]: string } = {
+    'slider-img1.jpg': SliderImg1,
+    'slider-img2.jpg': SliderImg2,
+    'slider-img3.jpg': SliderImg3,
+    'slider-img4.jpg': SliderImg4,
+    'slider-img5.jpg': SliderImg5,
+    'slider-img6.jpg': SliderImg6,
+    'slider-img7.jpg': SliderImg7,
+};
+
+// Map para los SVGs de servicios
+const serviceSvgs: { [key: string]: string } = {
+    'services-svg1.svg': ServicesSvg1,
+    'services-svg2.svg': ServicesSvg2,
+    'services-svg3.svg': ServicesSvg3,
+    'services-svg4.svg': ServicesSvg4,
+    'services-svg5.svg': ServicesSvg5,
+    'services-svg6.svg': ServicesSvg6,
+};
+
 function ServicesFeatured() {
+    const services = servicesData.services;
     const servicesSlider = {
         loop: true,
         speed: 1000,
@@ -76,21 +78,23 @@ function ServicesFeatured() {
     return (
         <>
             <Swiper {...servicesSlider} className="swiper services-slider">
-                {(servicesData as ServiceItem[]).map((item) => (
+                {services.map((item: ServiceItem) => (
                     <SwiperSlide key={item.id} className="swiper-slide cleaning-card">
                         <div className="cleaning-card-img-main">
                             <img
-                                src={serviceImageMap[item.img]}
+                                src={item.img.startsWith('data:') ? item.img : (serviceImages[item.img] || SliderImg1)}
                                 alt={item.title}
                             />
                         </div>
 
-                        <div className="services-svg-main">
-                            <img
-                                src={serviceSvgMap[item.svg]}
-                                alt={item.title}
-                            />
-                        </div>
+                        {item.svg && (
+                            <div className="services-svg-main">
+                                <img
+                                    src={item.svg.startsWith('data:') ? item.svg : (serviceSvgs[item.svg] || ServicesSvg1)}
+                                    alt={item.title}
+                                />
+                            </div>
+                        )}
 
                         <div className="card-containe">
                             <h3 className="services-name">{item.title}</h3>

@@ -7,22 +7,22 @@
   "whyChooseUs": {
     "sectionTitle": "why choose us",
     "mainTitle": "We Will Make Absolutely Any Place Clean, Neat & Tidy.",
-    "description": "Eu nascetur vitae odio faucibus sed pharetra. Mus tempus risus purus diam orci mi. Amet cras urna amet tincidunt enim arcu aliquet massa enim. A aliquam quis sagittis sapien. Vel aliquam mi pulvinar pulvinar urna.",
+    "description": "At Clean Solutions, we take pride in delivering exceptional cleaning services that exceed your expectations. With 5 years of experience and a team of trained professionals, we ensure every space shines with perfection. Our commitment to quality and customer satisfaction sets us apart.",
     "benefits": [
       {
         "id": 1,
         "title": "Customer Focused Reviews",
-        "description": "Pulvinar sed nulla egestas elit. Massa et velit tellus quis eu. Maecenas natoque pellentesque volutpat amet tincidunt convallis scelerisque."
+        "description": "Our clients' satisfaction is our top priority. We consistently receive 5-star reviews for our attention to detail, reliability, and professional service. Your happiness is what drives us to deliver excellence every time."
       },
       {
         "id": 2,
         "title": "We Are Committed",
-        "description": "Sit viverra vehicula elementum sed nisl semper. Id fermentum vitae fringilla donec tellus dignissim venenatis rhoncus elit nibh viverra."
+        "description": "We're dedicated to providing spotless results with every cleaning service. Our team shows up on time, works efficiently, and never cuts corners. Your trust in us is something we value and protect with every job we complete."
       },
       {
         "id": 3,
         "title": "Regular & Monthly Cleaning",
-        "description": "Elementum eget volutpat blandit pretium. Tincidunt a in malesuada tortor aenean elit metus hac. Suspendisse blandit in aliquet porttitor."
+        "description": "Whether you need weekly maintenance or monthly deep cleans, we offer flexible scheduling to fit your lifestyle. Our recurring services ensure your home or office stays consistently fresh and immaculate all year round."
       }
     ]
   },

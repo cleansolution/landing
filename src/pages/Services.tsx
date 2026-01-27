@@ -63,7 +63,7 @@ const Services: React.FC = () => {
                 <div className="container">
                     <h2 className="d-none">hidden</h2>
                     <div className="row services-page-row">
-                        {(servicesData as ServiceItem[]).map((item) => (
+                        {(servicesData.services as ServiceItem[]).map((item) => (
                             <div
                                 className="col-xxl-4 col-xl-4 col-lg-4 col-md-6" key={item.id}
                             >
