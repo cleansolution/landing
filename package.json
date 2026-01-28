@@ -2,7 +2,6 @@
   "name": "cleaning",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://cleansolution.github.io/landing",
   "dependencies": {
     "@sanity/client": "^7.14.1",
     "@sanity/image-url": "^2.0.3",
