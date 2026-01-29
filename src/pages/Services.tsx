@@ -9,6 +9,8 @@ import img3 from "../assets/images/services/slider-img3.jpg";
 import img4 from "../assets/images/services/slider-img4.jpg";
 import img5 from "../assets/images/services/slider-img5.jpg";
 import img6 from "../assets/images/services/slider-img6.jpg";
+import img7 from "../assets/images/services/slider-img7.jpg";
+import img8 from "../assets/images/services/slider-img8.jpg";
 
 import svg1 from "../assets/images/svg/services-svg1.svg";
 import svg2 from "../assets/images/svg/services-svg2.svg";
@@ -24,6 +26,8 @@ export const serviceImageMap = {
     "slider-img4.jpg": img4,
     "slider-img5.jpg": img5,
     "slider-img6.jpg": img6,
+    "slider-img7.jpg": img7,
+    "slider-img8.jpg": img8,
 } as const;
 
 export const serviceSvgMap = {
@@ -85,7 +89,7 @@ const Services: React.FC = () => {
                                         <p className="services-card-sub-text">{item.desc}</p>
                                     </div>
                                     <Link to={item.link} className="card-learn-more">
-                                        Learn More <img src={CrossArrow} alt="cross-arrow" />
+                                        Get a Quote <img src={CrossArrow} alt="cross-arrow" />
                                     </Link>
                                 </div>
                             </div>

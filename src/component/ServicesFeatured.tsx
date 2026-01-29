@@ -8,6 +8,7 @@ import SliderImg4 from '../assets/images/services/slider-img4.jpg';
 import SliderImg5 from '../assets/images/services/slider-img5.jpg';
 import SliderImg6 from '../assets/images/services/slider-img6.jpg';
 import SliderImg7 from '../assets/images/services/slider-img7.jpg';
+import SliderImg8 from '../assets/images/services/slider-img8.jpg';
 import ServicesSvg1 from '../assets/images/svg/services-svg1.svg';
 import ServicesSvg2 from '../assets/images/svg/services-svg2.svg';
 import ServicesSvg3 from '../assets/images/svg/services-svg3.svg';
@@ -34,6 +35,7 @@ const serviceImages: { [key: string]: string } = {
     'slider-img5.jpg': SliderImg5,
     'slider-img6.jpg': SliderImg6,
     'slider-img7.jpg': SliderImg7,
+    'slider-img8.jpg': SliderImg8,
 };
 
 // Map para los SVGs de servicios
@@ -102,7 +104,7 @@ function ServicesFeatured() {
                         </div>
 
                         <a href="#contact" className="card-learn-more">
-                            Learn More <img src={CrossArrow} alt="cross-arrow" />
+                            Get a Quote <img src={CrossArrow} alt="cross-arrow" />
                         </a>
                     </SwiperSlide>
                 ))}
