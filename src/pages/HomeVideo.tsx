@@ -144,7 +144,14 @@ const HomeVideo: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-xxl-6 col-xl-6 col-lg-6 sec-video2">
-                            <video autoPlay muted loop playsInline className="video2">
+                            <video 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline 
+                                preload="auto"
+                                className="video2"
+                            >
                                 <source src={Video2} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>

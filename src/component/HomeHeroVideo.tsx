@@ -26,7 +26,13 @@ const HomeHeroVideo: React.FC = () => {
                 <Swiper {...heroSlider} className="swiper hero-slider">
                     <div className="swiper-wrapper">
                         <SwiperSlide className="swiper-slide main-swiper-video-bg video-slide">
-                            <video autoPlay muted loop playsInline>
+                            <video 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline 
+                                preload="auto"
+                            >
                                 <source src={Video1} type="video/mp4" />
                             </video>
                             <div className="slide-content">
