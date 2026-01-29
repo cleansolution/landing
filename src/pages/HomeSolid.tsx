@@ -160,17 +160,14 @@ const HomeSolid: React.FC = () => {
                     <img className="how-to-work-bg" src={HowWorkBg} alt="how-to-work-bg" />
                     <p className="cap-text cost-cal position-relative fade_up">How it works</p>
                     <h2 className="sec-text mazing position-relative fade_up">Get Amazing Cleaning in 3 Simple Steps</h2>
-                    <p className="sec-sub-text scetur position-relative fade_up">At amet in adipiscing hac suspendisse. Laoreet sit
-                        consectetur donec odio ornare elementum pellentesque. Ante gravida netus dignissim sed tristique mauris
-                        egestas egestas aenean turpis id eget.</p>
+                    <p className="sec-sub-text scetur position-relative fade_up">Our streamlined process makes it easy to get professional cleaning services. From booking to completion, we ensure a hassle-free experience with transparent pricing and flexible scheduling to accommodate your busy lifestyle.</p>
                     <div className="how-work-step-box">
                         <div className="how-work-step-box-sub fade_up">
                             <div className="how-to-work-circle">
                                 <img src={HowWorkSvg1} alt="how-to-work-svg1" />
                             </div>
                             <h3>Pick a suitable plan</h3>
-                            <p className="fessional send-info">Rule first third above first tree saw Grass subdue great eep saying
-                                forth rule hath to the replenish.
+                            <p className="fessional send-info">Browse our range of cleaning services and select the plan that best fits your needs and budget. From one-time deep cleans to regular maintenance packages.
                             </p>
                         </div>
                         <div className="how-work-step-box-sub how-to-work-arrow">
@@ -183,8 +180,7 @@ const HomeSolid: React.FC = () => {
                                 <img src={HowWorkSvg2} alt="how-to-work-svg2" />
                             </div>
                             <h3>Set your schedule</h3>
-                            <p className="fessional send-info">Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam
-                                donec cum. Eu sed ante scelerisque massa.
+                            <p className="fessional send-info">Choose a date and time that works best for you. We offer flexible scheduling including weekends and same-day service for your convenience.
                             </p>
                         </div>
                         <div className="how-work-step-box-sub how-to-work-arrow">
@@ -197,8 +193,7 @@ const HomeSolid: React.FC = () => {
                                 <img src={HowWorkSvg3} alt="how-to-work-svg3" />
                             </div>
                             <h3>Get things done</h3>
-                            <p className="fessional send-info">Urna praesent fusce risus pellentesque odio. Eget nulla volutpat
-                                proin sagittis lacus ornare sagittis risus.
+                            <p className="fessional send-info">Sit back and relax while our professional team transforms your space. We arrive on time with all supplies and deliver sparkling results every time.
                             </p>
                         </div>
                     </div>

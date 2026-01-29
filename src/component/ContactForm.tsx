@@ -56,8 +56,8 @@ const ContactForm: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="call-support-text">Our Mail Address</p>
-                                        <a href="mailto:Lolitamontalvo.91@gmail.com" className="tel-num addees">
-                                            Lolitamontalvo.91@gmail.com
+                                        <a href="mailto:info@leansolutionsva.com" className="tel-num addees">
+                                            info@leansolutionsva.com
                                         </a>
                                     </div>
                                 </div>

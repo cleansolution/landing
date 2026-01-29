@@ -124,18 +124,9 @@ const BlogDetails2 = () => {
                                     <p>1.2k</p>
                                 </div>
                             </div>
-                            <p className="fusce fade_down">It is a long established fact that a reader will be distracted by
-                                the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                that it has a more-or-less normal distribution of letters, as opposed to using am so happy my
-                                dear frend so has take possion of my entire souing like these sweet mornng spring whch enjoy the
-                                with my whole heart I am alone, and feel the charm of existenc.the spot whch was create For then
-                                bliss of souls like mineing.
+                            <p className="fusce fade_down">Carpet cleaning is an essential part of maintaining a healthy and fresh home environment. Over time, carpets accumulate dirt, dust, allergens, and stains that regular vacuuming alone cannot remove. Professional carpet cleaning not only improves the appearance of your carpets but also extends their lifespan and contributes to better indoor air quality. Whether you're dealing with high-traffic areas, stubborn stains, or just routine maintenance, understanding the proper carpet cleaning process will help you achieve the best results and keep your carpets looking and feeling like new for years to come.
                             </p>
-                            <p className="fusce psum fade_down">Ipsum sit netus nisi sapien vitae nec augue massa. Mi vel penatibus
-                                non sit lacus mattis purus. Id sed non cursus sed tristique viverra feugiat egestas dis.
-                                Porttitor diam at elementum massa eget et risus. Aliquet sed pulvinar auctor suspendisse mauris
-                                arcu nunc. Pellentesque massa iaculis neque tincidunt ut dolor magna nec. In donec pretium in
-                                nulla bibendum risus vel.
+                            <p className="fusce psum fade_down">The first step in professional carpet cleaning is a thorough inspection and pre-treatment. Our technicians assess the carpet's condition, identify problem areas, and determine the most effective cleaning method based on the carpet's fiber type and level of soiling. We then pre-treat heavily soiled areas and stubborn stains with specialized solutions that break down dirt and grime. This preparation phase is crucial for achieving optimal cleaning results. Using hot water extraction method, also known as steam cleaning, we apply a cleaning solution deep into the carpet fibers and then extract it along with the loosened dirt, leaving your carpets fresh, clean, and sanitized.
                             </p>
                             <div className="qoute-box">
                                 <h2>Amidst the chaos of life, let your home be a crystal gentle dance of flames and the energy
@@ -145,15 +136,8 @@ const BlogDetails2 = () => {
                                     <h3 className="jordon">By Jordon Smith</h3>
                                 </div>
                             </div>
-                            <h2 className="ourServicesPrcoes pt-0 fade_down">Donec commodo ac velit integer aliquam tellus
-                                pellentesque tincidunt ultricies.</h2>
-                            <p className="fusce fade_down">In pharetra lectus porttitor eros massa sit mattis quis.
-                                Ultricies
-                                sed cras arcu integer nisi aliquam. Nibh consequat dignissim iaculis auctor tortor aliquam.
-                                Condimentum orci consectetur risus vel vitae sit ipsum eu amet. Elit risus scelerisque sit
-                                semper. Eu faucibus at diam pellentesque tortor bibendum nec ullamcorper. Morbi sem quis
-                                porttitor suspendisse hendrerit quis rhoncus porttitor in. Sed eros amet bibendum odio lacus eu.
-                                Elit volutpat vitae massa id.
+                            <h2 className="ourServicesPrcoes pt-0 fade_down">Proper drying and post-cleaning care ensure lasting cleanliness and carpet longevity.</h2>
+                            <p className="fusce fade_down">After the cleaning process, proper drying is essential to prevent mold growth and ensure your carpets are ready for use as quickly as possible. We use powerful extraction equipment to remove as much moisture as possible, and in most cases, carpets are dry within 6-12 hours. To maintain your freshly cleaned carpets, we recommend regular vacuuming at least once a week, immediate attention to spills and stains, and professional deep cleaning every 12-18 months depending on foot traffic. With proper care and maintenance, your carpets will continue to look beautiful and contribute to a healthier living environment for you and your family.
                             </p>
                             <p className="fusce fade_down psum">Pretium orci quam volutpat tortor dignissim fames tellus. Pulvinar
                                 pellentesque ut massa adipiscing neque risus tempor. Egestas molestie nibh amet sodales aliquam.

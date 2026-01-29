@@ -29,7 +29,7 @@
   "howItWorks": {
     "sectionTitle": "How it works",
     "mainTitle": "Get Amazing Cleaning in 3 Simple Steps",
-    "description": "At amet in adipiscing hac suspendisse. Laoreet sit consectetur donec odio ornare elementum pellentesque. Ante gravida netus dignissim sed tristique mauris egestas egestas aenean turpis id eget.",
+    "description": "Our streamlined process makes it easy to get professional cleaning services. From booking to completion, we ensure a hassle-free experience with transparent pricing and flexible scheduling to accommodate your busy lifestyle.",
     "steps": [
       {
         "id": 1,
@@ -41,13 +41,13 @@
         "id": 2,
         "icon": "how-to-work-svg2.svg",
         "title": "Set your schedule",
-        "description": "Quam nulla maecenas aliquam non erat auctor tristique. Ut quis quam donec cum. Eu sed ante scelerisque massa."
+        "description": "Choose a date and time that works best for you. We offer flexible scheduling including weekends and same-day service for your convenience."
       },
       {
         "id": 3,
         "icon": "how-to-work-svg3.svg",
         "title": "Get things done",
-        "description": "Urna praesent fusce risus pellentesque odio. Eget nulla volutpat proin sagittis lacus ornare sagittis risus."
+        "description": "Sit back and relax while our professional team transforms your space. We arrive on time with all supplies and deliver sparkling results every time."
       }
     ]
   },

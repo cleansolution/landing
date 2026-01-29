@@ -99,10 +99,6 @@ const Project1: React.FC = () => {
                                         <h3 className="project-name-home">{item.title}</h3>
                                         <p>{item.description}</p>
                                     </div>
-                                    <Link to={item.link} className="btn-quote view-project-btn">
-                                        View Project
-                                        <img src={CrossArrow} alt="cross-arrow" />
-                                    </Link>
                                 </div>
                             </div>
                         </SwiperSlide>

@@ -136,7 +136,7 @@ const TeamDetails: React.FC = () => {
                                             </li>
                                             <li>
                                                 <span>Email:</span>
-                                                <a href="mailto:homerakshak@mail.com">homerakshak@mail.com</a>
+                                                <a href="mailto:info@leansolutionsva.com">info@leansolutionsva.com</a>
                                             </li>
                                             <li>
                                                 <span>Website:</span>

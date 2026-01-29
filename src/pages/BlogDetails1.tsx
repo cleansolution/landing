@@ -66,18 +66,9 @@ const BlogDetails1 = () => {
                                     <p>1.2k</p>
                                 </div>
                             </div>
-                            <p className="fusce fade_down">It is a long established fact that a reader will be distracted by
-                                the readable content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                that it has a more-or-less normal distribution of letters, as opposed to using am so happy my
-                                dear frend so has take possion of my entire souing like these sweet mornng spring whch enjoy the
-                                with my whole heart I am alone, and feel the charm of existenc.the spot whch was create For then
-                                bliss of souls like mineing.
+                            <p className="fusce fade_down">Choosing the right cleaning service is crucial for maintaining a healthy and welcoming environment in your home or office. With so many options available, it's important to know what to look for when selecting a professional cleaning company. A reliable cleaning service should have proper licensing, insurance coverage, and a track record of satisfied customers. Take the time to research and read reviews from previous clients to get a sense of their reliability and quality of work. The best cleaning services are transparent about their methods, products used, and pricing structure, ensuring you know exactly what to expect.
                             </p>
-                            <p className="fusce psum fade_down">Ipsum sit netus nisi sapien vitae nec augue massa. Mi vel penatibus
-                                non sit lacus mattis purus. Id sed non cursus sed tristique viverra feugiat egestas dis.
-                                Porttitor diam at elementum massa eget et risus. Aliquet sed pulvinar auctor suspendisse mauris
-                                arcu nunc. Pellentesque massa iaculis neque tincidunt ut dolor magna nec. In donec pretium in
-                                nulla bibendum risus vel.
+                            <p className="fusce psum fade_down">Experience and expertise are key factors that distinguish exceptional cleaning services from average ones. Look for companies that have been in business for several years and have trained their staff in proper cleaning techniques and safety protocols. Professional cleaners should use eco-friendly products that are effective yet safe for your family and pets. They should also be equipped with the right tools and equipment to handle different surfaces and cleaning challenges. Don't hesitate to ask about their training programs and quality control measures to ensure consistent, high-quality results.
                             </p>
                             <div className="qoute-box">
                                 <h2>Amidst the chaos of life, let your home be a crystal gentle dance of flames and the energy
@@ -87,15 +78,8 @@ const BlogDetails1 = () => {
                                     <h3 className="jordon">By Jordon Smith</h3>
                                 </div>
                             </div>
-                            <h2 className="ourServicesPrcoes pt-0 fade_down">Donec commodo ac velit integer aliquam tellus
-                                pellentesque tincidunt ultricies.</h2>
-                            <p className="fusce fade_down">In pharetra lectus porttitor eros massa sit mattis quis.
-                                Ultricies
-                                sed cras arcu integer nisi aliquam. Nibh consequat dignissim iaculis auctor tortor aliquam.
-                                Condimentum orci consectetur risus vel vitae sit ipsum eu amet. Elit risus scelerisque sit
-                                semper. Eu faucibus at diam pellentesque tortor bibendum nec ullamcorper. Morbi sem quis
-                                porttitor suspendisse hendrerit quis rhoncus porttitor in. Sed eros amet bibendum odio lacus eu.
-                                Elit volutpat vitae massa id.
+                            <h2 className="ourServicesPrcoes pt-0 fade_down">Communication and flexibility are essential for a positive cleaning experience.</h2>
+                            <p className="fusce fade_down">A reputable cleaning service should be responsive to your needs and willing to customize their services according to your preferences. They should offer flexible scheduling options that work with your busy lifestyle, whether you need weekly, bi-weekly, or monthly cleanings. Good communication is vital - the company should be easy to reach, quick to respond to inquiries, and open to feedback. They should also have clear policies regarding cancellations, rescheduling, and satisfaction guarantees. The best cleaning companies stand behind their work and will address any concerns promptly and professionally.
                             </p>
                             <p className="fusce fade_down psum">Pretium orci quam volutpat tortor dignissim fames tellus. Pulvinar
                                 pellentesque ut massa adipiscing neque risus tempor. Egestas molestie nibh amet sodales aliquam.

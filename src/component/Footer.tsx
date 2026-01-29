@@ -49,7 +49,7 @@ const Footer = () => {
                             </div>
                             <div className="timing-hrw border-0 pb-0">
                                 <p><strong>Email:</strong></p>
-                                <p><a href="mailto:Lolitamontalvo.91@gmail.com" style={{color: '#fff'}}>Lolitamontalvo.91@gmail.com</a></p>
+                                <p><a href="mailto:info@leansolutionsva.com" style={{color: '#fff'}}>info@leansolutionsva.com</a></p>
                             </div>
                         </div>
                     </div>
