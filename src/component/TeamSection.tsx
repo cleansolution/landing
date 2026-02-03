@@ -53,7 +53,7 @@ const TeamSection: React.FC<TeamSectionProps> = ({ limit }) => {
     return (
         <>
             <div className="row exper-team-row-home">
-                {slicedData.map((team: TeamMember) => (
+                {(slicedData || []).map((team: TeamMember) => (
                     <div
                         className="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6"
                         key={team.id}

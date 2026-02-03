@@ -43,7 +43,7 @@ const Testimonials: React.FC = () => {
                     <p className="cap-text fade_up">testimonials</p>
                     <h2 className="sec-text tryse pb-0 fade_up">Trusted By Thousand Of People & Companies.</h2>
                     <Swiper {...testimonialSlider} className="swiper testimonialSlider zoom_in">
-                        {(testimonailData as Testimonial[]).map((item) => (
+                        {(testimonailData || []).map((item: Testimonial) => (
                             <SwiperSlide
                                 key={item.id}
                                 className="swiper-slide testimonialSlider-swiper-slide"

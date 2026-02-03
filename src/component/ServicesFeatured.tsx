@@ -80,7 +80,7 @@ function ServicesFeatured() {
     return (
         <>
             <Swiper {...servicesSlider} className="swiper services-slider">
-                {services.map((item: ServiceItem) => (
+                {(services || []).map((item: ServiceItem) => (
                     <SwiperSlide key={item.id} className="swiper-slide cleaning-card">
                         <div className="cleaning-card-img-main">
                             <img

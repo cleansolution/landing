@@ -40,7 +40,7 @@ const BlogSec1: React.FC<BlogSec1Props> = ({ limit }) => {
 
     return (
         <div className="row home-blog-row blogPage-row2">
-            {displayedBlogs.map((blog) => (
+            {(displayedBlogs || []).map((blog) => (
                 <div
                     className="col-xxl-4 col-xl-4 col-lg-4 col-md-6"
                     key={blog.id}
