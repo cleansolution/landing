@@ -257,7 +257,7 @@ export default function AdminProjects() {
           ))}
         </div>
         
-        {projects.length === 0 && (
+        {(projects?.length || 0) === 0 && (
           <div className="empty-state">
             <div className="empty-icon">📁</div>
             <h3>No Projects Yet</h3>

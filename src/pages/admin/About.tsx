@@ -51,9 +51,10 @@ export default function AdminAbout() {
   };
 
   const addExperience = () => {
+    const currentExperience = about.experience || [];
     setAbout({
       ...about,
-      experience: [...about.experience, { id: about.experience.length + 1, value: '0', label: '' }]
+      experience: [...currentExperience, { id: currentExperience.length + 1, value: '0', label: '' }]
     });
   };
 

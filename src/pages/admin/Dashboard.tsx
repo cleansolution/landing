@@ -9,25 +9,25 @@ export default function AdminDashboard() {
   const stats = [
     {
       title: 'Services',
-      count: servicesData.services.length,
+      count: servicesData?.services?.length || 0,
       icon: '🛠️',
       color: '#4F46E5'
     },
     {
       title: 'Team Members',
-      count: teamData.length,
+      count: teamData?.length || 0,
       icon: '👥',
       color: '#10B981'
     },
     {
       title: 'Testimonials',
-      count: testimonialData.length,
+      count: testimonialData?.length || 0,
       icon: '💬',
       color: '#F59E0B'
     },
     {
       title: 'Projects',
-      count: projectData.length,
+      count: projectData?.length || 0,
       icon: '📁',
       color: '#8B5CF6'
     }
