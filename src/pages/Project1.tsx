@@ -84,7 +84,7 @@ const Project1: React.FC = () => {
                 <ProjectSlider />
 
                 <Swiper {...projectSlider2} className="swiper projectSlider2">
-                    {projectData.map((item: ProjectItem) => (
+                    {(projectData || []).map((item: ProjectItem) => (
                         <SwiperSlide key={item.id}>
                             <div className="single-img">
                                 <img

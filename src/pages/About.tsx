@@ -46,7 +46,7 @@ const About: React.FC = () => {
                             <h2 className="sec-text fade_up">{aboutData.mainTitle}</h2>
                             <p className="sec-sub-text fade_up">{aboutData.description}</p>
                             <div className="about-grid-box-main">
-                                {featuresData.features.map((feature) => {
+                                {(featuresData?.features || []).map((feature) => {
                                     // Map para los iconos
                                     const iconMap: { [key: string]: string } = {
                                         'about-svg1.svg': AboutSvg1,
@@ -149,7 +149,7 @@ const About: React.FC = () => {
                             <h2 className="sec-text fade_up">{sectionsData.whyChooseUs.mainTitle}</h2>
                             <p className="sec-sub-text fade_up">{sectionsData.whyChooseUs.description}</p>
                             <div className="check-box-main">
-                                {sectionsData.whyChooseUs.benefits.map((benefit) => (
+                                {(sectionsData?.whyChooseUs?.benefits || []).map((benefit) => (
                                     <div className="check-box-main-sub fade_up" key={benefit.id}>
                                         <img src={CheckTransparent} alt="check-transparent" />
                                         <div>

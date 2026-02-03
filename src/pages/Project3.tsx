@@ -43,7 +43,7 @@ const Project3: React.FC = () => {
             <section className="section-two">
                 <div className="container">
                     <div className="row project-two-row">
-                        {projectData.map((item: ProjectItem) => (
+                        {(projectData || []).map((item: ProjectItem) => (
                             <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6" key={item.id}>
                                 <Link to={item.link} className="project-box-main">
                                     <div className="project-box-main-img">

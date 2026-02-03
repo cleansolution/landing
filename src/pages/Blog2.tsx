@@ -58,7 +58,7 @@ const Blog2: React.FC = () => {
                             <p className="cap-text cost-cal fade_up">latest news</p>
                             <h2 className="sec-text mazing pb-0 fade_up">Our Most Recent Posts</h2>
                             <div className="row home-blog-row blogPage-row2">
-                                {blogData.map((blog: BlogItem) => (
+                                {(blogData || []).map((blog: BlogItem) => (
                                     <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6" key={blog.id}>
                                         <Link to={blog.link} className="blog-box-main zoom_in">
                                             <div className="blog-img-main">

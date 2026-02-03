@@ -27,7 +27,7 @@ const Faq: React.FC = () => {
                             <p className="cap-text fade_in">EXPLORE THE FEATURES</p>
                             <h2 className="sec-text fade_up pb-0">Few Of The Problems We Solve</h2>
                             <div className="accordion" id="accordionExample">
-                                {faqData.map((item, index) => (
+                                {(faqData || []).map((item, index) => (
                                     <div className="accordion-item" key={index}>
                                         <h2 className="accordion-header" id={`heading${item.id}`}>
                                             <button

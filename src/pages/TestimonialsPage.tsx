@@ -34,7 +34,7 @@ const TestimonialsPage: React.FC = () => {
             <section className="section-eight testimonial-page">
                 <div className="container">
                     <div className="row testimonial-page-row">
-                        {(testimonailData as Testimonial[]).map((item) => (
+                        {(testimonailData || []).map((item: Testimonial) => (
                             <div key={item.id} className="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                 <div className="testimonialSlider-swiper-slide">
                                     <img src={QuoteSvg} alt="quote" />
