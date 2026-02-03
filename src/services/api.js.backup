@@ -1,0 +1,153 @@
+import { saveToGitHub, shouldUseLocalServer } from './githubService';
+
+// Debug: Log when module loads
+console.log('🔧 API Service loaded');
+console.log('📝 GitHub Token:', process.env.REACT_APP_GITHUB_TOKEN ? 'Configured ✅' : 'Missing ❌');
+console.log('🖥️ Use Local Server:', process.env.REACT_APP_USE_LOCAL_SERVER);
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+// Mapping endpoint to filename
+const endpointToFilename = {
+  'services': 'servicesData.json',
+  'team': 'teamData.json',
+  'testimonials': 'testimonailData.json',
+  'features': 'featuresData.json',
+  'about': 'aboutData.json',
+  'whyChooseUs': 'whyChooseUsData.json',
+  'howItWorks': 'howItWorksData.json',
+  'projects': 'projectData.json',
+  'contact': 'contact.json',
+  'footer': 'footerData.json'
+};
+
+// Fetch data from API
+export const fetchData = async (endpoint) => {
+  try {
+    const response = await fetch(`${API_URL}/${endpoint}`);
+    if (!response.ok) throw new Error('Failed to fetch data');
+    return await response.json();
+  } catch (error) {
+    console.error(`Error fetching ${endpoint}:`, error);
+    throw error;
+  }
+};
+
+// Entity name mapping for better console messages
+const endpointToEntityName = {
+  'services': 'Services',
+  'team': 'Team',
+  'testimonials': 'Testimonials',
+  'features': 'Features',
+  'about': 'About',
+  'whyChooseUs': 'Why Choose Us',
+  'howItWorks': 'How It Works',
+  'projects': 'Projects',
+  'contact': 'Contact',
+  'footer': 'Footer'
+};
+
+// Save data to API or GitHub
+export const saveData = async (endpoint, data) => {
+  const useLocal = shouldUseLocalServer();
+  console.log(`💾 Save requested for: ${endpoint}`);
+  console.log(`📡 Use local server: ${useLocal}`);
+  
+  // If not using local server, save to GitHub
+  if (!useLocal) {
+    const filename = endpointToFilename[endpoint];
+    const entityName = endpointToEntityName[endpoint] || endpoint;
+    
+    if (!filename) {
+      throw new Error(`Unknown endpoint: ${endpoint}`);
+    }
+    
+    console.log(`🚀 Saving to GitHub: ${entityName}`);
+    try {
+      await saveToGitHub(filename, data, entityName);
+      return { success: true, message: 'Queued for GitHub commit' };
+    } catch (error) {
+      console.error(`Error saving to GitHub:`, error);
+      throw error;
+    }
+  }
+
+  // Otherwise use local server
+  console.log(`💻 Saving to local server: ${API_URL}/${endpoint}`);
+  try {
+    const response = await fetch(`${API_URL}/${endpoint}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    if (!response.ok) throw new Error('Failed to save data');
+    const result = await response.json();
+    console.log(`✅ Saved to local server successfully`);
+    return result;
+  } catch (error) {
+    console.error(`❌ Error saving ${endpoint}:`, error);
+    throw error;
+  }
+};
+
+// Services API
+export const servicesAPI = {
+  get: () => fetchData('services'),
+  save: (services) => saveData('services', services),
+};
+
+// Team API
+export const teamAPI = {
+  get: () => fetchData('team'),
+  save: (team) => saveData('team', team),
+};
+
+// Testimonials API
+export const testimonialsAPI = {
+  get: () => fetchData('testimonials'),
+  save: (testimonials) => saveData('testimonials', testimonials),
+};
+
+// Features API
+export const featuresAPI = {
+  get: () => fetchData('features'),
+  save: (features) => saveData('features', features),
+};
+
+// About API
+export const aboutAPI = {
+  get: () => fetchData('about'),
+  save: (about) => saveData('about', about),
+};
+// Why Choose Us API
+export const whyChooseUsAPI = {
+  get: () => fetchData('whyChooseUs'),
+  save: (whyChooseUs) => saveData('whyChooseUs', whyChooseUs),
+};
+
+// How It Works API
+export const howItWorksAPI = {
+  get: () => fetchData('howItWorks'),
+  save: (howItWorks) => saveData('howItWorks', howItWorks),
+};
+
+// Projects API
+export const projectsAPI = {
+  get: () => fetchData('projects'),
+  save: (projects) => saveData('projects', projects),
+};
+
+// Contact API
+export const contactAPI = {
+  get: () => fetchData('contact'),
+  save: (contact) => saveData('contact', contact),
+};
+
+// Footer API
+export const footerAPI = {
+  get: () => fetchData('footer'),
+  save: (footer) => saveData('footer', footer),
+};

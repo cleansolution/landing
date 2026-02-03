@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminLayout from '../../component/AdminLayout.tsx';
 import servicesData from '../../data/servicesData.json';
 import { servicesAPI } from '../../services/api';
@@ -16,8 +16,19 @@ const getImageSrc = (img) => {
 };
 
 export default function AdminServices() {
-  const [services, setServices] = useState(servicesData?.services || []);
+  const initialServices = Array.isArray(servicesData?.services)
+    ? servicesData.services
+    : Array.isArray(servicesData)
+      ? servicesData
+      : [];
+
+  const apiEnabled = Boolean(process.env.REACT_APP_API_URL);
+
+  const [services, setServices] = useState(initialServices);
   const [editingId, setEditingId] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     id: 0,
     title: '',
@@ -28,6 +39,47 @@ export default function AdminServices() {
   });
   const [imagePreview, setImagePreview] = useState('');
   const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadServices = async () => {
+      if (!apiEnabled) {
+        setServices(initialServices);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const apiData = await servicesAPI.get();
+        const normalized = Array.isArray(apiData?.services)
+          ? apiData.services
+          : Array.isArray(apiData)
+            ? apiData
+            : [];
+
+        if (active) {
+          setServices(normalized.length ? normalized : initialServices);
+        }
+      } catch (err) {
+        console.error('Fetch services error:', err);
+        if (active) {
+          setError('No se pudieron cargar los servicios, usando datos locales.');
+          setServices(initialServices);
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    };
+
+    loadServices();
+
+    return () => {
+      active = false;
+    };
+  }, [initialServices, apiEnabled]);
 
   const handleEdit = (service) => {
     setFormData(service);
@@ -65,9 +117,10 @@ export default function AdminServices() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     
     let updatedServices;
-    if (editingId) {
+    if (editingId !== null) {
       // Update existing service
       updatedServices = services.map(s => s.id === editingId ? formData : s);
     } else {
@@ -76,8 +129,16 @@ export default function AdminServices() {
     }
     
     setServices(updatedServices);
-    
-    // Save to API
+
+    // Save to API if enabled; otherwise keep local state only
+    if (!apiEnabled) {
+      alert('✅ Servicio guardado localmente.');
+      setShowForm(false);
+      setFormData({ id: 0, title: '', desc: '', link: '', img: '', svg: '' });
+      setEditingId(null);
+      return;
+    }
+
     setSaving(true);
     try {
       await servicesAPI.save(updatedServices);
@@ -88,6 +149,7 @@ export default function AdminServices() {
     } catch (error) {
       alert('❌ Error saving service. Please try again.');
       console.error('Save error:', error);
+      setError('No se pudo guardar el servicio. Inténtalo de nuevo.');
     } finally {
       setSaving(false);
     }
@@ -98,6 +160,11 @@ export default function AdminServices() {
       const updatedServices = services.filter(s => s.id !== id);
       setServices(updatedServices);
       
+      if (!apiEnabled) {
+        alert('✅ Servicio eliminado localmente.');
+        return;
+      }
+
       setSaving(true);
       try {
         await servicesAPI.save(updatedServices);
@@ -105,6 +172,7 @@ export default function AdminServices() {
       } catch (error) {
         alert('❌ Error deleting service. Please try again.');
         console.error('Delete error:', error);
+        setError('No se pudo eliminar el servicio.');
       } finally {
         setSaving(false);
       }
@@ -119,10 +187,14 @@ export default function AdminServices() {
             <h1>Manage Services</h1>
             <p>Add, edit or remove cleaning services</p>
           </div>
-          <button onClick={handleAdd} className="btn-primary">
+          <button onClick={handleAdd} className="btn-primary" disabled={saving}>
             ➕ Add New Service
           </button>
         </div>
+
+        {error && (
+          <div className="admin-alert warning">{error}</div>
+        )}
 
         {showForm && (
           <div className="form-modal">
@@ -195,8 +267,8 @@ export default function AdminServices() {
                   <button type="button" onClick={() => setShowForm(false)} className="btn-secondary">
                     Cancel
                   </button>
-                  <button type="submit" className="btn-primary">
-                    {editingId ? 'Update Service' : 'Add Service'}
+                  <button type="submit" className="btn-primary" disabled={saving}>
+                    {saving ? 'Saving...' : editingId ? 'Update Service' : 'Add Service'}
                   </button>
                 </div>
               </form>
@@ -204,35 +276,41 @@ export default function AdminServices() {
           </div>
         )}
 
-        <div className="services-grid">
-          {services.map((service) => (
-            <div key={service.id} className="service-card">
-              <div className="service-image">
-                {service.img ? (
-                  <img 
-                    src={getImageSrc(service.img)} 
-                    alt={service.title} 
-                  />
-                ) : (
-                  <div className="no-image">No Image</div>
-                )}
+        {loading ? (
+          <div className="services-grid loading">Cargando servicios...</div>
+        ) : services.length === 0 ? (
+          <div className="services-grid empty">No hay servicios. Agrega uno nuevo.</div>
+        ) : (
+          <div className="services-grid">
+            {services.map((service) => (
+              <div key={service.id} className="service-card">
+                <div className="service-image">
+                  {service.img ? (
+                    <img 
+                      src={getImageSrc(service.img)} 
+                      alt={service.title} 
+                    />
+                  ) : (
+                    <div className="no-image">No Image</div>
+                  )}
+                </div>
+                <div className="service-content">
+                  <h3>{service.title}</h3>
+                  <p>{service.desc}</p>
+                  {service.link && <span className="service-link">🔗 {service.link}</span>}
+                </div>
+                <div className="service-actions">
+                  <button onClick={() => handleEdit(service)} className="btn-edit" disabled={saving}>
+                    ✏️ Edit
+                  </button>
+                  <button onClick={() => handleDelete(service.id)} className="btn-delete" disabled={saving}>
+                    🗑️ Delete
+                  </button>
+                </div>
               </div>
-              <div className="service-content">
-                <h3>{service.title}</h3>
-                <p>{service.desc}</p>
-                {service.link && <span className="service-link">🔗 {service.link}</span>}
-              </div>
-              <div className="service-actions">
-                <button onClick={() => handleEdit(service)} className="btn-edit">
-                  ✏️ Edit
-                </button>
-                <button onClick={() => handleDelete(service.id)} className="btn-delete">
-                  🗑️ Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </AdminLayout>
   );

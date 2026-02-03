@@ -768,8 +768,12 @@ button {
     max-width: 630px;
 }
 .services-slider {
-    margin-right: -470px !important;
-    margin-top: 50px;
+    margin: 50px 0 0 0;
+    width: 100%;
+}
+.section-three .container {
+    max-width: 100%;
+    padding: 0 50px;
 }
 .cleaning-card {
     background: #FFF;
