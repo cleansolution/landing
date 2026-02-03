@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 
 import './App.css';
 import './assets/css/swap.css';
@@ -9,9 +10,6 @@ import './assets/css/style.css';
 import './assets/css/media_query.css';
 
 import HomeSolid from "./pages/HomeSolid.tsx";
-import About from "./pages/About.tsx";
-import Services from "./pages/Services.tsx";
-import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import Footer from "./component/Footer.tsx";
@@ -20,7 +18,6 @@ import ScrollTopPage from './component/ScrollTopPage.tsx';
 import Preloader from './component/Preloader.tsx';
 import ScrollToTopButton from "./component/ScrollToTopButton.tsx";
 import SmoothScroll from './hooks/SmoothScroll.ts';
-import ContactForm from "./component/ContactForm.tsx";
 
 // Admin imports
 import { AuthProvider, useAuth } from "./contexts/AuthContext.tsx";
@@ -61,7 +58,6 @@ function PublicLayout({ children }) {
       <Header />
       <Preloader />
       {children}
-      <ContactForm />
       <Footer />
       <ScrollToTopButton />
     </>
@@ -77,21 +73,6 @@ function App() {
           <Route path="/" element={
             <PublicLayout>
               <HomeSolid />
-            </PublicLayout>
-          } />
-          <Route path="/About" element={
-            <PublicLayout>
-              <About />
-            </PublicLayout>
-          } />
-          <Route path="/Services" element={
-            <PublicLayout>
-              <Services />
-            </PublicLayout>
-          } />
-          <Route path="/Contact" element={
-            <PublicLayout>
-              <Contact />
             </PublicLayout>
           } />
 
