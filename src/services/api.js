@@ -169,7 +169,6 @@ export const saveData = async (endpoint, data) => {
       throw new Error(`Unknown endpoint: ${endpoint}`);
     }
     
-    // Wrap data if needed (services comes as array but needs to be {services: [...]} in JSON)
     let finalData = data;
     if (fileInfo.wrapInObject && Array.isArray(data)) {
       finalData = { [endpoint]: data };

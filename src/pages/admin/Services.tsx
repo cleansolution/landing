@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import AdminLayout from '../../component/AdminLayout.tsx';
 import servicesData from '../../data/servicesData.json';
 import { servicesAPI } from '../../services/api';
@@ -16,11 +16,13 @@ const getImageSrc = (img) => {
 };
 
 export default function AdminServices() {
-  const initialServices = Array.isArray(servicesData?.services)
-    ? servicesData.services
-    : Array.isArray(servicesData)
-      ? servicesData
-      : [];
+  const initialServices = useMemo(() => {
+    return Array.isArray(servicesData?.services)
+      ? servicesData.services
+      : Array.isArray(servicesData)
+        ? servicesData
+        : [];
+  }, []);
 
   const apiEnabled = Boolean(process.env.REACT_APP_API_URL);
 
