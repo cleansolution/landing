@@ -27,6 +27,7 @@ import ProjectSlider from '../component/ProjectSlider.tsx';
 import TeamSection from '../component/TeamSection.tsx';
 import Testimonials from '../component/Testimonials.tsx';
 import ImageZoomScroll from '../component/ImageZoomScroll.tsx';
+import ContactForm from '../component/ContactForm.tsx';
 
 const HomeSolid: React.FC = () => {
     return (
@@ -230,6 +231,7 @@ const HomeSolid: React.FC = () => {
                 <Testimonials />
             </section>
             <ImageZoomScroll />
+            <ContactForm />
         </>
     )
 }
