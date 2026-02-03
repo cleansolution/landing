@@ -1,10 +1,14 @@
-const express = require('express');
+﻿const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
 
 const app = express();
 const PORT = 5000;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT;
+const REPO_OWNER = process.env.GITHUB_REPO_OWNER || 'cleansolution';
+const REPO_NAME = process.env.GITHUB_REPO_NAME || 'landing';
+const REPO_BRANCH = process.env.GITHUB_REPO_BRANCH || 'main';
 
 // Middleware
 app.use(cors());
@@ -35,6 +39,77 @@ async function writeJSON(filename, data) {
     console.error(`Error writing ${filename}:`, error);
     throw error;
   }
+}
+
+const endpointConfig = {
+  services: { filename: 'servicesData.json', section: 'Services', wrapKey: 'services' },
+  team: { filename: 'teamData.json', section: 'Team' },
+  testimonials: { filename: 'testimonailData.json', section: 'Testimonials' },
+  features: { filename: 'featuresData.json', section: 'Features', wrapKey: 'features' },
+  about: { filename: 'aboutData.json', section: 'About Section' },
+  whyChooseUs: { filename: 'sectionsData.json', section: 'Why Choose Us', mergeKey: 'whyChooseUs' },
+  howItWorks: { filename: 'sectionsData.json', section: 'How It Works', mergeKey: 'howItWorks' },
+  projects: { filename: 'projectData.json', section: 'Projects' },
+  contact: { filename: 'contact.json', section: 'Contact Info' },
+  footer: { filename: 'footerData.json', section: 'Footer' }
+};
+
+async function fetchGitHubFile(filename) {
+  const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/src/data/${filename}?ref=${REPO_BRANCH}`;
+  const response = await fetch(apiUrl, {
+    headers: {
+      Authorization: `token ${GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github.v3+json'
+    }
+  });
+
+  if (!response.ok) {
+    return { sha: null, json: null };
+  }
+
+  const fileData = await response.json();
+  let json = null;
+
+  if (fileData && fileData.content) {
+    try {
+      const decoded = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8');
+      json = JSON.parse(decoded);
+    } catch (error) {
+      console.error('Error parsing GitHub file content:', error);
+    }
+  }
+
+  return { sha: fileData.sha || null, json };
+}
+
+async function commitToGitHub(filename, content, sectionName, sha) {
+  const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/src/data/${filename}`;
+  const jsonContent = JSON.stringify(content, null, 2);
+  const contentBase64 = Buffer.from(jsonContent, 'utf8').toString('base64');
+  const timestamp = new Date().toISOString().replace('T', ' ').replace('Z', ' UTC');
+  const message = `Auto-update: ${sectionName} - ${timestamp}`;
+
+  const updateResponse = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      Authorization: `token ${GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message,
+      content: contentBase64,
+      sha,
+      branch: REPO_BRANCH
+    })
+  });
+
+  if (!updateResponse.ok) {
+    const error = await updateResponse.json().catch(() => ({}));
+    throw new Error(error.message || 'GitHub commit failed');
+  }
+
+  return updateResponse.json();
 }
 
 // GET endpoints - Read data
@@ -134,8 +209,44 @@ app.post('/api/about', async (req, res) => {
   }
 });
 
+app.post('/api/github/commit', async (req, res) => {
+  try {
+    if (!GITHUB_TOKEN) {
+      return res.status(500).json({ message: 'Missing GITHUB_TOKEN on server' });
+    }
+
+    const { endpoint, data } = req.body || {};
+    const config = endpointConfig[endpoint];
+
+    if (!config) {
+      return res.status(400).json({ message: `Unknown endpoint: ${endpoint}` });
+    }
+
+    const { filename, section, wrapKey, mergeKey } = config;
+    const { sha, json: existingJson } = await fetchGitHubFile(filename);
+
+    let finalData = data;
+    if (mergeKey) {
+      const base = existingJson && typeof existingJson === 'object' ? existingJson : {};
+      finalData = { ...base, [mergeKey]: data };
+    } else if (wrapKey) {
+      if (data && typeof data === 'object' && data[wrapKey]) {
+        finalData = data;
+      } else {
+        finalData = { [wrapKey]: data };
+      }
+    }
+
+    const result = await commitToGitHub(filename, finalData, section, sha);
+    res.json({ success: true, message: `${section} committed`, url: result.commit?.html_url });
+  } catch (error) {
+    console.error('GitHub commit failed:', error);
+    res.status(500).json({ message: error.message || 'GitHub commit failed' });
+  }
+});
+
 // Start server
 app.listen(PORT, () => {
-  console.log(`✅ Admin API Server running on http://localhost:${PORT}`);
-  console.log(`📁 Data directory: ${dataDir}`);
+  console.log(`Admin API Server running on http://localhost:${PORT}`);
+  console.log(`Data directory: ${dataDir}`);
 });
