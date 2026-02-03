@@ -14,7 +14,7 @@ const getImageSrc = (img) => {
   }
 };
 export default function AdminTestimonials() {
-  const [testimonials, setTestimonials] = useState(testimonialData);
+  const [testimonials, setTestimonials] = useState(testimonialData || []);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -35,7 +35,7 @@ export default function AdminTestimonials() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...testimonials.map(t => t.id), 0) + 1;
+    const newId = Math.max(...(testimonials || []).map(t => t.id), 0) + 1;
     setFormData({
       id: newId,
       name: '',

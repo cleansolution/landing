@@ -16,7 +16,7 @@ const getImageSrc = (img) => {
 };
 
 export default function AdminServices() {
-  const [services, setServices] = useState(servicesData.services);
+  const [services, setServices] = useState(servicesData?.services || []);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -37,7 +37,7 @@ export default function AdminServices() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...services.map(s => s.id), 0) + 1;
+    const newId = Math.max(...(services || []).map(s => s.id), 0) + 1;
     setFormData({
       id: newId,
       title: '',

@@ -4,7 +4,7 @@ import featuresData from '../../data/featuresData.json';
 import { featuresAPI } from '../../services/api';
 
 export default function AdminFeatures() {
-  const [features, setFeatures] = useState(featuresData.features);
+  const [features, setFeatures] = useState(featuresData?.features || []);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -21,7 +21,7 @@ export default function AdminFeatures() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...features.map(f => f.id), 0) + 1;
+    const newId = Math.max(...(features || []).map(f => f.id), 0) + 1;
     setFormData({
       id: newId,
       title: '',

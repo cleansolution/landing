@@ -16,7 +16,7 @@ const getImageSrc = (img) => {
 };
 
 export default function AdminProjects() {
-  const [projects, setProjects] = useState(projectData);
+  const [projects, setProjects] = useState(projectData || []);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -37,7 +37,7 @@ export default function AdminProjects() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...projects.map(p => p.id), 0) + 1;
+    const newId = Math.max(...(projects || []).map(p => p.id), 0) + 1;
     setFormData({
       id: newId,
       title: '',

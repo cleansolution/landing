@@ -16,7 +16,7 @@ const getImageSrc = (img) => {
 };
 
 export default function AdminTeam() {
-  const [team, setTeam] = useState(teamData);
+  const [team, setTeam] = useState(teamData || []);
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -39,7 +39,7 @@ export default function AdminTeam() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...team.map(m => m.id), 0) + 1;
+    const newId = Math.max(...(team || []).map(m => m.id), 0) + 1;
     setFormData({
       id: newId,
       name: '',

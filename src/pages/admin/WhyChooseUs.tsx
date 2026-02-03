@@ -4,7 +4,7 @@ import sectionsData from '../../data/sectionsData.json';
 import { whyChooseUsAPI } from '../../services/api';
 
 export default function AdminWhyChooseUs() {
-  const [whyChooseUs, setWhyChooseUs] = useState(sectionsData.whyChooseUs);
+  const [whyChooseUs, setWhyChooseUs] = useState(sectionsData?.whyChooseUs || { benefits: [] });
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -21,7 +21,7 @@ export default function AdminWhyChooseUs() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...whyChooseUs.benefits.map(b => b.id), 0) + 1;
+    const newId = Math.max(...(whyChooseUs?.benefits || []).map(b => b.id), 0) + 1;
     setFormData({
       id: newId,
       title: '',

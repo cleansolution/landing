@@ -4,7 +4,7 @@ import sectionsData from '../../data/sectionsData.json';
 import { howItWorksAPI } from '../../services/api';
 
 export default function AdminHowItWorks() {
-  const [howItWorks, setHowItWorks] = useState(sectionsData.howItWorks);
+  const [howItWorks, setHowItWorks] = useState(sectionsData?.howItWorks || { steps: [] });
   const [editingId, setEditingId] = useState(null);
   const [formData, setFormData] = useState({
     id: 0,
@@ -22,7 +22,7 @@ export default function AdminHowItWorks() {
   };
 
   const handleAdd = () => {
-    const newId = Math.max(...howItWorks.steps.map(s => s.id), 0) + 1;
+    const newId = Math.max(...(howItWorks?.steps || []).map(s => s.id), 0) + 1;
     setFormData({
       id: newId,
       icon: '',
