@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import servicesDetails from '../data/servicesDetails.json';
 
 interface ServiceDetailModalProps {

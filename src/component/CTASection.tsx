@@ -1,5 +1,4 @@
 import React from 'react';
-import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 
 const CTASection: React.FC = () => {
     return (
