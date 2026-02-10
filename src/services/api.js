@@ -1,5 +1,6 @@
 const USE_LOCAL_SERVER = process.env.REACT_APP_USE_LOCAL_SERVER === 'true';
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || '';
+const LOCAL_API_URL = API_URL || 'http://localhost:5000/api';
 
 export const fetchData = async (endpoint) => {
   try {
@@ -28,9 +29,9 @@ export const saveData = async (endpoint, data) => {
   console.log(`ðŸ“¦ Data:`, data);
 
   if (USE_LOCAL_SERVER) {
-    console.log(`â†’ Using local server: ${API_URL}/${endpoint}`);
+    console.log(`â†’ Using local server: ${LOCAL_API_URL}/${endpoint}`);
     try {
-      const response = await fetch(`${API_URL}/${endpoint}`, {
+      const response = await fetch(`${LOCAL_API_URL}/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -43,9 +44,10 @@ export const saveData = async (endpoint, data) => {
     }
   }
 
-  console.log(`â†’ Using API server for GitHub commits`);
+  const commitUrl = API_URL ? `${API_URL}/github/commit` : '/api/github/commit';
+  console.log(`â†’ Using GitHub commit via Functions: ${commitUrl}`);
   try {
-    const response = await fetch(`${API_URL}/github/commit`, {
+    const response = await fetch(commitUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ endpoint, data }),

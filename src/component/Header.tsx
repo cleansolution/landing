@@ -58,7 +58,7 @@ const Header = () => {
                         <div className="nav-actions">
                             <div className="call">
                                 <div className="headphone-main">
-                                    <img src={headphoneIcon} alt="headphone-icon" />
+                                    <img src={headphoneIcon} alt="headphone-icon" style={{ filter: 'brightness(0) invert(1)' }} />
                                 </div>
                                 <div className="need-help-main">
                                     <p>Need Help Now?</p>

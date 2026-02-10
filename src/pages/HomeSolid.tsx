@@ -1,20 +1,11 @@
 import React from 'react'
 import HomeHeroSolid from '../component/HomeHeroSolid.tsx';
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
-import Video2 from '../assets/video/video2.mp4';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
 import sectionsData from '../data/sectionsData.json';
-import AboutSvg1 from '../assets/images/svg/about-svg1.svg';
-import AboutSvg2 from '../assets/images/svg/about-svg2.svg';
-import AboutSvg3 from '../assets/images/svg/about-svg3.svg';
-import AboutSvg4 from '../assets/images/svg/about-svg4.svg';
-import featuresData from '../data/featuresData.json';
 import aboutData from '../data/aboutData.json';
 import AboutImg1 from '../assets/images/about/about-img1.jpg';
-import AboutImg2 from '../assets/images/about/about-img2.jpg';
-import AboutImg3 from '../assets/images/about/about-img3.jpg';
-import AboutImg4 from '../assets/images/about/about-img4.jpg';
-import Subtract from '../assets/images/about/Subtract.png'
+import SliderImg2 from '../assets/images/services/slider-img2.jpg';
 import CheckTransparent from '../assets/images/svg/check-transparent.svg';
 import HowWorkBg from '../assets/images/about/how-to-work-bg.png';
 import HowWorkSvg1 from '../assets/images/svg/how-to-work-svg1.svg';
@@ -22,12 +13,12 @@ import HowWorkSvg2 from '../assets/images/svg/how-to-work-svg2.svg';
 import HowWorkSvg3 from '../assets/images/svg/how-to-work-svg3.svg';
 import HowWorkArrow from '../assets/images/svg/how-to-work-arrow.svg';
 import ServicesFeatured from '../component/ServicesFeatured.tsx';
-import CostCalculator from '../component/CostCalculator.tsx';
-import ProjectSlider from '../component/ProjectSlider.tsx';
-import TeamSection from '../component/TeamSection.tsx';
+import ProjectGrid from '../component/ProjectGrid.tsx';
 import Testimonials from '../component/Testimonials.tsx';
-import ImageZoomScroll from '../component/ImageZoomScroll.tsx';
 import ContactForm from '../component/ContactForm.tsx';
+import FAQ from '../component/FAQ.tsx';
+import CTASection from '../component/CTASection.tsx';
+import TrustBadges from '../component/TrustBadges.tsx';
 
 const HomeSolid: React.FC = () => {
     return (
@@ -35,48 +26,15 @@ const HomeSolid: React.FC = () => {
             {/* <!-- ====================================== Section Hero Slider ===================================== --> */}
             <section id="home" className="hero-slider-section position-relative">
                 <HomeHeroSolid />
-                <div className="bubble_area">
-                    <div className="bubbles-1"></div>
-                    <div className="bubbles-2"></div>
-                    <div className="bubbles-3"></div>
-                    <div className="bubbles-4"></div>
-                    <div className="bubbles-5"></div>
-                    <div className="bubbles-6"></div>
-                    <div className="bubbles-7"></div>
-                    <div className="bubbles-8"></div>
-                    <div className="bubbles-9"></div>
-                    <div className="bubbles-10"></div>
-                </div>
             </section>
             {/* <!-- ====================================== Section Two ===================================== --> */}
             <section id="about" className="section-two">
                 <div className="container">
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-xxl-6 col-xl-6 col-lg-6">
                             <p className="cap-text fade_in">{aboutData.capText}</p>
                             <h2 className="sec-text fade_up">{aboutData.mainTitle}</h2>
                             <p className="sec-sub-text fade_up">{aboutData.description}</p>
-                            <div className="about-grid-box-main">
-                                {(featuresData?.features || []).map((feature, index) => {
-                                    const svgMap: { [key: string]: string } = {
-                                        'about-svg1.svg': AboutSvg1,
-                                        'about-svg2.svg': AboutSvg2,
-                                        'about-svg3.svg': AboutSvg3,
-                                        'about-svg4.svg': AboutSvg4,
-                                    };
-                                    return (
-                                        <div key={feature.id} className="about-box-main zoom_in">
-                                            <div className="about-svg-main">
-                                                <img src={svgMap[feature.icon] || AboutSvg1} alt={feature.icon} />
-                                            </div>
-                                            <div>
-                                                <h3 className="expeStaff">{feature.title}</h3>
-                                                <p className="fessional">{feature.description}</p>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
                             <div className="about-sec-main">
                                 <a href="#about" className="btn-quote our-services-btn">About Us
                                     <img src={CrossArrow} alt="cross-arrow" />
@@ -93,23 +51,55 @@ const HomeSolid: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-xxl-6 col-xl-6 col-lg-6 position-relative">
-                            <div className="sub-img-main">
-                                <img className="about-img1" src={AboutImg1} alt="about-img1" />
-                                <img className="subtract-img" src={Subtract} alt="Subtract" />
-                                <img className="about-img2" src={AboutImg2} alt="about-img2" />
-                                <img className="about-img3" src={AboutImg3} alt="about-img3" />
+                            <div className="sub-img-main" style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '20px'
+                            }}>
+                                <img 
+                                    src={AboutImg1} 
+                                    alt="Professional Cleaning Service" 
+                                    style={{
+                                        width: '100%',
+                                        maxWidth: '500px',
+                                        height: 'auto',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.08)'
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <TrustBadges />
             {/* <!-- ====================================== Section Three ===================================== --> */}
-            <section className="section-three">
+            <section className="section-three" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
                 <div className="container">
-                    <p className="cap-text fade_up">OUR FEATURED SERVICES</p>
-                    <div className="section-main-text-flex">
-                        <h2 className="sec-text pb-0 fade_up">The United Way For To Find Specialist Services</h2>
-                        <p className="sec-sub-text ornare fade_up">We offer a comprehensive range of professional cleaning services tailored to meet your specific needs. Our experienced team delivers exceptional results with attention to detail and commitment to excellence.</p>
+                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                        <p className="cap-text fade_up" style={{ 
+                            fontSize: '16px', 
+                            color: '#1e3a8a', 
+                            fontWeight: '600', 
+                            textTransform: 'uppercase', 
+                            letterSpacing: '1px',
+                            marginBottom: '15px'
+                        }}>OUR FEATURED SERVICES</p>
+                        <h2 className="sec-text pb-0 fade_up" style={{ 
+                            fontSize: '42px', 
+                            fontWeight: '700', 
+                            marginBottom: '20px',
+                            maxWidth: '800px',
+                            margin: '0 auto 20px'
+                        }}>The United Way For To Find Specialist Services</h2>
+                        <p className="sec-sub-text ornare fade_up" style={{ 
+                            maxWidth: '700px', 
+                            margin: '0 auto',
+                            fontSize: '16px',
+                            lineHeight: '1.6',
+                            color: '#666'
+                        }}>We offer a comprehensive range of professional cleaning services tailored to meet your specific needs. Our experienced team delivers exceptional results with attention to detail and commitment to excellence.</p>
                     </div>
                     <ServicesFeatured />
                 </div>
@@ -135,19 +125,17 @@ const HomeSolid: React.FC = () => {
                             </div>
                         </div>
                         <div className="col-xxl-6 col-xl-6 col-lg-6 sec-video2">
-                            <video 
-                                autoPlay 
-                                muted 
-                                loop 
-                                playsInline 
-                                preload="auto"
+                            <img 
+                                src={SliderImg2}
+                                alt="Professional Cleaning Service" 
                                 className="video2"
-                            >
-                                <source src={Video2} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            <div className="sadas"></div>
-                            <img className="why-choose-img3" src={AboutImg4} alt="about-img4" />
+                                style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    borderRadius: '8px',
+                                    objectFit: 'cover'
+                                }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -155,10 +143,63 @@ const HomeSolid: React.FC = () => {
             {/* <!-- ====================================== Section Five ===================================== --> */}
             <section id="services" className="section-five">
                 <div className="container">
-                    <p className="cap-text cost-cal fade_up">Cost Calculator</p>
-                    <h2 className="sec-text fami-cal pb-0 fade_up">Be a Part of Hundreds of Happy Families.</h2>
-                    <div className="calculator-box-main zoom_in">
-                        <CostCalculator />
+                    <p className="cap-text cost-cal fade_up">Get in Touch</p>
+                    <h2 className="sec-text fami-cal pb-0 fade_up">Ready to Experience Professional Cleaning?</h2>
+                    <div className="calculator-box-main zoom_in" style={{
+                        padding: '60px 40px',
+                        textAlign: 'center',
+                        backgroundColor: 'white',
+                        borderRadius: '8px'
+                    }}>
+                        <p style={{
+                            fontSize: '18px',
+                            color: '#666',
+                            marginBottom: '40px',
+                            maxWidth: '600px',
+                            margin: '0 auto 40px'
+                        }}>
+                            Contact us today to discuss your cleaning needs and receive a personalized quote for our professional services.
+                        </p>
+                        <div style={{
+                            display: 'flex',
+                            gap: '20px',
+                            justifyContent: 'center',
+                            flexWrap: 'wrap'
+                        }}>
+                            <a 
+                                href="tel:+17573058237" 
+                                className="btn-quote our-services-btn"
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    padding: '16px 32px',
+                                    fontSize: '16px',
+                                    fontWeight: '600',
+                                    textDecoration: 'none'
+                                }}
+                            >
+                                <img src={headphoneIcon} alt="phone" style={{ width: '20px', height: '20px' }} />
+                                Call Now
+                            </a>
+                            <a 
+                                href="https://wa.me/+17573058237" 
+                                className="btn-quote"
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    padding: '16px 32px',
+                                    fontSize: '16px',
+                                    fontWeight: '600',
+                                    textDecoration: 'none',
+                                    backgroundColor: '#25D366'
+                                }}
+                            >
+                                Get a Quote
+                                <img src={CrossArrow} alt="arrow" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -216,21 +257,14 @@ const HomeSolid: React.FC = () => {
                         <p className="sec-sub-text ornare fade_up">Take a look at some of our recent cleaning projects and see the quality of work we deliver to our valued clients.</p>
                     </div>
                 </div>
-                <ProjectSlider />
-            </section>
-            {/* <!-- ====================================== Section Eight ===================================== --> */}
-            <section className="section-eight pt-0">
-                <div className="container">
-                    <p className="cap-text cost-cal fade_up">Our Expert Worker</p>
-                    <h2 className="sec-text mazing pb-0 fade_up">We Are Expert Team To Keep Your Vision</h2>
-                    <TeamSection limit={4} />
-                </div>
+                <ProjectGrid />
             </section>
             {/* <!-- ====================================== Section Nine ===================================== --> */}
             <section className="section-nine pt-0">
                 <Testimonials />
             </section>
-            <ImageZoomScroll />
+            <FAQ />
+            <CTASection />
             <ContactForm />
         </>
     )

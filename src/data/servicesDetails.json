@@ -1,0 +1,156 @@
+{
+  "regularCleaning": {
+    "id": "regular-cleaning",
+    "title": "Regular Cleaning",
+    "description": "Keep your home shining week after week with our Regular Cleaning service. Designed for families, professionals, and anyone with a busy schedule, we ensure every visit keeps your home tidy, sanitized, and guest-ready. A consistent solution for comfort and peace of mind.",
+    "recommended": "Recommended for busy homes that need consistent upkeep — ideal for families, professionals, or anyone who loves a spotless space.",
+    "includes": {
+      "wholeHouse": [
+        "Dusting",
+        "Removing cobwebs",
+        "Vacuuming all carpets",
+        "Changing sheets (as requested)",
+        "Cleaning mirrors and glass surfaces",
+        "Cleaning glass doors",
+        "Cleaning prints on windows/doors",
+        "Relining waste baskets",
+        "Washing floors"
+      ],
+      "bathrooms": [
+        "Cleaning and sanitizing sinks",
+        "Cleaning and sanitizing tubs, shower and toilets",
+        "Cleaning mirrors",
+        "Washing floors"
+      ],
+      "kitchen": [
+        "Cleaning countertops",
+        "Cleaning inside and outside of microwave",
+        "Washing cabinet doors",
+        "Cleaning outside of all appliances",
+        "Cleaning glass doors",
+        "Cleaning and sanitizing sinks",
+        "Washing floors",
+        "Removing garbage and relining can"
+      ]
+    }
+  },
+  "moveInOut": {
+    "id": "move-in-out",
+    "title": "Move In/Out Cleaning",
+    "description": "Moving can be stressful — let us handle the cleaning! Our Move In/Out Cleaning ensures your old or new home is spotless from top to bottom. We deep clean floors, bathrooms, kitchens, and every surface so you can move confidently into a fresh, sanitized environment.",
+    "recommended": "Recommended for tenants, landlords, or homeowners preparing for a move — ensures every inch is perfectly clean before or after moving day.",
+    "includes": {
+      "main": [
+        "Deep cleaning of all rooms and surfaces",
+        "Sanitizing bathrooms and kitchens",
+        "Cleaning inside cabinets, drawers, and closets",
+        "Wiping down doors, trim, and baseboards",
+        "Vacuuming and mopping all floors",
+        "Removing any leftover debris or trash"
+      ]
+    },
+    "notes": [
+      "Homes/Apartments must be empty for service, furnished homes/apartments will be charged as a Deep Clean",
+      "Any trash left in the home will incur an extra charge"
+    ]
+  },
+  "deepCleaning": {
+    "id": "deep-cleaning",
+    "title": "Deep Cleaning",
+    "description": "Our Deep Cleaning goes beyond the surface to remove built-up dirt, dust, and grime from every corner of your home. We scrub, disinfect, and refresh neglected areas like baseboards, tiles, and appliances, giving your space a true reset and a healthy, renewed feel.",
+    "recommended": "Recommended for homes that need a complete refresh or haven't been cleaned in a while. Perfect before events, seasonal changes, or as preparation for regular maintenance cleanings.",
+    "includes": {
+      "main": [
+        "Wipe down all wall hangings",
+        "Hand washing or wiping baseboards and doors",
+        "Hand wash window sills and inside of windows",
+        "Wipe light fixtures",
+        "Hand wash or wipe outside of cabinets in kitchen and bathrooms",
+        "Hand wash ceiling fans",
+        "Dusting vents",
+        "Vacuuming and sweeping under beds and furniture if accessible",
+        "Hand wipe switch plates"
+      ]
+    },
+    "additionalServices": [
+      "Clean inside cabinets",
+      "Clean interior of windows or blinds",
+      "Loads of laundry",
+      "1 hour of organization",
+      "30 minutes of dish cleaning"
+    ]
+  },
+  "officeCleaning": {
+    "id": "office-cleaning",
+    "title": "Office Cleaning",
+    "description": "Create a clean, organized, and productive work environment with our Office Cleaning service. We disinfect desks, sanitize restrooms, and keep common areas spotless so your team and clients enjoy a professional, healthy atmosphere every day.",
+    "recommended": "Recommended for offices, coworking spaces, and business suites seeking a clean, healthy, and productive environment.",
+    "includes": {
+      "main": [
+        "Dusting desks, furniture, and workstations",
+        "Emptying and relining trash bins",
+        "Vacuuming carpets and mopping floors",
+        "Disinfecting restrooms and break areas",
+        "Wiping down glass doors and touch surfaces",
+        "Restocking restroom supplies"
+      ]
+    }
+  },
+  "commercialCleaning": {
+    "id": "commercial-cleaning",
+    "title": "Commercial Cleaning",
+    "description": "Our Commercial Cleaning keeps your business looking professional and inviting. From small shops to large facilities, we clean floors, windows, and high-traffic areas to maintain a spotless appearance that enhances your brand and customer experience.",
+    "recommended": "Recommended for stores, restaurants, gyms, and facilities needing regular professional cleaning to impress customers and staff.",
+    "includes": {
+      "daily": [
+        "Wipe down and disinfect all touch surfaces",
+        "Empty waste bins, replace liners and wash when needed",
+        "Vacuum hard floors",
+        "Vacuum mats and carpets",
+        "Wipe chairs, tables, desks, and other types of furniture",
+        "Dust chairs, tables, desks, and other types of furniture",
+        "Mop hard floors using disinfectants",
+        "Remove cobwebs from all areas",
+        "Collect all garbage, bottles, papers, etc. from the front entrance",
+        "Ensure all areas are cleaned and arranged neatly",
+        "Spot clean painted surfaces and walls",
+        "Remove fingerprints and marks from door frames and light switches",
+        "Wipe all internal glass",
+        "Polish handles on cabinets and doors",
+        "Clean automatic glass doors inside and out"
+      ],
+      "bathroomKitchen": [
+        "Wipe down and disinfect all touch surfaces",
+        "Remove garbage from all areas",
+        "Clean elevators and stairs",
+        "Mop/clean kitchen and bathroom floors with disinfectants",
+        "Remove splash marks from partitions around sinks and from walls",
+        "Dust the tops of mirrors, frames and cubicles",
+        "Clean, sanitize and polish faucets of all sinks",
+        "Empty trash bins, wipe down if needed and replace liners as needed",
+        "Wipe hand towel dispensers and hand dryers",
+        "Clean and polish mirrors",
+        "Stock toilet paper, facial tissues, hand soap and hand towels",
+        "Vacuum and mop all hard floors",
+        "Spot clean internal glass in doors",
+        "Disinfect and clean toilets and urinals",
+        "Polish handles on cabinets and doors"
+      ]
+    }
+  },
+  "postConstruction": {
+    "id": "post-construction",
+    "title": "Post Construction Cleaning",
+    "description": "After renovation or construction, we remove dust, debris, and residue with precision. Our Post-Construction Cleaning leaves every surface spotless and ready to use, transforming your project from a work site to a clean, polished space.",
+    "recommended": "Recommended for homeowners, contractors, and property managers who want to eliminate dust and debris after renovation or construction. Perfect to prepare spaces for move-in or final inspection.",
+    "includes": {
+      "main": [
+        "Removing dust, debris, and construction residue",
+        "Cleaning inside cabinets, drawers, and closets",
+        "Washing walls, baseboards, and doors",
+        "Vacuuming vents and air returns",
+        "Polishing glass, fixtures, and floors"
+      ]
+    }
+  }
+}

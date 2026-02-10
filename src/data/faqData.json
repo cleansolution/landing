@@ -1,32 +1,52 @@
 [
     {
         "id": "One",
-        "question": "What are the most common Cleaning materials?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris. Integer enim neque volutpat ac tincidunt. Augue neque gravida in fermentum et sollicitudin."
+        "question": "What services do you provide for home and office cleaning?",
+        "answer": "We offer deep cleaning, regular maintenance cleaning, move-in/move-out cleaning, and customized cleaning plans. For offices, we include common areas, workstations, and sanitization services. Please view our detailed cleaning services list."
     },
     {
         "id": "Two",
-        "question": "How long does a Cleaning last?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris."
+        "question": "How do you ensure the safety of my home or office during cleaning?",
+        "answer": "Our team is fully trained. We use safe, eco-friendly products to protect your space and belongings."
     },
     {
         "id": "Three",
-        "question": "What causes Cleaning leaks?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris. Integer enim neque volutpat ac tincidunt. Augue neque gravida in fermentum et sollicitudin."
+        "question": "Do I need to provide cleaning supplies or equipment?",
+        "answer": "No, we bring all the necessary supplies and equipment. If you have specific products you'd like us to use, let us know in advance or please leave them out by the kitchen countertop and a note for our cleaning techs."
     },
     {
         "id": "Four",
-        "question": "Can I Cleaning myself?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris. Integer enim neque volutpat ac tincidunt. Augue neque gravida in fermentum et sollicitudin."
+        "question": "How often should I schedule cleaning services?",
+        "answer": "It depends on your needs. We offer weekly, bi-weekly, monthly, and one-time cleaning services to fit your lifestyle or business schedule. Most people that want a regular cleaned house, select bi-weekly."
     },
     {
         "id": "Five",
-        "question": "What services do architects provide?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris. Integer enim neque volutpat ac tincidunt. Augue neque gravida in fermentum et sollicitudin."
+        "question": "Can I customize my cleaning plan?",
+        "answer": "Absolutely! We'll work with you to create a plan that meets your specific needs, whether it's focusing on high-traffic areas or detailed cleanings. Please contact our office to get the custom pricing."
     },
     {
         "id": "Six",
-        "question": "Can A Handyman Do Cleaning Work?",
-        "answer": "Donec massa sapien faucibus et molestie ac. Sed blandit libero volutpat sed cras ornare arcu. Vulputate mi sit amet mauris. Integer enim neque volutpat ac tincidunt. Augue neque gravida in fermentum et sollicitudin."
+        "question": "What happens if I'm not satisfied with the cleaning?",
+        "answer": "Your satisfaction is our priority. If you're not happy, let us know within 24 hours contacting us via email or phone, so we can make it right."
+    },
+    {
+        "id": "Seven",
+        "question": "Do you offer same-day or emergency cleaning services?",
+        "answer": "Same-day or emergency cleaning services are available based on availability. Contact us as soon at our office as possible to schedule."
+    },
+    {
+        "id": "Eight",
+        "question": "What areas do you service?",
+        "answer": "We serve homes and offices within our service area. If you're unsure whether we cover your area, feel free to contact us or visit our service area page."
+    },
+    {
+        "id": "Nine",
+        "question": "How do you handle special requests, like deep cleaning or post-construction cleanup?",
+        "answer": "We're happy to accommodate special requests. Just let us know what you need, and we'll include it in your quote."
+    },
+    {
+        "id": "Ten",
+        "question": "How do I book or reschedule a cleaning?",
+        "answer": "You can book or reschedule easily through our website, by phone, or via email. We ask for 24 hours' notice for any changes to your appointment."
     }
 ]

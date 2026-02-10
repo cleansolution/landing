@@ -13,7 +13,7 @@ const Footer = () => {
             <footer>
                 <div className="container">
                     <div className="row footer-row-quick">
-                        <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-6">
+                        <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
                             <h2 className="working-hours">Working Hours</h2>
                             <div className="timing-hrw pt-0">
                                 <p>Mon - Fri</p>
@@ -28,7 +28,7 @@ const Footer = () => {
                                 <p>Close</p>
                             </div>
                         </div>
-                        <div className="col-xxl-4 col-xl-4 col-lg-4 col-md-6 quicklinks-main">
+                        <div className="col-xxl-6 col-xl-6 col-lg-6 col-md-6 quicklinks-main">
                             <h2 className="working-hours">Quick Links</h2>
                             <ul>
                                 <li><Link to="/">Home</Link></li>
@@ -36,21 +36,6 @@ const Footer = () => {
                                 <li><Link to="/About">About Us</Link></li>
                                 <li><Link to="/Contact">Contact</Link></li>
                             </ul>
-                        </div>
-                        <div className="col-xxl-4 col-xl-4 col-lg-4">
-                            <h2 className="working-hours">Contact Info</h2>
-                            <div className="timing-hrw pt-0">
-                                <p><strong>Location:</strong></p>
-                                <p>Chesapeake, VA</p>
-                            </div>
-                            <div className="timing-hrw">
-                                <p><strong>Phone:</strong></p>
-                                <p><a href="tel:+17573058237" style={{color: '#fff'}}>+1 (757) 305 8237</a></p>
-                            </div>
-                            <div className="timing-hrw border-0 pb-0">
-                                <p><strong>Email:</strong></p>
-                                <p><a href="mailto:info@leansolutionsva.com" style={{color: '#fff'}}>info@leansolutionsva.com</a></p>
-                            </div>
                         </div>
                     </div>
                     <div className="media-logo-call-footer fade_up show">
@@ -62,7 +47,7 @@ const Footer = () => {
                                 <img src={CallWhite} alt="callWhite" />
                             </div>
                             <div>
-                                <p>CALL US NOW!</p>
+                                <p>CONTACT US</p>
                                 <a href="tel:+17573058237">+1 (757) 305 8237</a>
                             </div>
                         </div>
@@ -76,15 +61,12 @@ const Footer = () => {
                             <a href="https://www.instagram.com" className="footer-med-icons">
                                 <img src={insta} alt="insta" />
                             </a>
-                            <a href="https://wa.me/+1234567890" className="footer-med-icons">
-                                <img src={whatsapp} alt="whatsapp" />
-                            </a>
                         </div>
                     </div>
                     <div className="copyrights-main">
                         <p>Copyright © {new Date().getFullYear()} All Rights Reserved by Clean Solution CO. LLC
                         </p>
-                        <p>Privacy Policy | Terms &amp; Conditions</p>
+                        <p>Privacy Policy | Terms &amp; Conditions | Made with 🤍 Helice Digital Solutions LLC</p>
                     </div>
                 </div>
             </footer>

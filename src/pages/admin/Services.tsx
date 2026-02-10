@@ -24,7 +24,7 @@ export default function AdminServices() {
         : [];
   }, []);
 
-  const apiEnabled = Boolean(process.env.REACT_APP_API_URL);
+  const apiEnabled = process.env.REACT_APP_DISABLE_API !== 'true';
 
   const [services, setServices] = useState(initialServices);
   const [editingId, setEditingId] = useState(null);
@@ -134,7 +134,7 @@ export default function AdminServices() {
 
     // Save to API if enabled; otherwise keep local state only
     if (!apiEnabled) {
-      alert('✅ Servicio guardado localmente.');
+      alert('âœ… Servicio guardado localmente.');
       setShowForm(false);
       setFormData({ id: 0, title: '', desc: '', link: '', img: '', svg: '' });
       setEditingId(null);
@@ -144,14 +144,14 @@ export default function AdminServices() {
     setSaving(true);
     try {
       await servicesAPI.save(updatedServices);
-      alert('✅ Service saved successfully!');
+      alert('âœ… Service saved successfully!');
       setShowForm(false);
       setFormData({ id: 0, title: '', desc: '', link: '', img: '', svg: '' });
       setEditingId(null);
     } catch (error) {
-      alert('❌ Error saving service. Please try again.');
+      alert('âŒ Error saving service. Please try again.');
       console.error('Save error:', error);
-      setError('No se pudo guardar el servicio. Inténtalo de nuevo.');
+      setError('No se pudo guardar el servicio. IntÃ©ntalo de nuevo.');
     } finally {
       setSaving(false);
     }
@@ -163,16 +163,16 @@ export default function AdminServices() {
       setServices(updatedServices);
       
       if (!apiEnabled) {
-        alert('✅ Servicio eliminado localmente.');
+        alert('âœ… Servicio eliminado localmente.');
         return;
       }
 
       setSaving(true);
       try {
         await servicesAPI.save(updatedServices);
-        alert('✅ Service deleted successfully!');
+        alert('âœ… Service deleted successfully!');
       } catch (error) {
-        alert('❌ Error deleting service. Please try again.');
+        alert('âŒ Error deleting service. Please try again.');
         console.error('Delete error:', error);
         setError('No se pudo eliminar el servicio.');
       } finally {
@@ -190,7 +190,7 @@ export default function AdminServices() {
             <p>Add, edit or remove cleaning services</p>
           </div>
           <button onClick={handleAdd} className="btn-primary" disabled={saving}>
-            ➕ Add New Service
+            âž• Add New Service
           </button>
         </div>
 
@@ -203,7 +203,7 @@ export default function AdminServices() {
             <div className="form-modal-content">
               <div className="form-modal-header">
                 <h2>{editingId ? 'Edit Service' : 'Add New Service'}</h2>
-                <button onClick={() => setShowForm(false)} className="btn-close">✕</button>
+                <button onClick={() => setShowForm(false)} className="btn-close">âœ•</button>
               </div>
               
               <form onSubmit={handleSubmit} className="admin-form">
@@ -256,7 +256,7 @@ export default function AdminServices() {
                         <img src={imagePreview} alt="Preview" className="image-preview" />
                       ) : (
                         <div className="upload-placeholder">
-                          <span className="upload-icon">📷</span>
+                          <span className="upload-icon">ðŸ“·</span>
                           <p>Click to upload image</p>
                           <small>PNG, JPG up to 5MB</small>
                         </div>
@@ -299,14 +299,14 @@ export default function AdminServices() {
                 <div className="service-content">
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
-                  {service.link && <span className="service-link">🔗 {service.link}</span>}
+                  {service.link && <span className="service-link">ðŸ”— {service.link}</span>}
                 </div>
                 <div className="service-actions">
                   <button onClick={() => handleEdit(service)} className="btn-edit" disabled={saving}>
-                    ✏️ Edit
+                    âœï¸ Edit
                   </button>
                   <button onClick={() => handleDelete(service.id)} className="btn-delete" disabled={saving}>
-                    🗑️ Delete
+                    ðŸ—‘ï¸ Delete
                   </button>
                 </div>
               </div>

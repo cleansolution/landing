@@ -36,8 +36,8 @@ const ProjectSlider: React.FC = () => {
         modules: [Autoplay, Navigation],
         autoplay: { delay: 2000, disableOnInteraction: false },
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".project-button-next",
+            prevEl: ".project-button-prev",
         },
         breakpoints: {
             1300: {
@@ -60,16 +60,56 @@ const ProjectSlider: React.FC = () => {
             <Swiper {...projectSlider} className="swiper projectSlider">
                 {(projectData || []).map((item: ProjectItem) => (
                     <SwiperSlide key={item.id}>
-                        <div className="single-img">
+                        <div className="single-img" style={{
+                            position: 'relative',
+                            overflow: 'hidden',
+                            borderRadius: '8px'
+                        }}>
                             <img
                                 src={projectImages[item.image] ?? ProjectImg1}
                                 alt={item.title}
                                 className="home-project-img"
+                                style={{
+                                    transition: 'transform 0.4s ease'
+                                }}
                             />
-                            <div className="img-overlay">
+                            <div 
+                                className="img-overlay"
+                                style={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%)',
+                                    padding: '30px 20px 20px',
+                                    transform: 'translateY(100%)',
+                                    transition: 'transform 0.4s ease',
+                                    color: 'white'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    const img = e.currentTarget.previousElementSibling as HTMLElement;
+                                    if (img) img.style.transform = 'scale(1.1)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(100%)';
+                                    const img = e.currentTarget.previousElementSibling as HTMLElement;
+                                    if (img) img.style.transform = 'scale(1)';
+                                }}
+                            >
                                 <div>
-                                    <h3 className="project-name-home">{item.title}</h3>
-                                    <p>{item.description}</p>
+                                    <h3 className="project-name-home" style={{
+                                        fontSize: '18px',
+                                        fontWeight: '700',
+                                        marginBottom: '8px',
+                                        color: 'white'
+                                    }}>{item.title}</h3>
+                                    <p style={{
+                                        fontSize: '14px',
+                                        lineHeight: '1.5',
+                                        color: 'rgba(255, 255, 255, 0.9)',
+                                        margin: 0
+                                    }}>{item.description}</p>
                                 </div>
                             </div>
                         </div>

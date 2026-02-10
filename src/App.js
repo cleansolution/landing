@@ -8,6 +8,7 @@ import './assets/css/bootstrap.min.css';
 import './assets/css/swiper.min.css';
 import './assets/css/style.css';
 import './assets/css/media_query.css';
+import './assets/css/custom-overrides.css';
 
 import HomeSolid from "./pages/HomeSolid.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -17,7 +18,6 @@ import Header from "./component/Header.tsx";
 import ScrollTopPage from './component/ScrollTopPage.tsx';
 import Preloader from './component/Preloader.tsx';
 import ScrollToTopButton from "./component/ScrollToTopButton.tsx";
-import SmoothScroll from './hooks/SmoothScroll.ts';
 
 // Admin imports
 import { AuthProvider, useAuth } from "./contexts/AuthContext.tsx";
@@ -53,7 +53,6 @@ function ProtectedRoute({ children }) {
 function PublicLayout({ children }) {
   return (
     <>
-      <SmoothScroll />
       <ScrollTopPage />
       <Header />
       <Preloader />

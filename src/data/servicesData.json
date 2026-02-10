@@ -2,38 +2,7 @@
   "services": [
     {
       "id": 1,
-      "title": "Move In/Move Out Cleaning",
-      "desc": "Professional deep cleaning service for moving transitions. We ensure your new or old home is spotless and ready for the next chapter.",
-      "link": "/Services",
-      "img": "slider-img1.jpg",
-      "svg": "services-svg1.svg"
-    },
-    {
-      "id": 2,
-      "title": "Airbnb Cleaning",
-      "desc": "Specialized cleaning service for short-term rentals. Quick turnaround and thorough cleaning to keep your guests happy and reviews stellar.",
-      "link": "/Services",
-      "img": "slider-img2.jpg",
-      "svg": "services-svg2.svg"
-    },
-    {
-      "id": 3,
-      "title": "Post-Construction Cleaning",
-      "desc": "Comprehensive cleanup after renovation or construction. We remove dust, debris, and leave your space pristine and move-in ready.",
-      "link": "/Services",
-      "img": "slider-img3.jpg",
-      "svg": "services-svg3.svg"
-    },
-    {
-      "id": 4,
-      "title": "Deep Cleaning",
-      "desc": "Intensive cleaning service that reaches every corner. Perfect for seasonal cleaning or when your home needs extra attention.",
-      "link": "/Services",
-      "img": "slider-img4.jpg",
-      "svg": "services-svg4.svg"
-    },
-    {
-      "id": 5,
+      "category": "Residential Cleaning",
       "title": "Regular Cleaning",
       "desc": "Consistent maintenance cleaning to keep your home fresh week after week with customizable checklists.",
       "link": "/Services",
@@ -41,28 +10,58 @@
       "svg": "services-svg5.svg"
     },
     {
+      "id": 2,
+      "category": "Residential Cleaning",
+      "title": "Deep Cleaning",
+      "desc": "Intensive cleaning service that reaches every corner. Perfect for seasonal cleaning or when your home needs extra attention.",
+      "link": "/Services",
+      "img": "slider-img4.jpg",
+      "svg": "services-svg4.svg"
+    },
+    {
+      "id": 3,
+      "category": "Residential Cleaning",
+      "title": "Move In/Move Out Cleaning",
+      "desc": "Professional deep cleaning service for moving transitions. We ensure your new or old home is spotless and ready for the next chapter.",
+      "link": "/Services",
+      "img": "slider-img1.jpg",
+      "svg": "services-svg1.svg"
+    },
+    {
+      "id": 4,
+      "category": "Residential Cleaning",
+      "title": "Airbnb Cleaning",
+      "desc": "Specialized cleaning service for short-term rentals. Quick turnaround and thorough cleaning to keep your guests happy and reviews stellar.",
+      "link": "/Services",
+      "img": "slider-img2.jpg",
+      "svg": "services-svg2.svg"
+    },
+    {
+      "id": 5,
+      "category": "Residential Cleaning",
+      "title": "Post-Construction Cleaning",
+      "desc": "Comprehensive cleanup after renovation or construction. We remove dust, debris, and leave your space pristine and move-in ready.",
+      "link": "/Services",
+      "img": "slider-img3.jpg",
+      "svg": "services-svg3.svg"
+    },
+    {
       "id": 6,
-      "title": "Window Cleaning",
-      "desc": "Crystal clear windows inside and out. Professional tools for streak-free results and improved natural light.",
+      "category": "Commercial Cleaning",
+      "title": "Office Cleaning",
+      "desc": "Professional office cleaning services to maintain a clean and productive work environment for your team and clients.",
       "link": "/Services",
       "img": "slider-img6.jpg",
       "svg": "services-svg6.svg"
     },
     {
       "id": 7,
-      "title": "Carpet Cleaning",
-      "desc": "Deep carpet cleaning that removes stains, odors, and dirt. Tempus lobortis sit vel eu pellentesque. Ut posuere arcu venenatis, hac vel nisi massa interdum.",
+      "category": "Commercial Cleaning",
+      "title": "Janitorial Services",
+      "desc": "Complete janitorial services for commercial properties including daily maintenance, floor care, and facility cleaning.",
       "link": "/Services",
       "img": "slider-img7.jpg",
       "svg": "services-svg1.svg"
-    },
-    {
-      "id": 8,
-      "title": "Trash Bins Cleaning",
-      "desc": "Sanitization and deodorization of residential and commercial bins to eliminate odors and bacteria.",
-      "link": "/Services",
-      "img": "slider-img8.jpg",
-      "svg": "services-svg2.svg"
     }
   ]
 }
