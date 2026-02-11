@@ -11,6 +11,8 @@ import './assets/css/media_query.css';
 import './assets/css/custom-overrides.css';
 
 import HomeSolid from "./pages/HomeSolid.tsx";
+import Home1 from "./pages/Home1.tsx";
+import Home2 from "./pages/Home2.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 import Footer from "./component/Footer.tsx";
@@ -98,6 +100,12 @@ function App() {
               <HomeSolid />
             </PublicLayout>
           } />
+          
+          {/* Home 1 - Modern Corporate Layout */}
+          <Route path="/home-1" element={<Home1 />} />
+          
+          {/* Home 2 - Visual, Emotional & Aspirational Layout */}
+          <Route path="/home-2" element={<Home2 />} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
