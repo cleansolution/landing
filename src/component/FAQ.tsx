@@ -15,7 +15,7 @@ const FAQ: React.FC = () => {
     };
 
     return (
-        <section className="faq-section" style={{ padding: '80px 0', backgroundColor: '#f9f9f9' }}>
+        <section className="faq-section" style={{ padding: '50px 0', backgroundColor: '#f9f9f9' }}>
             <div className="container">
                 <p className="cap-text fade_up" style={{ textAlign: 'center', fontSize: '16px', color: '#1e3a8a', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>FAQ</p>
                 <h2 className="sec-text fade_up" style={{ textAlign: 'center', marginBottom: '50px', fontSize: '48px', fontWeight: '700', color: '#1a1a1a' }}>

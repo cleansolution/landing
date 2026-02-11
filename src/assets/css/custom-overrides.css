@@ -301,3 +301,69 @@ footer {
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1) !important;
     transform: translateY(-3px) !important;
 }
+
+/* ===================================
+   REDUCCIÓN DE ESPACIOS EN BLANCO
+   =================================== */
+
+/* Reducir padding de todas las secciones principales */
+section,
+.section {
+    padding: 60px 0 !important;
+}
+
+/* Hero section más compacta */
+.hero-section,
+.banner {
+    padding: 80px 0 60px !important;
+}
+
+/* Reducir espacios entre secciones */
+.about-section,
+.services-section,
+.projects-section,
+.testimonial-section,
+.team-section,
+.blog-section,
+.contact-section {
+    padding: 50px 0 !important;
+}
+
+/* FAQ y CTA más compactos */
+.faq-section {
+    padding: 50px 0 !important;
+}
+
+/* Reducir margin-top excesivos */
+.section + .section {
+    margin-top: 0 !important;
+}
+
+/* Reducir espacios en el contenedor */
+.container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Espaciado compacto en grids de servicios */
+.services-grid,
+.cleaning-services {
+    gap: 20px !important;
+}
+
+/* Reducir padding interno de tarjetas */
+.cleaning-card,
+.service-card {
+    padding: 20px !important;
+}
+
+/* Testimonios más compactos */
+.testimonial-item {
+    padding: 25px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Proyectos más compactos */
+.project-item {
+    margin-bottom: 20px !important;
+}

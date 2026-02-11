@@ -86,7 +86,7 @@ function ServicesFeatured() {
 
     return (
         <>
-            <div style={{ marginTop: '50px', marginBottom: '40px' }}>
+            <div style={{ marginTop: '30px', marginBottom: '30px' }}>
                 {/* Tabs de categorías */}
                 <div style={{
                     display: 'flex',

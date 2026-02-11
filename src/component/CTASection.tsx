@@ -4,7 +4,7 @@ const CTASection: React.FC = () => {
     return (
         <section style={{
             background: 'linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%)',
-            padding: '100px 0',
+            padding: '60px 0',
             marginTop: '0',
             position: 'relative',
             overflow: 'hidden',
