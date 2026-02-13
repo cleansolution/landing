@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogoSvg from '../assets/images/svg/logo.svg';
 import menu2 from '../assets/images/svg/menu2.svg';
@@ -11,6 +11,34 @@ import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [headerVisible, setHeaderVisible] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            const isMobile = window.innerWidth <= 991;
+            
+            if (isMobile) {
+                // En mobile, ocultar al bajar y mostrar al subir
+                if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                    setHeaderVisible(false);
+                } else {
+                    setHeaderVisible(true);
+                }
+            } else {
+                // En desktop siempre visible
+                setHeaderVisible(true);
+            }
+            
+            setScrolled(currentScrollY > 50);
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     const menuItems = [
         { label: "Home", link: "#home" },
@@ -28,7 +56,7 @@ const Header = () => {
         <>
             {/* Overlay */}
             {menuOpen && <div className="overlay active" onClick={() => setMenuOpen(false)}></div>}
-            <header className={`header`} id="top-navbar">
+            <header className={`header ${scrolled ? 'scrolled' : ''} ${!headerVisible ? 'header-hidden' : ''}`} id="top-navbar">
                 <div className="header-container">
                     <Link to="/" className="logo">
                         <img src={LogoSvg} alt="Logo" />

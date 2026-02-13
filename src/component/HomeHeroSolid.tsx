@@ -100,7 +100,7 @@ const HomeHeroSolid: React.FC = () => {
                 }
                 
                 .hero-quote-title {
-                    font-size: clamp(16px, 4vw, 22px);
+                    font-size: clamp(22px, 5vw, 30px);
                     font-weight: 700;
                     color: white;
                     text-shadow: 0 2px 8px rgba(0,0,0,0.6);
@@ -109,7 +109,7 @@ const HomeHeroSolid: React.FC = () => {
                 }
                 
                 .hero-phone-container {
-                    font-size: clamp(14px, 3.5vw, 17px);
+                    font-size: clamp(18px, 4.5vw, 24px);
                     font-weight: 600;
                     color: rgba(255,255,255,0.95);
                     display: flex;
@@ -123,7 +123,7 @@ const HomeHeroSolid: React.FC = () => {
                     color: #00adef;
                     text-decoration: none;
                     font-weight: 800;
-                    font-size: clamp(17px, 2.5vw, 20px);
+                    font-size: clamp(22px, 3vw, 28px);
                     text-shadow: 0 2px 10px rgba(0,0,0,0.8);
                     transition: color 0.3s ease;
                 }
@@ -221,11 +221,11 @@ const HomeHeroSolid: React.FC = () => {
                     }
                     
                     .hero-quote-title {
-                        font-size: clamp(15px, 4vw, 18px) !important;
+                        font-size: clamp(19px, 5vw, 24px) !important;
                     }
                     
                     .hero-phone-link {
-                        font-size: clamp(16px, 5vw, 20px) !important;
+                        font-size: clamp(20px, 6vw, 26px) !important;
                     }
                     
                     .hero-tagline {
@@ -283,7 +283,6 @@ const HomeHeroSolid: React.FC = () => {
                                     </p>
                                     
                                     <div className="hero-phone-container" style={{ marginBottom: 'clamp(6px, 1vh, 10px)' }}>
-                                        <span style={{ fontSize: 'clamp(16px, 2vw, 20px)' }}>📞</span> 
                                         <span>Call Now:</span> 
                                         <a href="tel:+17573058237" className="hero-phone-link">(757) 305 8237</a>
                                     </div>
