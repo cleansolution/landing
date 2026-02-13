@@ -291,7 +291,7 @@ const HomeHeroSolid: React.FC = () => {
                                         Fast response. Real people. Real results.
                                     </p>
                                     
-                                    <a href="#services" className="btn-quote our-services-btn">Our Services
+                                    <a href="#featured-services" className="btn-quote our-services-btn">Our Services
                                         <img src={CrossArrow} alt="cross-arrow" />
                                     </a>
                                 </div>
