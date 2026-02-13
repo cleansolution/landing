@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import WhiteLogoSvg from '../assets/images/svg/white-logo.svg';
-import CallWhite from '../assets/images/svg/callWhite.svg';
 import facebook from "../assets/images/svg/facebook.svg";
 import twitter from '../assets/images/svg/twitter.svg';
 import insta from '../assets/images/svg/insta.svg';

@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import DropdownArrow from "../assets/images/svg/dropdown-arrow.svg";
-import CrossArrow from "../assets/images/svg/cross-arrow.svg";
 
 const ContactForm: React.FC = () => {
     const location = useLocation();
 
     const [cleanType, setCleanType] = useState<string>("Full Cleaning");
-    const [openDropdown, setOpenDropdown] = useState<"clean" | null>(null);
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',

@@ -5,13 +5,10 @@ import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
 import sectionsData from '../data/sectionsData.json';
 import aboutData from '../data/aboutData.json';
 import Video2 from '../assets/video/video2.mp4';
-import SliderImg2 from '../assets/images/services/slider-img2.jpg';
 import CheckTransparent from '../assets/images/svg/check-transparent.svg';
-import HowWorkBg from '../assets/images/about/how-to-work-bg.png';
 import HowWorkSvg1 from '../assets/images/svg/how-to-work-svg1.svg';
 import HowWorkSvg2 from '../assets/images/svg/how-to-work-svg2.svg';
 import HowWorkSvg3 from '../assets/images/svg/how-to-work-svg3.svg';
-import HowWorkArrow from '../assets/images/svg/how-to-work-arrow.svg';
 import ServicesFeatured from '../component/ServicesFeatured.tsx';
 import ProjectGrid from '../component/ProjectGrid.tsx';
 import Testimonials from '../component/Testimonials.tsx';
