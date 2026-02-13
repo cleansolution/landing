@@ -55,7 +55,7 @@ const ContactForm: React.FC = () => {
                 `Message: ${formData.message}`;
 
             // Abrir email con el mensaje
-            window.open(`mailto:Lolitamontalvo.91@gmail.com?subject=${subject}&body=${body}`, '_blank');
+            window.open(`mailto:info@cleansolutionsva.com?subject=${subject}&body=${body}`, '_blank');
 
             // Resetear formulario
             setFormData({
@@ -82,38 +82,42 @@ const ContactForm: React.FC = () => {
     return (
         <>
             {location.pathname !== "/GetQuote" && (
-                <section id="contact" className="contact-form-section">
+                <section id="contact" className="contact-form-section" style={{
+                    backgroundColor: '#f8f9fa',
+                    padding: '80px 0'
+                }}>
                     <div className="container">
-                        <div className="row form-sec-row">
+                        <div className="row" style={{ gap: '40px', justifyContent: 'center' }}>
 
-                            <div className="col-xxl-6 col-xl-6 col-lg-5">
-                                <p className="cap-text fade_up">contact Clean Solutions CO. LLC</p>
-                                <h2 className="sec-text get-toch fade_up">Get In Touch With Us</h2>
-                                <p className="sec-sub-text fade_up">
-                                    Professional cleaning services for residential and commercial properties. Contact us for a free quote and experience spotless results.
-                                </p>
-
-                                <p className="call-support-text">Call Support Center 24/7</p>
-                                <a href="tel:+17573058237" className="tel-num">+1 (757) 305 8237</a>
-
-                                <div className="adres-main-home fade_up">
-                                    <div>
-                                        <p className="call-support-text">Our Mail Address</p>
-                                        <a href="mailto:Lolitamontalvo.91@gmail.com" className="tel-num addees">
-                                            Lolitamontalvo.91@gmail.com
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-xxl-6 col-xl-6 col-lg-7">
-                                <div className="contac-form-main zoom_in">
+                            <div className="col-xxl-5 col-xl-5 col-lg-5" style={{ 
+                                maxWidth: '500px'
+                            }}>
+                                <div style={{
+                                    backgroundColor: 'white',
+                                    borderRadius: '24px',
+                                    padding: '50px 40px',
+                                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)'
+                                }}>
+                                    <h2 style={{
+                                        color: '#184A8C',
+                                        fontSize: 'clamp(24px, 4vw, 32px)',
+                                        fontWeight: '700',
+                                        marginBottom: '30px'
+                                    }}>Get In Touch</h2>
+                                    <p style={{
+                                        color: '#6b7280',
+                                        fontSize: '15px',
+                                        lineHeight: '1.6',
+                                        marginBottom: '30px'
+                                    }}>
+                                        We take great pride in everything that we do, control over products allows us to ensure customers receive the best quality service and highest standards, you need a dedicated team of specialists.
+                                    </p>
                                     {submitStatus === 'success' && (
                                         <div style={{
                                             padding: '15px',
-                                            backgroundColor: '#10b981',
+                                            background: 'linear-gradient(135deg, #184A8C 0%, #2667b8 100%)',
                                             color: 'white',
-                                            borderRadius: '8px',
+                                            borderRadius: '12px',
                                             marginBottom: '20px',
                                             textAlign: 'center',
                                             fontWeight: '600'
@@ -126,7 +130,7 @@ const ContactForm: React.FC = () => {
                                             padding: '15px',
                                             backgroundColor: '#ef4444',
                                             color: 'white',
-                                            borderRadius: '8px',
+                                            borderRadius: '12px',
                                             marginBottom: '20px',
                                             textAlign: 'center',
                                             fontWeight: '600'
@@ -134,113 +138,272 @@ const ContactForm: React.FC = () => {
                                             ✗ Error sending message. Please try again.
                                         </div>
                                     )}
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="calcult-from-grid contac-form">
-                                            <div>
-                                                <h3 className="input-label-text">Full Name*</h3>
+                                    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                                            <div style={{ gridColumn: 'span 1' }}>
                                                 <input 
                                                     type="text" 
-                                                    placeholder="Enter your full name" 
+                                                    placeholder="Name" 
                                                     autoComplete="off"
                                                     value={formData.fullName}
                                                     onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                                                     required
+                                                    style={{
+                                                        width: '100%',
+                                                        padding: '14px 18px',
+                                                        backgroundColor: '#e8eaf6',
+                                                        border: 'none',
+                                                        borderRadius: '8px',
+                                                        fontSize: '15px',
+                                                        color: '#6b7280',
+                                                        outline: 'none'
+                                                    }}
                                                 />
                                             </div>
 
-                                            <div>
-                                                <h3 className="input-label-text">email address*</h3>
+                                            <div style={{ gridColumn: 'span 1' }}>
                                                 <input 
                                                     type="email" 
-                                                    placeholder="Enter your email" 
+                                                    placeholder="Email" 
                                                     autoComplete="off"
                                                     value={formData.email}
                                                     onChange={(e) => setFormData({...formData, email: e.target.value})}
                                                     required
+                                                    style={{
+                                                        width: '100%',
+                                                        padding: '14px 18px',
+                                                        backgroundColor: '#e8eaf6',
+                                                        border: 'none',
+                                                        borderRadius: '8px',
+                                                        fontSize: '15px',
+                                                        color: '#6b7280',
+                                                        outline: 'none'
+                                                    }}
                                                 />
                                             </div>
 
-                                            <div>
-                                                <h3 className="input-label-text">phone number*</h3>
+                                            <div style={{ gridColumn: 'span 1' }}>
                                                 <input 
                                                     type="text" 
-                                                    placeholder="Enter phone number" 
+                                                    placeholder="Phone" 
                                                     autoComplete="off"
                                                     value={formData.phone}
                                                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                                     required
+                                                    style={{
+                                                        width: '100%',
+                                                        padding: '14px 18px',
+                                                        backgroundColor: '#e8eaf6',
+                                                        border: 'none',
+                                                        borderRadius: '8px',
+                                                        fontSize: '15px',
+                                                        color: '#6b7280',
+                                                        outline: 'none'
+                                                    }}
                                                 />
                                             </div>
 
-                                        <div>
-                                            <h3 className="input-label-text">choose cleaning area*</h3>
-
-                                            <div className="input-main" ref={dropdownRef1}>
-                                                <div className="wrapper">
-                                                    <div
-                                                        className="formDropDown"
-                                                        onClick={() =>
-                                                            setOpenDropdown(openDropdown === "clean" ? null : "clean")
-                                                        }
-                                                    >
-                                                        {cleanType}
-                                                        <img
-                                                            className={`arrow-icon-form ${openDropdown === "clean" ? "up" : ""}`}
-                                                            src={DropdownArrow}
-                                                            alt="arrow"
-                                                        />
-                                                    </div>
-
-                                                    {openDropdown === "clean" && (
-                                                        <div className="position-relative">
-                                                            <ul className="formDropDown-ul-list">
-                                                                {cleanTypeOptions.map((item, index) => (
-                                                                    <li
-                                                                        key={index}
-                                                                        onClick={() => {
-                                                                            setCleanType(item);
-                                                                            setOpenDropdown(null);
-                                                                        }}
-                                                                    >
-                                                                        <span>{item}</span>
-                                                                    </li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
+                                        <div style={{ gridColumn: 'span 1' }}>
+                                            <select
+                                                value={cleanType}
+                                                onChange={(e) => setCleanType(e.target.value)}
+                                                style={{
+                                                    width: '100%',
+                                                    padding: '14px 18px',
+                                                    backgroundColor: '#e8eaf6',
+                                                    border: 'none',
+                                                    borderRadius: '8px',
+                                                    fontSize: '15px',
+                                                    color: '#6b7280',
+                                                    outline: 'none',
+                                                    cursor: 'pointer'
+                                                }}
+                                            >
+                                                {cleanTypeOptions.map((item, index) => (
+                                                    <option key={index} value={item}>{item}</option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div className="your-message-input">
-                                        <h3 className="input-label-text">your message</h3>
-                                        <input 
-                                            type="text" 
-                                            placeholder="Write here" 
+                                    <div style={{ gridColumn: 'span 2' }}>
+                                        <textarea 
+                                            placeholder="Additional Details" 
                                             autoComplete="off"
                                             value={formData.message}
                                             onChange={(e) => setFormData({...formData, message: e.target.value})}
+                                            rows={4}
+                                            style={{
+                                                width: '100%',
+                                                padding: '14px 18px',
+                                                backgroundColor: '#e8eaf6',
+                                                border: 'none',
+                                                borderRadius: '8px',
+                                                fontSize: '15px',
+                                                color: '#6b7280',
+                                                outline: 'none',
+                                                resize: 'vertical',
+                                                fontFamily: 'inherit'
+                                            }}
                                         />
                                     </div>
 
-                                    <div className="get-cost-estimate send-main-btn">
-                                        <button 
-                                            type="submit" 
-                                            className="btn-quote"
-                                            disabled={isSubmitting}
-                                            style={{
-                                                opacity: isSubmitting ? 0.7 : 1,
-                                                cursor: isSubmitting ? 'not-allowed' : 'pointer'
-                                            }}
-                                        >
-                                            {isSubmitting ? 'Sending...' : 'Send Us Your Mail'}
-                                            <img src={CrossArrow} alt="cross-arrow" />
-                                        </button>
-                                    </div>
+                                    <button 
+                                        type="submit" 
+                                        disabled={isSubmitting}
+                                        style={{
+                                            width: '100%',
+                                            padding: '16px',
+                                            background: 'linear-gradient(135deg, #184A8C 0%, #2667b8 100%)',
+                                            color: 'white',
+                                            border: 'none',
+                                            borderRadius: '8px',
+                                            fontSize: '16px',
+                                            fontWeight: '600',
+                                            cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                                            opacity: isSubmitting ? 0.7 : 1,
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            gap: '10px',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            if (!isSubmitting) e.currentTarget.style.transform = 'translateY(-2px)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0)';
+                                        }}
+                                    >
+                                        {isSubmitting ? 'Sending...' : 'Submit Request'}
+                                        {!isSubmitting && (
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                            </svg>
+                                        )}
+                                    </button>
                                     </form>
                                 </div>
                             </div>
+
+                            <div className="col-xxl-5 col-xl-5 col-lg-5" style={{ 
+                                maxWidth: '500px'
+                            }}>
+                                <div style={{
+                                    background: 'linear-gradient(135deg, #184A8C 0%, #2667b8 100%)',
+                                    borderRadius: '24px',
+                                    padding: '45px 40px',
+                                    color: 'white',
+                                    height: '100%',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    minHeight: '500px',
+                                    boxShadow: '0 10px 40px rgba(24, 74, 140, 0.3)'
+                                }}>
+                                    <div>
+                                        <p style={{
+                                            fontSize: '13px',
+                                            letterSpacing: '1.5px',
+                                            textTransform: 'uppercase',
+                                            marginBottom: '15px',
+                                            fontWeight: '600',
+                                            opacity: '0.9'
+                                        }}>contact Clean Solutions CO. LLC</p>
+                                        
+                                        <h3 style={{
+                                            fontSize: 'clamp(28px, 4vw, 36px)',
+                                            fontWeight: '800',
+                                            marginBottom: '20px',
+                                            lineHeight: '1.2'
+                                        }}>Get In Touch With Us</h3>
+                                        
+                                        <p style={{
+                                            fontSize: '15px',
+                                            lineHeight: '1.7',
+                                            opacity: '0.95',
+                                            marginBottom: '35px'
+                                        }}>
+                                            Professional cleaning services for residential and commercial properties. Contact us for a free quote and experience spotless results.
+                                        </p>
+                                    </div>
+
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>
+                                        <div style={{ 
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            gap: '15px',
+                                            padding: '20px',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '12px',
+                                            backdropFilter: 'blur(10px)',
+                                            border: '1px solid rgba(255, 255, 255, 0.2)'
+                                        }}>
+                                            <div style={{
+                                                width: '45px',
+                                                height: '45px',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                flexShrink: '0'
+                                            }}>
+                                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="white"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p style={{ fontSize: '13px', opacity: '0.85', marginBottom: '3px' }}>Phone Number</p>
+                                                <a href="tel:+17573058237" style={{ 
+                                                    fontSize: '18px', 
+                                                    fontWeight: '700',
+                                                    color: 'white',
+                                                    textDecoration: 'none'
+                                                }}>(757) 305-8237</a>
+                                            </div>
+                                        </div>
+
+                                        <div style={{ 
+                                            display: 'flex', 
+                                            alignItems: 'center', 
+                                            gap: '15px',
+                                            padding: '20px',
+                                            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '12px',
+                                            backdropFilter: 'blur(10px)',
+                                            border: '1px solid rgba(255, 255, 255, 0.2)'
+                                        }}>
+                                            <div style={{
+                                                width: '45px',
+                                                height: '45px',
+                                                backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                                                borderRadius: '50%',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                flexShrink: '0'
+                                            }}>
+                                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                                                    <path d="M22 6l-10 7L2 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                </svg>
+                                            </div>
+                                            <div>
+                                                <p style={{ fontSize: '13px', opacity: '0.85', marginBottom: '3px' }}>Our Mail Address</p>
+                                                <a href="mailto:info@cleansolutionsva.com" style={{ 
+                                                    fontSize: '16px', 
+                                                    fontWeight: '600',
+                                                    color: 'white',
+                                                    textDecoration: 'none',
+                                                    wordBreak: 'break-word'
+                                                }}>info@cleansolutionsva.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         {location.pathname === "/Contact" && (

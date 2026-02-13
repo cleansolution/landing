@@ -29,12 +29,14 @@ const ProjectGrid: React.FC = () => {
     const displayedProjects = showAll ? projectData : projectData.slice(0, 3);
 
     return (
-        <div style={{ marginTop: '50px' }}>
+        <div style={{ marginTop: '50px', padding: '0 15px' }}>
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                gap: '30px',
-                marginBottom: '40px'
+                gap: '35px',
+                marginBottom: '50px',
+                maxWidth: '1400px',
+                margin: '0 auto'
             }}>
                 {displayedProjects.map((item: ProjectItem) => (
                     <div 
@@ -42,19 +44,20 @@ const ProjectGrid: React.FC = () => {
                         style={{
                             position: 'relative',
                             overflow: 'hidden',
-                            borderRadius: '12px',
-                            boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                            height: '350px',
+                            borderRadius: '20px',
+                            boxShadow: '0 8px 30px rgba(24, 74, 140, 0.12)',
+                            height: '420px',
                             cursor: 'pointer',
-                            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                            border: '2px solid rgba(24, 74, 140, 0.08)'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-8px)';
-                            e.currentTarget.style.boxShadow = '0 12px 30px rgba(0,0,0,0.15)';
+                            e.currentTarget.style.transform = 'translateY(-10px)';
+                            e.currentTarget.style.boxShadow = '0 15px 45px rgba(24, 74, 140, 0.2)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)';
+                            e.currentTarget.style.boxShadow = '0 8px 30px rgba(24, 74, 140, 0.12)';
                         }}
                     >
                         <img
@@ -67,7 +70,7 @@ const ProjectGrid: React.FC = () => {
                                 transition: 'transform 0.4s ease'
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'scale(1.1)';
+                                e.currentTarget.style.transform = 'scale(1.08)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.transform = 'scale(1)';
@@ -78,23 +81,27 @@ const ProjectGrid: React.FC = () => {
                             bottom: 0,
                             left: 0,
                             right: 0,
-                            background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%)',
-                            padding: '40px 25px 25px',
+                            background: 'linear-gradient(to top, rgba(24, 74, 140, 0.98) 0%, rgba(24, 74, 140, 0.80) 35%, transparent 100%)',
+                            padding: '40px 30px 30px',
                             color: 'white'
                         }}>
                             <h3 style={{
-                                fontSize: '22px',
-                                fontWeight: '700',
-                                marginBottom: '8px',
-                                color: 'white'
+                                fontSize: '28px',
+                                fontWeight: '800',
+                                marginBottom: '12px',
+                                color: 'white',
+                                textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+                                lineHeight: '1.2'
                             }}>
                                 {item.title}
                             </h3>
                             <p style={{
-                                fontSize: '15px',
-                                lineHeight: '1.5',
-                                color: 'rgba(255, 255, 255, 0.95)',
-                                margin: 0
+                                fontSize: '17px',
+                                lineHeight: '1.6',
+                                color: 'rgba(255, 255, 255, 0.98)',
+                                margin: 0,
+                                fontWeight: '400',
+                                textShadow: '0 1px 4px rgba(0, 0, 0, 0.2)'
                             }}>
                                 {item.description}
                             </p>
@@ -104,30 +111,32 @@ const ProjectGrid: React.FC = () => {
             </div>
 
             {projectData.length > 3 && (
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'center', marginTop: '30px' }}>
                     <button
                         onClick={() => setShowAll(!showAll)}
                         style={{
-                            padding: '16px 40px',
-                            background: 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)',
+                            padding: '18px 50px',
+                            background: 'linear-gradient(135deg, #184A8C 0%, #2667b8 100%)',
                             color: 'white',
-                            fontSize: '16px',
+                            fontSize: '17px',
                             fontWeight: '700',
-                            borderRadius: '8px',
+                            borderRadius: '12px',
                             border: 'none',
                             cursor: 'pointer',
                             textTransform: 'uppercase',
-                            letterSpacing: '0.5px',
-                            boxShadow: '0 4px 12px rgba(30, 58, 138, 0.3)',
+                            letterSpacing: '1px',
+                            boxShadow: '0 6px 20px rgba(24, 74, 140, 0.3)',
                             transition: 'all 0.3s ease'
                         }}
                         onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = 'translateY(-3px)';
-                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(30, 58, 138, 0.4)';
+                            e.currentTarget.style.transform = 'translateY(-4px)';
+                            e.currentTarget.style.boxShadow = '0 10px 30px rgba(24, 74, 140, 0.4)';
+                            e.currentTarget.style.background = 'linear-gradient(135deg, #2667b8 0%, #184A8C 100%)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(30, 58, 138, 0.3)';
+                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(24, 74, 140, 0.3)';
+                            e.currentTarget.style.background = 'linear-gradient(135deg, #184A8C 0%, #2667b8 100%)';
                         }}
                     >
                         {showAll ? 'Show Less' : 'View All Projects'}

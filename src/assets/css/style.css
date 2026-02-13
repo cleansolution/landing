@@ -84,7 +84,7 @@ button {
     display: none;
 }
 ::-webkit-scrollbar-thumb {
-    background: #00C2FF;
+    background:  #184A8C;
     background-clip: content-box;
 }
 ::-webkit-scrollbar-track {
@@ -169,7 +169,7 @@ button {
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
-    background: #00C2FF;
+    background:  #184A8C;
     border-radius: 30px;
     padding: 18px 30px;
     position: relative;
@@ -237,7 +237,9 @@ button {
 .menu {
     list-style: none;
     display: flex;
-    gap: 60px;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
 }
 .menu li {
     position: relative;
@@ -245,23 +247,24 @@ button {
 .menu li span {
     width: 8px;
     height: 8px;
-    background: #00C2FF;
+    background:  #184A8C;
     border-radius: 50%;
     position: absolute;
     top: 10px;
-    right: -35px;
+    right: -16px;
 }
 .menu li button,
 .menu li a {
     color: #000;
-    font-size: 18px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
     background: transparent;
+    white-space: nowrap;
 }
 .menu li:hover>a {
-    color: #00C2FF;
+    color:  #184A8C;
     filter: brightness(0) saturate(100%) invert(67%) sepia(37%) saturate(7498%) hue-rotate(162deg) brightness(108%) contrast(103%);
 }
 .menu>li>button.active {
@@ -269,7 +272,7 @@ button {
 }
 .submenu li a.active,
 .menu li a.active {
-    color: #00C2FF !important;
+    color:  #184A8C !important;
 }
 .submenu {
     position: absolute;
@@ -278,7 +281,7 @@ button {
     background: white;
     padding: 10px 0;
     border-radius: 0 0 15px 15px;
-    border-top: 2px solid #00C2FF;
+    border-top: 2px solid  #184A8C;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     display: none;
     min-width: 210px;
@@ -297,7 +300,7 @@ button {
     padding: 8px 20px;
 }
 .submenu li a:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .nav-actions {
     display: flex;
@@ -421,7 +424,7 @@ button {
     margin-top: 20px;
     padding-left: 20px;
     margin-bottom: 60px;
-    border-left: 10px solid #00C2FF;
+    border-left: 10px solid  #184A8C;
 }
 .home-img-clening {
     position: absolute;
@@ -618,7 +621,7 @@ button {
     padding: 100px 0;
 }
 .cap-text {
-    color: var(--16, #00C2FF);
+    color: var(--16,  #184A8C);
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
@@ -665,7 +668,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 .about-box-main:hover .about-svg-main {
-    background: #00C2FF;
+    background:  #184A8C;
 }
 .about-svg-main img {
     transition: transform 0.6s ease;
@@ -695,10 +698,10 @@ button {
 }
 .about-sec-main .call {
     background: transparent;
-    border: 2px solid #00C2FF;
+    border: 2px solid  #184A8C;
 }
 .about-sec-main .call .headphone-main {
-    background: #00C2FF;
+    background:  #184A8C;
 }
 .about-sec-main .call .headphone-main img {
     filter: brightness(0) saturate(100%) invert(82%) sepia(100%) saturate(0%) hue-rotate(85deg) brightness(112%) contrast(101%);
@@ -708,7 +711,7 @@ button {
     color: #000;
 }
 .about-sec-main .call .need-help-main a:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .sub-img-main {
     position: relative;
@@ -857,7 +860,7 @@ button {
     justify-content: center;
     gap: 8px;
     padding: 20px;
-    color: var(--16, #00C2FF);
+    color: var(--16,  #184A8C);
     font-size: 18px;
     font-weight: 600;
     line-height: 24px;
@@ -883,7 +886,7 @@ button {
     top: 0;
     height: 0;
     width: 100%;
-    background-color: #00C2FF;
+    background-color:  #184A8C;
     z-index: -1;
     transition: inherit;
 }
@@ -931,7 +934,7 @@ button {
 .sadas {
     width: 360px;
     height: 100%;
-    border: 2px solid #00C2FF;
+    border: 2px solid  #184A8C;
     border-radius: 180px;
     position: absolute;
     left: 130px;
@@ -1001,7 +1004,7 @@ button {
 }
 .calcult-from-grid input:focus,
 .your-message-input input:focus {
-    outline: 2px solid #00C2FF;
+    outline: 2px solid  #184A8C;
 }
 .input-mainteam {
     position: relative;
@@ -1045,7 +1048,7 @@ button {
     top: 15px;
     width: 100%;
     z-index: 5;
-    border: 1px solid #00C2FF;
+    border: 1px solid  #184A8C;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 .formDropDown-ul-list span {
@@ -1058,7 +1061,7 @@ button {
     padding: 10px 12px;
 }
 .formDropDown-ul-list li:hover {
-    background: #00C2FF;
+    background:  #184A8C;
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -1139,7 +1142,7 @@ button {
     top: 0;
     height: 0;
     width: 100%;
-    background-color: #00C2FF;
+    background-color:  #184A8C;
     z-index: -1;
     transition: inherit;
     transition: all 0.3s ease;
@@ -1215,7 +1218,7 @@ button {
 }
 .view-project-btn {
     background: #FFFFFF;
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .view-project-btn:hover {
     color: #FFF !important;
@@ -1237,7 +1240,7 @@ button {
 }
 .project-button-next:hover,
 .project-button-prev:hover {
-    background: #00C2FF;
+    background:  #184A8C;
 }
 .project-button-next.swiper-button-next,
 .project-button-prev.swiper-button-prev {
@@ -1256,7 +1259,7 @@ button {
     padding: 100px 0;
 }
 .team-circle-main {
-    border: 2px solid #00C2FF;
+    border: 2px solid  #184A8C;
     padding: 20px;
     border-radius: 50%;
     position: relative;
@@ -1284,7 +1287,7 @@ button {
     max-width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: #00C2FF;
+    background:  #184A8C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1305,7 +1308,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 .team-circle-link:hover h3 {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .team-circle-link p {
     color: var(--4, #222);
@@ -1334,7 +1337,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #00C2FF;
+    background:  #184A8C;
     border: 2px solid transparent;
     border-radius: 50%;
     transform: translateY(20px) scale(0.8);
@@ -1345,7 +1348,7 @@ button {
 }
 .social-icons li:hover {
     background: #FFF;
-    border: 2px solid #00C2FF;
+    border: 2px solid  #184A8C;
 }
 .social-icons li:hover img {
     filter: brightness(0) saturate(100%) invert(80%) sepia(39%) saturate(7500%) hue-rotate(155deg) brightness(99%) contrast(105%);
@@ -1499,7 +1502,7 @@ button {
     flex-direction: column;
 }
 .blog-box-main:hover {
-    border-color: #00C2FF;
+    border-color:  #184A8C;
     box-shadow: 0 15px 30px rgba(74, 108, 247, 0.1);
 }
 .blog-box-main::after {
@@ -1542,7 +1545,7 @@ button {
     transition: all 0.4s ease;
 }
 .blog-box-main:hover .blog-date {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .blog-date::before,
 .blog-date::after {
@@ -1582,7 +1585,7 @@ button {
     transition: color 0.3s ease;
 }
 .blog-box-main:hover .blog-containe-main h2 {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .blog-containe-main p {
     overflow: hidden;
@@ -1616,7 +1619,7 @@ button {
     gap: 60px;
 }
 .call-support-text {
-    color: var(--16, #00C2FF);
+    color: var(--16,  #184A8C);
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
@@ -1631,7 +1634,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 .tel-num:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .contac-form-main {
     border-radius: 20px;
@@ -1729,7 +1732,7 @@ button {
     transition: all 0.4s ease-in-out;
 }
 .quicklinks-main ul li a:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .footer-img-group {
     display: flex;
@@ -1785,7 +1788,7 @@ button {
 }
 .media-logo-call-footer .call-detl {
     border-radius: 50px;
-    background: var(--14, #00C2FF);
+    background: var(--14,  #184A8C);
     padding: 10px 50px 10px 10px;
 }
 .media-logo-call-footer .call-detl .img-main-call {
@@ -1810,7 +1813,7 @@ button {
     transition: all 0.3s ease-in-out;
 }
 .footer-med-icons:hover {
-    background: #00C2FF;
+    background: #184A8C;
 }
 .footer-med-icons img {
     width: 32px;
@@ -1831,7 +1834,7 @@ button {
     text-align: center;
 }
 .copyrights-main a:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .call-detl {
     display: flex;
@@ -1842,7 +1845,7 @@ button {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: #00C2FF;
+    background:  #184A8C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1871,7 +1874,7 @@ button.bottom-top-button {
     height: 50px;
     color: #FFF;
     font-size: 30px;
-    background: #00C2FF;
+    background: #184A8C;
 }
 /*-----------------------[ 19.About Page CSS ]------------------------*/
 .heroSection {
@@ -1952,7 +1955,7 @@ button.bottom-top-button {
     font-size: 18px;
     font-weight: 600;
     line-height: 20px;
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .team-meta li a,
 .team-meta li p {
@@ -1963,7 +1966,7 @@ button.bottom-top-button {
     transition: all .35s ease-in-out;
 }
 .team-meta li a:hover {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .single-team-social {
     display: flex;
@@ -1989,7 +1992,7 @@ button.bottom-top-button {
     filter: brightness(0) saturate(100%) invert(65%) sepia(94%) saturate(3410%) hue-rotate(159deg) brightness(104%) contrast(104%);
 }
 .single-team-social a:hover {
-    background: #00C2FF;
+    background:  #184A8C;
 }
 .single-team-social a:hover img {
     filter: brightness(0) saturate(100%) invert(99%) sepia(99%) saturate(0%) hue-rotate(318deg) brightness(100%) contrast(105%);
@@ -2033,7 +2036,7 @@ button.bottom-top-button {
 }
 .progress-number-wrapper,
 .progress-number-mark {
-    color: #00C2FF;
+    color:  #184A8C;
     font-size: 18px;
     font-weight: 400;
     line-height: 30px;
@@ -2056,7 +2059,7 @@ button.bottom-top-button {
 .progress-content {
     height: 8px;
     border-radius: 10px;
-    background-color: #00C2FF;
+    background-color:  #184A8C;
     width: 0%;
 }
 /*-----------------------[ 21.Pricing Plan Page CSS ]------------------------*/
@@ -2078,7 +2081,7 @@ button.bottom-top-button {
     transition: 0.3s ease;
 }
 .pricing-card.enterprise {
-    background-color: #00C2FF;
+    background-color:  #184A8C;
     color: #fff;
 }
 .pricing-card h2 {
@@ -2097,7 +2100,7 @@ button.bottom-top-button {
 .price {
     font-size: 40px;
     font-weight: 700;
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .enterprise .price {
     color: #fff;
@@ -2139,7 +2142,7 @@ button.bottom-top-button {
     position: absolute;
     left: 0;
     top: 0;
-    color: #00C2FF;
+    color:  #184A8C;
     font-size: 16px;
 }
 .enterprise .features li::before {
@@ -2216,7 +2219,7 @@ button.bottom-top-button {
     margin-bottom: 15px;
 }
 .accordion-button:not(.collapsed) {
-    color: #00C2FF;
+    color:  #184A8C;
     background-color: rgba(0, 194, 255, 0.1) !important;
 }
 #accordionExample.accordion {
@@ -2330,7 +2333,7 @@ button.bottom-top-button {
 }
 .service-list-arow-main:hover,
 .service-list-arow-main.active {
-    background: #00C2FF;
+    background:  #184A8C;
 }
 .service-list-arow-main:hover p,
 .service-list-arow-main.active p {
@@ -2382,7 +2385,7 @@ button.bottom-top-button {
 .brochure {
     width: 60px;
     height: 60px;
-    background: #00C2FF;
+    background:  #184A8C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2488,7 +2491,7 @@ button.bottom-top-button {
     margin-top: 50px;
 }
 .diamond-btn {
-    background: #00C2FF;
+    background:  #184A8C;
     width: 40px;
     height: 40px;
     display: flex;
@@ -2538,7 +2541,7 @@ button.bottom-top-button {
     line-height: 30px;
 }
 .project-info-main p:nth-child(2) {
-    color: #00C2FF;
+    color:  #184A8C;
     font-size: 20px;
 }
 .project-details-icon .footer-med-icons img {
@@ -2550,7 +2553,7 @@ button.bottom-top-button {
     gap: 10px;
 }
 .project-details-icon .footer-med-icons {
-    background: #00C2FF;
+    background:  #184A8C;
     width: 50px;
     height: 50px;
 }
@@ -2623,7 +2626,7 @@ button.bottom-top-button {
     transition: all 0.3s ease-in-out;
 }
 .recent-post-main:hover h2 {
-    color: #00C2FF;
+    color:  #184A8C;
 }
 .adds-details-main {
     margin-top: 40px;
@@ -2671,7 +2674,7 @@ button.bottom-top-button {
     margin-top: 15px;
 }
 .line {
-    border-top: 2px solid #00C2FF;
+    border-top: 2px solid  #184A8C;
     width: 60px;
 }
 .jordon {

@@ -14,8 +14,13 @@ const Header = () => {
 
     const menuItems = [
         { label: "Home", link: "#home" },
-        { label: "Services", link: "#services" },
         { label: "About Us", link: "#about" },
+        { label: "Services", link: "#featured-services" },
+        { label: "Why Us", link: "#why-us" },
+        { label: "How It Works", link: "#how-it-works" },
+        { label: "Projects", link: "#projects" },
+        { label: "Testimonials", link: "#testimonials" },
+        { label: "FAQ", link: "#faq" },
         { label: "Contact", link: "#contact" }
     ];
 
@@ -47,7 +52,16 @@ const Header = () => {
                                     <li key={index}>
                                         <a
                                             href={item.link}
-                                            onClick={() => setMenuOpen(false)}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                setMenuOpen(false);
+                                                const target = document.querySelector(item.link);
+                                                if (target) {
+                                                    const offset = 80;
+                                                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                                                    window.scrollTo({ top, behavior: 'smooth' });
+                                                }
+                                            }}
                                         >
                                             {item.label}
                                         </a>
@@ -62,7 +76,7 @@ const Header = () => {
                                 </div>
                                 <div className="need-help-main">
                                     <p>Need Help Now?</p>
-                                    <a href="tel:+17573058237">+1 (757) 305 8237</a>
+                                    <a href="tel:+17573058237">(757) 305-8237</a>
                                 </div>
                             </div>
                             <a href="#contact" className="btn-quote get-quote-btn">Get A Quote
