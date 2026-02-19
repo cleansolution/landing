@@ -2,9 +2,10 @@
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
+const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = 5000;
+const PORT = Number(process.env.PORT || 5000);
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT;
 const REPO_OWNER = process.env.GITHUB_REPO_OWNER || 'cleansolution';
 const REPO_NAME = process.env.GITHUB_REPO_NAME || 'landing';
@@ -242,6 +243,81 @@ app.post('/api/github/commit', async (req, res) => {
   } catch (error) {
     console.error('GitHub commit failed:', error);
     res.status(500).json({ message: error.message || 'GitHub commit failed' });
+  }
+});
+
+app.post('/api/contact-message', async (req, res) => {
+  try {
+    const {
+      fullName = '',
+      email = '',
+      phone = '',
+      service = '',
+      message = '',
+      source = 'website'
+    } = req.body || {};
+
+    if (!fullName || !email || !phone || !service) {
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+
+    const SMTP_HOST = process.env.SMTP_HOST;
+    const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+    const SMTP_SECURE = process.env.SMTP_SECURE === 'true';
+    const SMTP_USER = process.env.SMTP_USER;
+    const SMTP_PASS = process.env.SMTP_PASS;
+    const CONTACT_TO = process.env.CONTACT_TO || 'info@cleansolutionsva.com';
+    const CONTACT_FROM = process.env.CONTACT_FROM || SMTP_USER;
+
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_FROM) {
+      return res.status(500).json({
+        message: 'SMTP is not configured. Set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_FROM.'
+      });
+    }
+
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_SECURE,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS
+      }
+    });
+
+    const subject = `New Quote Request - ${fullName} (${service})`;
+    const text = [
+      `Source: ${source}`,
+      `Name: ${fullName}`,
+      `Email: ${email}`,
+      `Phone: ${phone}`,
+      `Service: ${service}`,
+      `Message: ${message || '-'}`
+    ].join('\n');
+
+    const html = `
+      <h2>New Quote Request</h2>
+      <p><strong>Source:</strong> ${source}</p>
+      <p><strong>Name:</strong> ${fullName}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Service:</strong> ${service}</p>
+      <p><strong>Message:</strong><br/>${(message || '-').replace(/\n/g, '<br/>')}</p>
+    `;
+
+    await transporter.sendMail({
+      from: CONTACT_FROM,
+      to: CONTACT_TO,
+      replyTo: email,
+      subject,
+      text,
+      html
+    });
+
+    return res.json({ success: true, message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Error sending contact message:', error);
+    return res.status(500).json({ message: 'Failed to send message' });
   }
 });
 

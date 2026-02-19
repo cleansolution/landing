@@ -4,6 +4,7 @@ import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
 import sectionsData from '../data/sectionsData.json';
 import aboutData from '../data/aboutData.json';
+import AboutOwnerImage from '../assets/images/about/about-img4.jpg';
 import Video2 from '../assets/video/video2.mp4';
 import CheckTransparent from '../assets/images/svg/check-transparent.svg';
 import HowWorkSvg1 from '../assets/images/svg/how-to-work-svg1.svg';
@@ -27,6 +28,36 @@ const HomeSolid: React.FC = () => {
                 <HomeHeroSolid />
             </section>
             {/* <!-- ====================================== Section Two ===================================== --> */}
+            <section id="featured-services" className="section-three" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
+                <div className="container">
+                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                        <p className="cap-text fade_up" style={{
+                            fontSize: '16px',
+                            color: '#184A8C',
+                            fontWeight: '600',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px',
+                            marginBottom: '15px'
+                        }}>OUR FEATURED SERVICES</p>
+                        <h2 className="sec-text pb-0 fade_up" style={{
+                            fontSize: '42px',
+                            fontWeight: '700',
+                            marginBottom: '20px',
+                            maxWidth: '800px',
+                            margin: '0 auto 20px'
+                        }}>The United Way For To Find Specialist Services</h2>
+                        <p className="sec-sub-text ornare fade_up" style={{
+                            maxWidth: '700px',
+                            margin: '0 auto',
+                            fontSize: '16px',
+                            lineHeight: '1.6',
+                            color: '#666'
+                        }}>We offer a comprehensive range of professional cleaning services tailored to meet your specific needs. Our experienced team delivers exceptional results with attention to detail and commitment to excellence.</p>
+                    </div>
+                    <ServicesFeatured />
+                </div>
+            </section>
+            {/* <!-- ====================================== Section Three ===================================== --> */}
             <section id="about" className="section-two">
                 <div className="container">
                     <div className="row align-items-center">
@@ -66,8 +97,8 @@ const HomeSolid: React.FC = () => {
                                     border: '4px solid white'
                                 }}>
                                     <img 
-                                        src="https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                                        alt="Professional Cleaning Team" 
+                                        src={AboutOwnerImage}
+                                        alt="Clean Solutions Owner" 
                                         style={{
                                             width: '100%',
                                             height: 'auto',
@@ -78,37 +109,6 @@ const HomeSolid: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-            <TrustBadges />
-            {/* <!-- ====================================== Section Three ===================================== --> */}
-            <section id="featured-services" className="section-three" style={{ paddingTop: '60px', paddingBottom: '60px' }}>
-                <div className="container">
-                    <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-                        <p className="cap-text fade_up" style={{ 
-                            fontSize: '16px', 
-                            color: '#184A8C', 
-                            fontWeight: '600', 
-                            textTransform: 'uppercase', 
-                            letterSpacing: '1px',
-                            marginBottom: '15px'
-                        }}>OUR FEATURED SERVICES</p>
-                        <h2 className="sec-text pb-0 fade_up" style={{ 
-                            fontSize: '42px', 
-                            fontWeight: '700', 
-                            marginBottom: '20px',
-                            maxWidth: '800px',
-                            margin: '0 auto 20px'
-                        }}>The United Way For To Find Specialist Services</h2>
-                        <p className="sec-sub-text ornare fade_up" style={{ 
-                            maxWidth: '700px', 
-                            margin: '0 auto',
-                            fontSize: '16px',
-                            lineHeight: '1.6',
-                            color: '#666'
-                        }}>We offer a comprehensive range of professional cleaning services tailored to meet your specific needs. Our experienced team delivers exceptional results with attention to detail and commitment to excellence.</p>
-                    </div>
-                    <ServicesFeatured />
                 </div>
             </section>
             {/* <!-- ====================================== Section Four ===================================== --> */}
@@ -236,7 +236,7 @@ const HomeSolid: React.FC = () => {
                                 }}
                             >
                                 <img src={headphoneIcon} alt="phone" style={{ width: '20px', height: '20px' }} />
-                                Call Now
+                                (757) 305-8237
                             </a>
                             <a 
                                 href="#contact" 
@@ -361,7 +361,7 @@ const HomeSolid: React.FC = () => {
                                 color: '#184A8C',
                                 marginBottom: '15px',
                                 lineHeight: '1.3'
-                            }}>Pick a suitable plan</h3>
+                            }}>Choose a service</h3>
                             <p className="fessional send-info" style={{
                                 fontSize: '16px',
                                 color: '#666',
@@ -545,6 +545,7 @@ const HomeSolid: React.FC = () => {
             <section id="testimonials" className="section-nine pt-0">
                 <Testimonials />
             </section>
+            <TrustBadges />
             <FAQ />
             <CTASection />
             <ContactForm />

@@ -1,6 +1,7 @@
 const USE_LOCAL_SERVER = process.env.REACT_APP_USE_LOCAL_SERVER === 'true';
 const API_URL = process.env.REACT_APP_API_URL || '';
 const LOCAL_API_URL = API_URL || 'http://localhost:5000/api';
+const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT || '';
 
 export const fetchData = async (endpoint) => {
   try {
@@ -111,4 +112,23 @@ export const contactAPI = {
 export const footerAPI = {
   get: () => fetchData('footer'),
   save: (footer) => saveData('footer', footer),
+};
+
+export const submitContactMessage = async (payload) => {
+  const endpoint = CONTACT_ENDPOINT || (USE_LOCAL_SERVER
+    ? `${LOCAL_API_URL}/contact-message`
+    : (API_URL ? `${API_URL}/contact-message` : '/api/contact-message'));
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    throw new Error(error.message || 'Failed to send contact message');
+  }
+
+  return response.json();
 };

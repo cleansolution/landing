@@ -56,13 +56,14 @@ function ServicesFeatured() {
     
     // Mapeo de títulos de servicios a IDs del JSON de detalles
     const serviceIdMap: { [key: string]: string } = {
-        'Regular Cleaning': 'regularCleaning',
+        'Standard Cleaning': 'standardCleaning',
         'Deep Cleaning': 'deepCleaning',
-        'Move In/Move Out Cleaning': 'moveInOut',
-        'Airbnb Cleaning': 'regularCleaning', // Usa regular cleaning como base
-        'Post-Construction Cleaning': 'postConstruction',
+        'Move Out/In': 'moveOutIn',
+        'Airbnb Cleaning': 'airbnbCleaning',
+        'Post Construction Cleaning': 'postConstruction',
         'Office Cleaning': 'officeCleaning',
-        'Janitorial Services': 'commercialCleaning'
+        'Commercial Cleaning': 'commercialCleaning',
+        'Windows Cleaning': 'windowsCleaning'
     };
     
     // Agrupar servicios por categoría

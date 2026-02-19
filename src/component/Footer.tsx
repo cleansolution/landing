@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import WhiteLogoSvg from '../assets/images/svg/white-logo.svg';
 import facebook from "../assets/images/svg/facebook.svg";
-import twitter from '../assets/images/svg/twitter.svg';
+import tiktok from '../assets/images/svg/tiktok.svg';
 import insta from '../assets/images/svg/insta.svg';
 
 const Footer = () => {
@@ -45,7 +45,7 @@ const Footer = () => {
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#ffffff';
                                     e.currentTarget.style.transform = 'translateY(-3px)';
-                                    e.currentTarget.querySelector('img').style.filter = 'none';
+                                    e.currentTarget.querySelector('img').style.filter = 'brightness(0) saturate(100%)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
@@ -55,7 +55,7 @@ const Footer = () => {
                                 >
                                     <img src={facebook} alt="facebook" style={{ width: '16px', filter: 'brightness(0) invert(1)', transition: '0.3s' }} />
                                 </a>
-                                <a href="https://x.com" className="social-icon" style={{
+                                <a href="https://www.tiktok.com" className="social-icon" style={{
                                     width: '40px', 
                                     height: '40px', 
                                     backgroundColor: 'rgba(255,255,255,0.1)', 
@@ -69,7 +69,7 @@ const Footer = () => {
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#ffffff';
                                     e.currentTarget.style.transform = 'translateY(-3px)';
-                                    e.currentTarget.querySelector('img').style.filter = 'none';
+                                    e.currentTarget.querySelector('img').style.filter = 'brightness(0) saturate(100%)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
@@ -77,7 +77,7 @@ const Footer = () => {
                                     e.currentTarget.querySelector('img').style.filter = 'brightness(0) invert(1)';
                                 }}
                                 >
-                                    <img src={twitter} alt="twitter" style={{ width: '16px', filter: 'brightness(0) invert(1)', transition: '0.3s' }} />
+                                    <img src={tiktok} alt="tiktok" style={{ width: '16px', filter: 'brightness(0) invert(1)', transition: '0.3s' }} />
                                 </a>
                                 <a href="https://www.instagram.com" className="social-icon" style={{
                                     width: '40px', 
@@ -93,7 +93,7 @@ const Footer = () => {
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.backgroundColor = '#ffffff';
                                     e.currentTarget.style.transform = 'translateY(-3px)';
-                                    e.currentTarget.querySelector('img').style.filter = 'none';
+                                    e.currentTarget.querySelector('img').style.filter = 'brightness(0) saturate(100%)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';

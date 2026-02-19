@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import FormularioBg from "../assets/images/about/formulario.jpg";
+import { submitContactMessage } from "../services/api";
 
 const ContactForm: React.FC = () => {
     const location = useLocation();
 
-    const [cleanType, setCleanType] = useState<string>("Full Cleaning");
+    const [cleanType, setCleanType] = useState<string>("Standard Cleaning");
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -28,13 +30,14 @@ const ContactForm: React.FC = () => {
     }, []);
 
     const cleanTypeOptions: string[] = [
-        "Full Cleaning",
-        "House Cleaning",
-        "Kitchen Cleaning",
+        "Standard Cleaning",
+        "Commercial Cleaning",
+        "Post Construction Cleaning",
+        "Deep Cleaning",
+        "Move Out/In",
+        "Airbnb Cleaning",
         "Office Cleaning",
-        "Window Cleaning",
-        "Corporate Cleaning",
-        "Carpet Cleaning",
+        "Windows Cleaning"
     ];
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -43,16 +46,14 @@ const ContactForm: React.FC = () => {
         setSubmitStatus('idle');
 
         try {
-            // Crear el mensaje para email
-            const subject = `New Contact: ${formData.fullName} - ${cleanType}`;
-            const body = `Name: ${formData.fullName}%0A` +
-                `Email: ${formData.email}%0A` +
-                `Phone: ${formData.phone}%0A` +
-                `Cleaning Area: ${cleanType}%0A` +
-                `Message: ${formData.message}`;
-
-            // Abrir email con el mensaje
-            window.open(`mailto:info@cleansolutionsva.com?subject=${subject}&body=${body}`, '_blank');
+            await submitContactMessage({
+                fullName: formData.fullName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                service: cleanType,
+                message: formData.message.trim(),
+                source: 'contact-section'
+            });
 
             // Resetear formulario
             setFormData({
@@ -61,7 +62,7 @@ const ContactForm: React.FC = () => {
                 phone: '',
                 message: ''
             });
-            setCleanType('Full Cleaning');
+            setCleanType('Standard Cleaning');
             setSubmitStatus('success');
 
             // Limpiar mensaje de éxito después de 3 segundos
@@ -81,6 +82,10 @@ const ContactForm: React.FC = () => {
             {location.pathname !== "/GetQuote" && (
                 <section id="contact" className="contact-form-section" style={{
                     backgroundColor: '#f8f9fa',
+                    backgroundImage: `url(${FormularioBg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
                     padding: '80px 0'
                 }}>
                     <div className="container">
@@ -323,6 +328,52 @@ const ContactForm: React.FC = () => {
                                         }}>
                                             Professional cleaning services for residential and commercial properties. Contact us for a free quote and experience spotless results.
                                         </p>
+                                    </div>
+
+                                    <div style={{
+                                        marginBottom: '25px',
+                                        padding: '18px',
+                                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                                        borderRadius: '12px',
+                                        border: '1px solid rgba(255, 255, 255, 0.2)'
+                                    }}>
+                                        <p style={{
+                                            fontSize: '12px',
+                                            letterSpacing: '1.2px',
+                                            textTransform: 'uppercase',
+                                            marginBottom: '12px',
+                                            fontWeight: '700',
+                                            opacity: '0.9'
+                                        }}>Why Clients Choose Us</p>
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                            {[
+                                                'Licensed & Insured Team',
+                                                'Fast Response and Scheduling',
+                                                'Detail-Oriented Cleaning'
+                                            ].map((item, index) => (
+                                                <div key={index} style={{
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    gap: '10px',
+                                                    fontSize: '14px',
+                                                    fontWeight: '500',
+                                                    opacity: '0.95'
+                                                }}>
+                                                    <span style={{
+                                                        width: '20px',
+                                                        height: '20px',
+                                                        borderRadius: '50%',
+                                                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                                        display: 'inline-flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        fontSize: '12px',
+                                                        fontWeight: '700'
+                                                    }}>✓</span>
+                                                    <span>{item}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
 
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '25px' }}>

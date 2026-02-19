@@ -16,11 +16,6 @@ const TrustBadges: React.FC = () => {
             icon: "🌿",
             title: "Eco-Friendly",
             subtitle: "Products"
-        },
-        {
-            icon: "✓",
-            title: "Background",
-            subtitle: "Checked Team"
         }
     ];
 

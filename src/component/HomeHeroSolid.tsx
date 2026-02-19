@@ -1,8 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import Video1 from '../assets/video/CleanSolutions.mp4';
+import { submitContactMessage } from '../services/api';
 
 const HomeHeroSolid: React.FC = () => {
+    const cleanTypeOptions: string[] = [
+        "Standard Cleaning",
+        "Commercial Cleaning",
+        "Post Construction Cleaning",
+        "Deep Cleaning",
+        "Move Out/In",
+        "Airbnb Cleaning",
+        "Office Cleaning",
+        "Windows Cleaning"
+    ];
+
+    const [cleanType, setCleanType] = useState<string>(cleanTypeOptions[0]);
+    const [formData, setFormData] = useState({
+        fullName: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+
+        try {
+            await submitContactMessage({
+                fullName: formData.fullName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                service: cleanType,
+                message: formData.message.trim(),
+                source: 'hero-form'
+            });
+
+            setFormData({
+                fullName: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
+            setCleanType(cleanTypeOptions[0]);
+            setSubmitStatus('success');
+            setTimeout(() => setSubmitStatus('idle'), 3000);
+        } catch (error) {
+            console.error('Error sending hero contact form:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <>
             <style>{`
@@ -146,6 +200,90 @@ const HomeHeroSolid: React.FC = () => {
                     background: linear-gradient(90deg, #00adef 0%, #0099d6 100%);
                     box-shadow: 0 2px 10px rgba(0, 173, 239, 0.4);
                 }
+
+                .hero-form-wrap {
+                    width: 100%;
+                    max-width: 460px;
+                    margin-left: auto;
+                }
+
+                .hero-glass-form {
+                    background: rgba(255, 255, 255, 0.14);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 18px;
+                    backdrop-filter: blur(14px);
+                    -webkit-backdrop-filter: blur(14px);
+                    padding: 28px 22px;
+                    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.28);
+                }
+
+                .hero-form-title {
+                    color: #ffffff;
+                    font-size: clamp(22px, 2.5vw, 30px);
+                    font-weight: 800;
+                    margin-bottom: 8px;
+                    line-height: 1.2;
+                }
+
+                .hero-form-subtitle {
+                    color: rgba(255, 255, 255, 0.9);
+                    margin-bottom: 18px;
+                    font-size: 14px;
+                    line-height: 1.5;
+                }
+
+                .hero-form-grid {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 12px;
+                }
+
+                .hero-form-input,
+                .hero-form-select,
+                .hero-form-textarea {
+                    width: 100%;
+                    border: 1px solid rgba(255, 255, 255, 0.28);
+                    background: rgba(255, 255, 255, 0.12);
+                    color: #ffffff;
+                    border-radius: 10px;
+                    outline: none;
+                    padding: 12px 14px;
+                    font-size: 14px;
+                }
+
+                .hero-form-select option {
+                    color: #111;
+                }
+
+                .hero-form-input::placeholder,
+                .hero-form-textarea::placeholder {
+                    color: rgba(255, 255, 255, 0.78);
+                }
+
+                .hero-form-textarea {
+                    min-height: 100px;
+                    resize: vertical;
+                    grid-column: span 2;
+                }
+
+                .hero-form-submit {
+                    width: 100%;
+                    margin-top: 14px;
+                    border: none;
+                    border-radius: 10px;
+                    padding: 14px 16px;
+                    font-size: 15px;
+                    font-weight: 700;
+                    color: #184A8C;
+                    background: #ffffff;
+                    cursor: pointer;
+                    transition: transform 0.25s ease, box-shadow 0.25s ease;
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+                }
+
+                .hero-form-submit:hover {
+                    transform: translateY(-1px);
+                }
                 
                 @media (max-width: 991px) {
                     .main-swiper-video-bg {
@@ -166,6 +304,10 @@ const HomeHeroSolid: React.FC = () => {
                         display: flex !important;
                         flex-direction: column !important;
                         align-items: center !important;
+                    }
+
+                    .hero-form-wrap {
+                        margin: 28px auto 0;
                     }
                     
                     .hero-phone-container {
@@ -241,6 +383,14 @@ const HomeHeroSolid: React.FC = () => {
                         font-size: 14px !important;
                         padding: 12px 28px !important;
                     }
+
+                    .hero-form-grid {
+                        grid-template-columns: 1fr;
+                    }
+
+                    .hero-form-textarea {
+                        grid-column: span 1;
+                    }
                 }
             `}</style>
             <div className="hero-slider">
@@ -250,12 +400,12 @@ const HomeHeroSolid: React.FC = () => {
                     </video>
                     <div className="slide-content">
                         <div className="container">
-                            <div className="row main-swiper-row">
+                            <div className="row main-swiper-row align-items-center">
                                 <div className="col-xxl-7 col-xl-7 col-lg-10 clearfix-space" style={{ opacity: 1, transform: 'none' }}>
                                     <div className="hero-divider" style={{ marginBottom: 'clamp(12px, 2vh, 18px)' }}></div>
                                     
                                     <p className="hero-location-text" style={{ marginBottom: 'clamp(12px, 2vh, 18px)' }}>
-                                        Virginia Beach and surrounding areas
+                                        Virginia Beach, Chesapeake, Norfolk, Portsmouth, Suffolk
                                     </p>
                                     
                                     <h1 className="hero-main-title" style={{ marginBottom: '4px' }}>
@@ -278,10 +428,6 @@ const HomeHeroSolid: React.FC = () => {
                                     
                                     <div className="hero-divider" style={{ marginBottom: 'clamp(14px, 2.5vh, 20px)' }}></div>
                                     
-                                    <p className="hero-quote-title" style={{ marginBottom: 'clamp(8px, 1.5vh, 12px)' }}>
-                                        Get a free quote
-                                    </p>
-                                    
                                     <div className="hero-phone-container" style={{ marginBottom: 'clamp(6px, 1vh, 10px)' }}>
                                         <span>Call Now:</span> 
                                         <a href="tel:+17573058237" className="hero-phone-link">(757) 305 8237</a>
@@ -294,6 +440,71 @@ const HomeHeroSolid: React.FC = () => {
                                     <a href="#featured-services" className="btn-quote our-services-btn">Our Services
                                         <img src={CrossArrow} alt="cross-arrow" />
                                     </a>
+                                </div>
+
+                                <div className="col-xxl-5 col-xl-5 col-lg-8">
+                                    <div id="contact" className="hero-form-wrap">
+                                        <div className="hero-glass-form">
+                                            <h2 className="hero-form-title">Get Your Quote</h2>
+                                            <p className="hero-form-subtitle">Tell us what you need and we will contact you quickly.</p>
+                                            {submitStatus === 'success' && (
+                                                <p className="hero-form-subtitle" style={{ color: '#9ef7c2', marginBottom: '12px' }}>
+                                                    Message sent successfully.
+                                                </p>
+                                            )}
+                                            {submitStatus === 'error' && (
+                                                <p className="hero-form-subtitle" style={{ color: '#ffd1d1', marginBottom: '12px' }}>
+                                                    Error sending message. Please try again.
+                                                </p>
+                                            )}
+                                            <form onSubmit={handleSubmit}>
+                                                <div className="hero-form-grid">
+                                                    <input
+                                                        className="hero-form-input"
+                                                        type="text"
+                                                        placeholder="Full Name"
+                                                        value={formData.fullName}
+                                                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                                                        required
+                                                    />
+                                                    <input
+                                                        className="hero-form-input"
+                                                        type="email"
+                                                        placeholder="Email"
+                                                        value={formData.email}
+                                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                        required
+                                                    />
+                                                    <input
+                                                        className="hero-form-input"
+                                                        type="text"
+                                                        placeholder="Phone"
+                                                        value={formData.phone}
+                                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                        required
+                                                    />
+                                                    <select
+                                                        className="hero-form-select"
+                                                        value={cleanType}
+                                                        onChange={(e) => setCleanType(e.target.value)}
+                                                    >
+                                                        {cleanTypeOptions.map((item, index) => (
+                                                            <option key={index} value={item}>{item}</option>
+                                                        ))}
+                                                    </select>
+                                                    <textarea
+                                                        className="hero-form-textarea"
+                                                        placeholder="Additional Details"
+                                                        value={formData.message}
+                                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                                    />
+                                                </div>
+                                                <button type="submit" className="hero-form-submit" disabled={isSubmitting} style={{ opacity: isSubmitting ? 0.8 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}>
+                                                    {isSubmitting ? 'Sending...' : 'Submit Request'}
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

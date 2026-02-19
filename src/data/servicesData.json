@@ -1,10 +1,10 @@
-﻿{
+{
   "services": [
     {
       "id": 1,
       "category": "Residential Cleaning",
-      "title": "Regular Cleaning",
-      "desc": "Consistent maintenance cleaning to keep your home fresh week after week with customizable checklists.",
+      "title": "Standard Cleaning",
+      "desc": "Consistent maintenance cleaning for living spaces, kitchen, and bathrooms with a clear checklist.",
       "link": "/Services",
       "img": "slider-img5.jpg",
       "svg": "services-svg5.svg"
@@ -21,8 +21,8 @@
     {
       "id": 3,
       "category": "Residential Cleaning",
-      "title": "Move In/Move Out Cleaning",
-      "desc": "Professional deep cleaning service for moving transitions. We ensure your new or old home is spotless and ready for the next chapter.",
+      "title": "Move Out/In",
+      "desc": "Move-focused cleaning to leave properties ready for handoff or make your new home clean from day one.",
       "link": "/Services",
       "img": "slider-img1.jpg",
       "svg": "services-svg1.svg"
@@ -39,8 +39,8 @@
     {
       "id": 5,
       "category": "Residential Cleaning",
-      "title": "Post-Construction Cleaning",
-      "desc": "Comprehensive cleanup after renovation or construction. We remove dust, debris, and leave your space pristine and move-in ready.",
+      "title": "Post Construction Cleaning",
+      "desc": "Three-phase post-construction cleaning to remove dust and prepare spaces for walkthrough, tours, and move-in.",
       "link": "/Services",
       "img": "slider-img3.jpg",
       "svg": "services-svg3.svg"
@@ -57,11 +57,20 @@
     {
       "id": 7,
       "category": "Commercial Cleaning",
-      "title": "Janitorial Services",
-      "desc": "Complete janitorial services for commercial properties including daily maintenance, floor care, and facility cleaning.",
+      "title": "Commercial Cleaning",
+      "desc": "Routine and high-touch sanitization for businesses, including floor care, restroom cleaning, and trash handling.",
       "link": "/Services",
       "img": "slider-img7.jpg",
       "svg": "services-svg1.svg"
+    },
+    {
+      "id": 8,
+      "category": "Residential Cleaning",
+      "title": "Windows Cleaning",
+      "desc": "Detailed interior window cleaning to remove marks and smudges and improve brightness throughout your home.",
+      "link": "/Services",
+      "img": "slider-img6.jpg",
+      "svg": "services-svg2.svg"
     }
   ]
 }
