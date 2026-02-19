@@ -1,7 +1,6 @@
 const USE_LOCAL_SERVER = process.env.REACT_APP_USE_LOCAL_SERVER === 'true';
 const API_URL = process.env.REACT_APP_API_URL || '';
 const LOCAL_API_URL = API_URL || 'http://localhost:5000/api';
-const CONTACT_ENDPOINT = process.env.REACT_APP_CONTACT_ENDPOINT || '';
 
 export const fetchData = async (endpoint) => {
   try {
