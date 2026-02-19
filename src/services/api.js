@@ -115,9 +115,7 @@ export const footerAPI = {
 };
 
 export const submitContactMessage = async (payload) => {
-  const endpoint = CONTACT_ENDPOINT || (USE_LOCAL_SERVER
-    ? `${LOCAL_API_URL}/contact-message`
-    : (API_URL ? `${API_URL}/contact-message` : '/api/contact-message'));
+  const endpoint = CONTACT_ENDPOINT || 'https://api.cleansolutionsva.com/contact.php';
 
   const response = await fetch(endpoint, {
     method: 'POST',
