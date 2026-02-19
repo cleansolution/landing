@@ -115,7 +115,7 @@ export const footerAPI = {
 };
 
 export const submitContactMessage = async (payload) => {
-  const endpoint = CONTACT_ENDPOINT || 'https://api.cleansolutionsva.com/contact.php';
+  const endpoint = 'https://api.cleansolutionsva.com/contact.php';
 
   const response = await fetch(endpoint, {
     method: 'POST',
