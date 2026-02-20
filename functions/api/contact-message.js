@@ -21,6 +21,19 @@ export async function onRequestOptions() {
   });
 }
 
+export async function onRequestGet({ env }) {
+  const hasResendKey = Boolean(env.RESEND_API_KEY || env.RESEND_API_kEY);
+  const hasContactTo = Boolean(env.CONTACT_TO);
+  const hasContactFrom = Boolean(env.CONTACT_FROM);
+
+  return jsonResponse({
+    ok: hasResendKey && hasContactTo && hasContactFrom,
+    hasResendKey,
+    hasContactTo,
+    hasContactFrom
+  }, 200);
+}
+
 export async function onRequestPost({ request, env }) {
   try {
     const {

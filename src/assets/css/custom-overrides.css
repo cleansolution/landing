@@ -367,3 +367,50 @@ section,
 .project-item {
     margin-bottom: 20px !important;
 }
+
+/* ===================================
+   Laptop Layout Fixes (Header/Hero)
+   =================================== */
+@media (min-width: 992px) and (max-width: 1530px) {
+    .header {
+        top: 16px !important;
+        width: calc(100% - 32px) !important;
+        padding: 8px 14px !important;
+        border-radius: 52px !important;
+    }
+
+    .header-container {
+        gap: 20px !important;
+    }
+
+    .nav {
+        gap: 16px !important;
+    }
+
+    .menu {
+        gap: 16px !important;
+    }
+
+    .nav-actions {
+        gap: 12px !important;
+    }
+
+    .get-quote-btn {
+        padding: 12px 22px !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+    }
+
+    .main-swiper-video-bg .slide-content {
+        padding-top: 160px !important;
+        transform: translate(-50%, -45%) !important;
+    }
+
+    .main-swiper-row {
+        row-gap: 24px !important;
+    }
+
+    .hero-form-wrap {
+        max-width: 420px !important;
+    }
+}
