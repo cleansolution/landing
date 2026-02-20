@@ -45,7 +45,7 @@ const HomeSolid: React.FC = () => {
                             marginBottom: '20px',
                             maxWidth: '800px',
                             margin: '0 auto 20px'
-                        }}>The United Way For To Find Specialist Services</h2>
+                        }}>The Best Way to Find Specialist Services</h2>
                         <p className="sec-sub-text ornare fade_up" style={{
                             maxWidth: '700px',
                             margin: '0 auto',
