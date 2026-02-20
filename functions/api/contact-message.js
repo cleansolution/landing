@@ -51,10 +51,14 @@ export async function onRequestPost({ request, env }) {
 
     const RESEND_API_KEY = env.RESEND_API_KEY || env.RESEND_API_kEY;
     const CONTACT_TO = env.CONTACT_TO || "info@cleansolutionsva.com";
-    const CONTACT_FROM = env.CONTACT_FROM || "Clean Solutions <onboarding@resend.dev>";
+    const CONTACT_FROM = env.CONTACT_FROM;
 
     if (!RESEND_API_KEY) {
       return jsonResponse({ message: "Missing RESEND API key. Define RESEND_API_KEY (or RESEND_API_kEY) in Cloudflare variables/secrets." }, 500);
+    }
+
+    if (!CONTACT_FROM) {
+      return jsonResponse({ message: "Missing CONTACT_FROM in Cloudflare variables/secrets." }, 500);
     }
 
     const subject = `New Quote Request - ${fullName} (${service})`;
