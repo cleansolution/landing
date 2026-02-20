@@ -1,3 +1,26 @@
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization"
+};
+
+function jsonResponse(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      "Content-Type": "application/json",
+      ...corsHeaders
+    }
+  });
+}
+
+export async function onRequestOptions() {
+  return new Response(null, {
+    status: 204,
+    headers: corsHeaders
+  });
+}
+
 export async function onRequestPost({ request, env }) {
   try {
     const {
@@ -10,10 +33,7 @@ export async function onRequestPost({ request, env }) {
     } = await request.json();
 
     if (!fullName || !email || !phone || !service) {
-      return new Response(JSON.stringify({ message: "Missing required fields" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" }
-      });
+      return jsonResponse({ message: "Missing required fields" }, 400);
     }
 
     const RESEND_API_KEY = env.RESEND_API_KEY;
@@ -21,10 +41,7 @@ export async function onRequestPost({ request, env }) {
     const CONTACT_FROM = env.CONTACT_FROM || "Clean Solutions <onboarding@resend.dev>";
 
     if (!RESEND_API_KEY) {
-      return new Response(JSON.stringify({ message: "Missing RESEND_API_KEY in Cloudflare environment variables" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
+      return jsonResponse({ message: "Missing RESEND_API_KEY in Cloudflare environment variables" }, 500);
     }
 
     const subject = `New Quote Request - ${fullName} (${service})`;
@@ -56,20 +73,11 @@ export async function onRequestPost({ request, env }) {
 
     if (!resendResponse.ok) {
       const error = await resendResponse.json().catch(() => ({}));
-      return new Response(JSON.stringify({ message: error.message || "Failed to send email via Resend" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      });
+      return jsonResponse({ message: error.message || "Failed to send email via Resend" }, 500);
     }
 
-    return new Response(JSON.stringify({ success: true, message: "Message sent successfully" }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" }
-    });
+    return jsonResponse({ success: true, message: "Message sent successfully" }, 200);
   } catch (error) {
-    return new Response(JSON.stringify({ message: error.message || "Unexpected error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" }
-    });
+    return jsonResponse({ message: error.message || "Unexpected error" }, 500);
   }
 }

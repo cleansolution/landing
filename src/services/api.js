@@ -114,18 +114,44 @@ export const footerAPI = {
 };
 
 export const submitContactMessage = async (payload) => {
-  const endpoint = 'https://api.cleansolutionsva.com/contact.php';
+  const configuredEndpoint = process.env.REACT_APP_CONTACT_ENDPOINT;
+  const defaultEndpoint = '/api/contact-message';
+  const legacyEndpoint = '/api/contact.php';
+  const endpoints = configuredEndpoint
+    ? [configuredEndpoint, defaultEndpoint, legacyEndpoint]
+    : [defaultEndpoint, legacyEndpoint];
 
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+  let lastError = null;
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => ({}));
-    throw new Error(error.message || 'Failed to send contact message');
+  for (const endpoint of endpoints) {
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        const status = response.status;
+        const errorMessage = error.message || `Request failed with status ${status}`;
+
+        if ((status === 404 || status === 405) && endpoint !== endpoints[endpoints.length - 1]) {
+          lastError = new Error(errorMessage);
+          continue;
+        }
+
+        throw new Error(errorMessage);
+      }
+
+      return response.json();
+    } catch (error) {
+      lastError = error;
+      if (endpoint === endpoints[endpoints.length - 1]) {
+        throw lastError;
+      }
+    }
   }
 
-  return response.json();
+  throw lastError || new Error('Failed to send contact message');
 };
