@@ -439,13 +439,13 @@ const ContactForm: React.FC = () => {
                                             </div>
                                             <div>
                                                 <p style={{ fontSize: '13px', opacity: '0.85', marginBottom: '3px' }}>Our Mail Address</p>
-                                                <a href="mailto:info@cleansolutionsva.com" style={{ 
+                                                <a href="mailto:info.cleansolutions91@gmail.com" style={{ 
                                                     fontSize: '16px', 
                                                     fontWeight: '600',
                                                     color: 'white',
                                                     textDecoration: 'none',
                                                     wordBreak: 'break-word'
-                                                }}>info@cleansolutionsva.com</a>
+                                                }}>info.cleansolutions91@gmail.com</a>
                                             </div>
                                         </div>
                                     </div>
