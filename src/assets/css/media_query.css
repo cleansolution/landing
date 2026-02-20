@@ -49,7 +49,8 @@
 @media (max-width:1399px) {
     .hero-slider {
         width: 100%;
-        height: 900px;
+        min-height: 100vh;
+        height: auto;
     }
 
     .lets-us-do {
@@ -314,7 +315,8 @@
 
     .hero-slider {
         width: 100%;
-        height: 800px;
+        min-height: 100vh;
+        height: auto;
     }
 
     .residents {

@@ -222,7 +222,7 @@ const Footer = () => {
                                     </div>
                                     <div style={{ overflow: 'hidden' }}>
                                         <span style={{ display: 'block', color: 'rgba(255,255,255,0.6)', fontSize: '12px', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Email Us</span>
-                                        <a href="mailto:info.cleansolutions91@gmail.com" style={{ color: '#fff', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>info.cleansolutions91@gmail.com</a>
+                                        <a href="mailto:info@cleansolutionsva.com" style={{ color: '#fff', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>info@cleansolutionsva.com</a>
                                     </div>
                                 </div>
                             </div>
@@ -262,3 +262,4 @@ const Footer = () => {
 }
 
 export default Footer
+

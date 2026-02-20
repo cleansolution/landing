@@ -4,9 +4,8 @@ import CrossArrow from '../assets/images/svg/cross-arrow.svg';
 import headphoneIcon from '../assets/images/svg/headphone-icon.svg'
 import sectionsData from '../data/sectionsData.json';
 import aboutData from '../data/aboutData.json';
-import AboutOwnerImage from '../assets/images/about/about-img4.jpg';
+import AboutOwnerImage from '../assets/images/about/about-img4.png';
 import Video2 from '../assets/video/video2.mp4';
-import CheckTransparent from '../assets/images/svg/check-transparent.svg';
 import HowWorkSvg1 from '../assets/images/svg/how-to-work-svg1.svg';
 import HowWorkSvg2 from '../assets/images/svg/how-to-work-svg2.svg';
 import HowWorkSvg3 from '../assets/images/svg/how-to-work-svg3.svg';
@@ -122,7 +121,35 @@ const HomeSolid: React.FC = () => {
                             <div className="check-box-main">
                                 {(sectionsData?.whyChooseUs?.benefits || []).map((benefit) => (
                                     <div className="check-box-main-sub fade_up" key={benefit.id}>
-                                        <img src={CheckTransparent} alt="check-transparent" />
+                                        <span style={{
+                                            minWidth: '46px',
+                                            width: '46px',
+                                            height: '46px',
+                                            borderRadius: '50%',
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            background: 'linear-gradient(135deg, rgba(24, 74, 140, 0.16) 0%, rgba(38, 103, 184, 0.12) 100%)',
+                                            border: '1px solid rgba(24, 74, 140, 0.28)',
+                                            boxShadow: '0 4px 12px rgba(24, 74, 140, 0.14)'
+                                        }}>
+                                            <svg
+                                                width="22"
+                                                height="22"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M20 6L9 17L4 12"
+                                                    stroke="#184A8C"
+                                                    strokeWidth="2.6"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                        </span>
                                         <div>
                                             <h2>{benefit.title}</h2>
                                             <p>{benefit.description}</p>

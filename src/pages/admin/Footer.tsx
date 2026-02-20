@@ -243,7 +243,7 @@ export default function AdminFooter() {
                     ...footer,
                     companyInfo: { ...footer.companyInfo, email: e.target.value }
                   })}
-                  placeholder="info@cleansolutions.com"
+                  placeholder="info@cleansolutionsva.com"
                 />
               </div>
             </div>
@@ -417,3 +417,4 @@ export default function AdminFooter() {
     </AdminLayout>
   );
 }
+

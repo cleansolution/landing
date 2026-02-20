@@ -92,7 +92,7 @@ const HomeHeroSolid: React.FC = () => {
                     transform: translate(-50%, -50%);
                     width: 100%;
                     z-index: 2;
-                    padding: 0 15px;
+                    padding: 120px 15px 0;
                 }
                 
                 .video-slide video {
@@ -401,7 +401,7 @@ const HomeHeroSolid: React.FC = () => {
                     <div className="slide-content">
                         <div className="container">
                             <div className="row main-swiper-row align-items-center">
-                                <div className="col-xxl-7 col-xl-7 col-lg-10 clearfix-space" style={{ opacity: 1, transform: 'none' }}>
+                                <div className="col-xxl-7 col-xl-7 col-lg-7 col-12 clearfix-space" style={{ opacity: 1, transform: 'none' }}>
                                     <div className="hero-divider" style={{ marginBottom: 'clamp(12px, 2vh, 18px)' }}></div>
                                     
                                     <p className="hero-location-text" style={{ marginBottom: 'clamp(12px, 2vh, 18px)' }}>
@@ -442,7 +442,7 @@ const HomeHeroSolid: React.FC = () => {
                                     </a>
                                 </div>
 
-                                <div className="col-xxl-5 col-xl-5 col-lg-8">
+                                <div className="col-xxl-5 col-xl-5 col-lg-5 col-12">
                                     <div id="contact" className="hero-form-wrap">
                                         <div className="hero-glass-form">
                                             <h2 className="hero-form-title">Get Your Quote</h2>

@@ -55,7 +55,7 @@ export default function AdminContact() {
                   value={contact.email}
                   onChange={(e) => setContact({ ...contact, email: e.target.value })}
                   required
-                  placeholder="info@cleansolutions.com"
+                  placeholder="info@cleansolutionsva.com"
                 />
               </div>
             </div>
@@ -121,3 +121,4 @@ export default function AdminContact() {
     </AdminLayout>
   );
 }
+
