@@ -7,7 +7,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # The quote form really sends (POST /api/contact-message → Netlify Function → Resend).
+  # Quote form is live: Netlify Forms ("quote") emails the owner. Set it up in Netlify → Forms.
   PUBLIC_FORM_MODE = "live"
   SITE_URL = "https://cleansolutionsva.com"
   # PUBLIC_ALLOW_INDEXING is set to "true" in the Netlify UI only once the domain points to Netlify.

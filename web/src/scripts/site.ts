@@ -97,58 +97,12 @@ if ('IntersectionObserver' in window && counters.length && !matchMedia('(prefers
   counters.forEach((c) => cio.observe(c));
 }
 
-/* ---------- Quote form + Cloudflare Turnstile ---------- */
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (el: HTMLElement, opts: Record<string, unknown>) => string;
-      reset: (id?: string) => void;
-    };
-  }
-}
-
+/* ---------- Quote form (Netlify Forms) ----------
+ * Netlify receives the POST, filters spam (honeypot + its "I'm not a robot" reCAPTCHA)
+ * and emails the owner. Here we only validate before letting the native submit go through.
+ * Local demo mode (no Netlify): never sends, jumps to /thank-you/?demo=1.
+ */
 const forms = document.querySelectorAll<HTMLFormElement>('[data-quote-form]');
-let tsPromise: Promise<void> | null = null;
-function loadTurnstile() {
-  tsPromise ??= new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-    s.async = true;
-    s.onload = () => resolve();
-    s.onerror = () => reject(new Error('turnstile'));
-    document.head.appendChild(s);
-  });
-  return tsPromise;
-}
-
-const widgetIds = new WeakMap<HTMLFormElement, string>();
-async function mountTurnstile(form: HTMLFormElement) {
-  if (widgetIds.has(form)) return;
-  const slot = form.querySelector<HTMLElement>('[data-turnstile]');
-  if (!slot) return;
-  widgetIds.set(form, 'pending');
-  try {
-    await loadTurnstile();
-    const id = window.turnstile!.render(slot, { sitekey: form.dataset.sitekey, theme: form.dataset.theme || 'light', size: 'flexible' });
-    widgetIds.set(form, id);
-  } catch {
-    widgetIds.delete(form);
-  }
-}
-
-const mountAll = () => forms.forEach(mountTurnstile);
-if (forms.length) {
-  forms.forEach((f) => f.addEventListener('focusin', () => mountTurnstile(f), { once: true }));
-  // Load on the visitor's first interaction (scroll, touch, mouse, key): the
-  // checkbox is ready before they reach "Submit" and first paint stays light.
-  const events = ['scroll', 'pointerdown', 'pointermove', 'touchstart', 'keydown'];
-  const first = () => {
-    events.forEach((ev) => removeEventListener(ev, first));
-    mountAll();
-  };
-  events.forEach((ev) => addEventListener(ev, first, { once: true, passive: true }));
-}
-
 const phoneOk = (v: string) => v.replace(/\D/g, '').length >= 10;
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
@@ -164,14 +118,12 @@ forms.forEach((form) => {
     if (err) err.textContent = msg;
   };
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  form.addEventListener('submit', (e) => {
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
     const checks: [string, boolean, string][] = [
       ['fullName', !!data.fullName?.trim(), 'Please enter your name.'],
-      ['phone', phoneOk(data.phone || ''), 'Please enter a valid phone number.'],
       ['email', emailOk(data.email || ''), 'Please enter a valid email.'],
-      ['service', !!data.service, 'Please choose a service.'],
+      ['phone', phoneOk(data.phone || ''), 'Please enter a valid phone number.'],
     ];
     let first: string | null = null;
     for (const [name, ok, msg] of checks) {
@@ -179,43 +131,35 @@ forms.forEach((form) => {
       if (!ok && !first) first = name;
     }
     if (first) {
+      e.preventDefault();
       (form.elements.namedItem(first) as HTMLElement).focus();
       return;
     }
-    const token = data['cf-turnstile-response'];
-    if (!token) {
-      mountTurnstile(form);
+    // Netlify's reCAPTCHA checkbox (only present on the live Netlify site)
+    if (form.querySelector('[data-netlify-recaptcha] iframe, .g-recaptcha') && !data['g-recaptcha-response']) {
+      e.preventDefault();
       status.dataset.state = 'error';
-      status.textContent = 'Please check the “Verify you are human” box above.';
+      status.textContent = 'Please check the "I am not a robot" box.';
       return;
     }
-
-    btn.disabled = true;
-    btn.textContent = 'Sending…';
     status.dataset.state = '';
     status.textContent = '';
-
-    try {
-      if (form.dataset.mode === 'live') {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error(String(res.status));
-      }
-      track('generate_lead', { service: data.service, city: data.city, mode: form.dataset.mode });
-      location.href = form.dataset.mode === 'live' ? '/thank-you/' : '/thank-you/?demo=1';
-    } catch {
-      status.dataset.state = 'error';
-      status.textContent = 'We could not send your request. Please call us or try again.';
-      const id = widgetIds.get(form);
-      if (id && id !== 'pending') window.turnstile?.reset(id);
-      btn.disabled = false;
-      btn.textContent = 'Submit Request';
+    track('generate_lead', { service: data.service, city: data.city, mode: form.dataset.mode, transport_type: 'beacon' });
+    if (form.dataset.mode !== 'live') {
+      e.preventDefault();
+      location.href = '/thank-you/?demo=1';
+      return;
     }
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
   });
 });
+
+/* Back/forward cache: re-enable the submit button */
+addEventListener('pageshow', () => forms.forEach((f) => {
+  const b = f.querySelector<HTMLButtonElement>('button[type=submit]');
+  if (b) { b.disabled = false; b.textContent = 'Submit Request'; }
+}));
 
 /* ---------- Hero video: sources attached after load; pausable; respects reduced motion + data saver ---------- */
 (() => {

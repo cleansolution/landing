@@ -2,8 +2,8 @@
 /**
  * "Get Your Quote" form — mirrors the client's current live form (same fields, texts,
  * service options, glass look and white "Submit Request" button) so nothing changes for them.
- * Only additions: Cloudflare Turnstile ("Verify you are human") + an invisible honeypot.
- * Posts the same JSON body as before to /api/contact-message.
+ * Delivery: Netlify Forms (form "quote"). Netlify stores each request and emails the owner
+ * (Netlify → Forms → Form notifications). Spam: honeypot field + Netlify's "I'm not a robot" reCAPTCHA.
  * Labels are visually hidden (screen readers still read them); the visible cue is the placeholder, as on the live site.
  */
 import { flags } from '../config/site';
@@ -56,16 +56,19 @@ const id = (n: string) => `${n}-${uid}`;
   <h2 class="qf__title">{heading}</h2>
   <p class="qf__sub">{subheading}</p>
   <form
-    method="post"
-    action="/api/contact-message"
+    name="quote"
+    method="POST"
+    action="/thank-you/"
     novalidate
+    data-netlify="true"
+    netlify-honeypot="company"
+    data-netlify-recaptcha="true"
     data-quote-form
     data-mode={flags.formMode}
-    data-sitekey={flags.turnstileSiteKey}
-    data-theme="dark"
   >
+    <input type="hidden" name="form-name" value="quote" />
     <input type="hidden" name="source" value={source} />
-    {cityName && <input type="hidden" name="city" value={cityName} />}
+    <input type="hidden" name="city" value={cityName} />
     <div class="qf__grid">
       <div class="field">
         <label class="sr-only" for={id('name')}>Full Name</label>
@@ -98,7 +101,7 @@ const id = (n: string) => `${n}-${uid}`;
       <label for={id('company')}>Company</label>
       <input id={id('company')} name="company" type="text" tabindex="-1" autocomplete="off" />
     </div>
-    <div class="turnstile-slot" data-turnstile></div>
+    <div class="qf__captcha" data-netlify-recaptcha="true"></div>
     <button class="qf__submit" type="submit">Submit Request</button>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
@@ -141,8 +144,8 @@ const id = (n: string) => `${n}-${uid}`;
   .qf .field .qf__ta { min-height: 100px; resize: vertical; }
   .qf .field__error { color: #ffd1d1; font-size: 0.8rem; font-weight: 600; }
   .qf [aria-invalid='true'] { border-color: #ffb3b3; }
-  .qf .turnstile-slot { min-height: 0; margin: 14px 0 0; }
-  .qf .turnstile-slot:not(:empty) { min-height: 65px; }
+  .qf__captcha { margin-top: 14px; }
+  .qf__captcha:empty { display: none; }
   .qf__submit {
     width: 100%; margin-top: 14px; border: none; border-radius: 10px; padding: 14px 16px;
     font: inherit; font-size: 15px; font-weight: 700; color: #184a8c; background: #fff; cursor: pointer;
