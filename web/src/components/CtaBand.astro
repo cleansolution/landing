@@ -1,0 +1,26 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/site';
+import { bgVars } from '../lib/images';
+interface Props { title?: string; text?: string; image?: string }
+const {
+  title = 'Ready for a cleaner home or office?',
+  text = 'Get a free quote or call us. A real person from our Chesapeake team will answer.',
+  image = 'frame-kitchen.jpg',
+} = Astro.props;
+const bg = await bgVars(image);
+---
+<section class="section" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-band cta-band--photo reveal" style={bg}>
+      <div>
+        <h2 id="cta-title">{title}</h2>
+        <p>{text}</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--sky" href="#quote" data-quote-link>Get Your Quote <Icon name="arrow" /></a>
+        <a class="btn btn--outline-light" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+---
+/**
+ * Featured services as a photo bento: one big tile (House Cleaning), four squares, two wide tiles.
+ * Full-bleed client photos, soft gradient for legibility, glass icon + category tag, hover zoom.
+ */
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import IconBadge from './IconBadge.astro';
+import { services, serviceHref } from '../data/services';
+import { img } from '../lib/images';
+const size = (i: number) => (i === 0 ? 'big' : i >= 5 ? 'wide' : 'sq');
+---
+<div class="bento">
+  {services.map((s, i) => (
+    <article class={`bento__tile bento__tile--${size(i)}`} data-tilt="3">
+      <Image
+        src={img(s.image)}
+        alt={s.imageAlt}
+        widths={i === 0 ? [480, 760, 1000] : [400, 640]}
+        sizes={i === 0 ? '(max-width: 700px) 92vw, 600px' : '(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 300px'}
+        loading="lazy"
+        class="bento__img"
+      />
+      <div class="bento__top">
+        <IconBadge name={s.icon} tone="glass" size="sm" />
+        <span class="bento__tag">{s.category}</span>
+      </div>
+      <div class="bento__body">
+        <h3><a href={serviceHref(s.slug)}>{s.name}</a></h3>
+        <p>{s.short}</p>
+      </div>
+      <span class="bento__go" aria-hidden="true"><Icon name="arrow" /></span>
+    </article>
+  ))}
+</div>

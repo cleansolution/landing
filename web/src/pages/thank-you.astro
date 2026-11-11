@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { business } from '../config/site';
+---
+<Base title="Thank You | Clean Solutions" description="Your cleaning quote request was received. Clean Solutions will contact you soon with your price and the next available date." noindex>
+  <section class="section">
+    <div class="wrap" style="max-width:720px;text-align:center">
+      <span class="eyebrow">Request received</span>
+      <h1>Thank you! Your quote request is on its way.</h1>
+      <p class="lead" style="margin-inline:auto">We will contact you soon with your price and the next available date. If it is urgent, call us now.</p>
+      <p id="demo-note" class="form-note" hidden>Local demo: no message was sent.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+        <a class="btn btn--ghost" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+  <script is:inline>if (location.search.includes('demo=1')) document.getElementById('demo-note').hidden = false;</script>
+</Base>

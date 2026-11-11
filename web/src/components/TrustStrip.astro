@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/site';
+// Every item is documented on the current live site. See PENDING_CLIENT_APPROVAL.md.
+const items = [
+  { icon: 'calendar', text: `${business.yearsInBusiness} years cleaning Hampton Roads` },
+  { icon: 'spray', text: 'Supplies & equipment included' },
+  { icon: 'leaf', text: 'Safe, eco-friendly products' },
+  { icon: 'shield', text: '24-hour make-it-right promise' },
+];
+---
+<div class="trust">
+  <ul class="wrap">
+    {items.map((i) => <li><Icon name={i.icon} />{i.text}</li>)}
+  </ul>
+</div>

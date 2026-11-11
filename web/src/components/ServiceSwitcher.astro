@@ -1,0 +1,46 @@
+---
+/** Pattern 1: "What needs cleaning?" — tabs that swap a service panel. No-JS: all panels stacked. */
+import Icon from './Icon.astro';
+import TickList from './TickList.astro';
+import { services, serviceHref } from '../data/services';
+const tabLabel: Record<string, string> = {
+  'house-cleaning': 'My home, regularly',
+  'deep-cleaning': 'A deep reset',
+  'move-in-move-out-cleaning': 'A move in / out',
+  'airbnb-cleaning': 'My Airbnb',
+  'post-construction-cleaning': 'After construction',
+  'commercial-cleaning': 'My office or business',
+};
+---
+<div class="switcher" data-switcher>
+  <div class="switcher__tabs" role="tablist" aria-label="What needs cleaning?">
+    {services.map((s, i) => (
+      <button
+        type="button"
+        role="tab"
+        id={`tab-${s.slug}`}
+        aria-controls={`panel-${s.slug}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
+        class="switcher__tab"
+      ><Icon name={s.icon} />{tabLabel[s.slug] ?? s.name}</button>
+    ))}
+  </div>
+  {services.map((s, i) => (
+    <div class="switcher__panel" role="tabpanel" id={`panel-${s.slug}`} aria-labelledby={`tab-${s.slug}`} hidden={i !== 0} tabindex="0">
+      <div>
+        <span class="eyebrow">{s.category} cleaning</span>
+        <h3>{s.name}</h3>
+        <p class="lead">{s.answer}</p>
+        <TickList items={s.includes.flatMap((g) => g.items).slice(0, 6)} />
+      </div>
+      <div class="switcher__side">
+        <h4>Ideal for</h4>
+        <ul class="list-check" style="margin:0">
+          {s.idealFor.map((x) => <li><Icon name="check" />{x}</li>)}
+        </ul>
+        <a class="btn btn--primary" href={serviceHref(s.slug)}>See the full {s.name.toLowerCase()} checklist <Icon name="arrow" /></a>
+      </div>
+    </div>
+  ))}
+</div>

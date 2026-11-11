@@ -1,0 +1,39 @@
+---
+/** 3 steps (live-site copy), each with a client photo, numbered badge and an animated connector. Light section. */
+import { Image } from 'astro:assets';
+import IconBadge from './IconBadge.astro';
+import { img } from '../lib/images';
+interface Props { heading?: string }
+const { heading = 'Booking takes about two minutes' } = Astro.props;
+const steps = [
+  { icon: 'message', file: 'slider-img7.jpg', title: 'Choose a service', text: 'Pick the cleaning that fits your needs and budget, from a one-time deep clean to regular maintenance. Request your quote online or by phone.' },
+  { icon: 'calendar', file: 'bright-kitchen.jpg', title: 'Set your schedule', text: 'Choose a date and time that works for you. Flexible scheduling, including weekends and same-day service when available.' },
+  { icon: 'home', file: 'project-img4.jpg', title: 'Get things done', text: 'Sit back while our team transforms your space. We arrive on time with every supply, and if something is not right, we make it right.' },
+];
+---
+<section class="section flow" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">How it works</span>
+      <h2 id="process-title">{heading}</h2>
+    </div>
+    <div class="flow__wrap process">
+    <div class="flow__line" aria-hidden="true"><i></i></div>
+    <ol class="flow__steps">
+      {steps.map((s, i) => (
+        <li class="flow__step reveal" style={`--d:${i * 0.12}s`}>
+          <div class="flow__img">
+            <Image src={img(s.file)} alt="" widths={[360, 560]} sizes="(max-width: 800px) 92vw, 360px" loading="lazy" />
+            <span class="flow__n">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <div class="flow__body">
+            <IconBadge name={s.icon} size="sm" />
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+---
+/** Real figures only. Equal columns, tabular numerals, centered; numbers count up when visible. */
+import { business } from '../config/site';
+import { services } from '../data/services';
+interface Props { tone?: 'dark' | 'light' }
+const { tone = 'dark' } = Astro.props;
+const stats = [
+  { n: business.yearsInBusiness, suffix: '+', label: 'Years of experience' },
+  { n: 100, suffix: '%', label: 'Satisfaction guaranteed' },
+  { n: services.length, suffix: '', label: 'Cleaning services' },
+  { n: business.serviceAreas.length, suffix: '', label: 'Cities in Hampton Roads' },
+];
+---
+<dl class:list={['stats2', `stats2--${tone}`]}>
+  {stats.map((s) => (
+    <div class="stats2__item">
+      <dt class="stats2__l">{s.label}</dt>
+      <dd class="stats2__n"><span data-count={s.n}>{s.n}</span><small>{s.suffix}</small></dd>
+    </div>
+  ))}
+</dl>

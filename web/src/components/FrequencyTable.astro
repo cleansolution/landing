@@ -1,0 +1,24 @@
+---
+/** Pattern 3: how often. Frequencies and the "most choose bi-weekly" fact come from the current site FAQ. */
+const rows = [
+  { name: 'Weekly', best: 'Large families, pets, busy households', result: 'The home never gets behind; each visit is lighter.' },
+  { name: 'Bi-weekly', best: 'Most households', result: 'A consistently clean home at a lower cost per month.', popular: true },
+  { name: 'Monthly', best: 'Smaller homes, tidy routines', result: 'A professional reset every month.' },
+  { name: 'One-time', best: 'Guests, events, moves, seasonal cleaning', result: 'One visit, no commitment. Often a deep cleaning.' },
+];
+---
+<table class="freq">
+  <caption class="sr-only">Cleaning frequency options</caption>
+  <thead>
+    <tr><th scope="col">Frequency</th><th scope="col">Best for</th><th scope="col">What you get</th></tr>
+  </thead>
+  <tbody>
+    {rows.map((r) => (
+      <tr class={r.popular ? 'is-popular' : undefined}>
+        <th scope="row">{r.name}{r.popular && <span class="pill">Most chosen</span>}</th>
+        <td data-label="Best for">{r.best}</td>
+        <td data-label="What you get">{r.result}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

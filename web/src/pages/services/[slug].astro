@@ -1,0 +1,139 @@
+---
+import { bgVars } from '../../lib/images';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { img } from '../../lib/images';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import Icon from '../../components/Icon.astro';
+import TickList from '../../components/TickList.astro';
+import MakeItRight from '../../components/Promise.astro';
+import Process from '../../components/Process.astro';
+import FrequencyTable from '../../components/FrequencyTable.astro';
+import ServiceRows from '../../components/ServiceRows.astro';
+import AreasList from '../../components/AreasList.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { services, serviceHref, type Service } from '../../data/services';
+import { business } from '../../config/site';
+import { breadcrumbs, faqPage, serviceSchema } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props as { s: Service };
+const site = Astro.site!;
+const pageUrl = new URL(serviceHref(s.slug), site);
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '/services/' },
+  { name: s.name, href: serviceHref(s.slug) },
+];
+const related = services.filter((x) => x.slug !== s.slug).slice(0, 4);
+const recurring = s.slug === 'house-cleaning' || s.slug === 'commercial-cleaning';
+const heroBg = await bgVars(['frame-kitchen.jpg','frame-floor.jpg','frame-sofa.jpg'][services.indexOf(s) % 3]);
+---
+<Base
+  title={s.title}
+  description={s.description}
+  schema={[serviceSchema(s, site, pageUrl), breadcrumbs(crumbs, site), faqPage(s.faqs)]}
+>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div class="page-hero__grid">
+        <div>
+          <span class="eyebrow">{s.category} cleaning · Hampton Roads, VA</span>
+          <h1>{s.h1}</h1>
+          <p class="answer">{s.answer}</p>
+          <div class="prose" style="margin-top:20px">{s.intro.map((p) => <p>{p}</p>)}</div>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#quote">Get Your Quote <Icon name="arrow" /></a>
+            <a class="btn btn--ghost" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+          </div>
+          <MakeItRight />
+        </div>
+        <QuoteForm service={s.slug} source={`service-${s.slug}`} glass />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="inc-title">
+    <div class="wrap">
+      <div class="svc-intro">
+        <div class="svc-intro__img" data-tilt="3">
+          <Image src={img(s.image)} alt={s.imageAlt} widths={[400, 640]} sizes="(max-width: 860px) 92vw, 460px" loading="lazy" />
+        </div>
+        <div class="section-head" style="margin:0">
+          <span class="eyebrow">Checklist</span>
+          <h2 id="inc-title">What is included in our {s.name.toLowerCase()}?</h2>
+          <p class="lead">This is the standard checklist. Tell us about special requests when you ask for a quote and we will include them.</p>
+        </div>
+      </div>
+      <div class="includes">
+        {s.includes.map((g) => (
+          <div><h3>{g.area}</h3><TickList items={g.items} /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="who-title">
+    <div class="wrap two-col">
+      <div>
+        <span class="eyebrow">Who it's for</span>
+        <h2 id="who-title">When to choose {s.name.toLowerCase()}</h2>
+        <ul class="list-check">{s.idealFor.map((x) => <li><Icon name="check" />{x}</li>)}</ul>
+      </div>
+      <div class="panel" style="background:#fff">
+        <h3>What affects the price</h3>
+        <ul class="list-check">{s.priceFactors.map((x) => <li><Icon name="check" />{x}</li>)}</ul>
+        <a class="btn btn--primary" href="#quote">Get my exact price <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  {recurring && (
+    <section class="section" aria-labelledby="freq-title">
+      <div class="wrap two-col" style="align-items:start">
+        <div>
+          <span class="eyebrow">How often</span>
+          <h2 id="freq-title">Choose your schedule</h2>
+          <p class="answer">Weekly, bi-weekly, monthly or one-time. Most customers choose bi-weekly.</p>
+        </div>
+        <FrequencyTable />
+      </div>
+    </section>
+  )}
+
+  <Process />
+
+  <section class="section section--tint" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">{s.name} questions</h2>
+      </div>
+      <Faq faqs={s.faqs} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="areas-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Where we work</span>
+        <h2 id="areas-title">{s.name} near you</h2>
+      </div>
+      <AreasList />
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="rel-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="rel-title">Other cleaning services</h2></div>
+      <ServiceRows items={related} />
+    </div>
+  </section>
+
+  <CtaBand title={`Ready to book your ${s.name.toLowerCase()}?`} />
+</Base>

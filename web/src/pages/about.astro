@@ -1,0 +1,57 @@
+---
+import { bgVars } from '../lib/images';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import OwnersScene from '../components/OwnersScene.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ownerPortrait from '../assets/img/owner-portrait.png';
+import { business } from '../config/site';
+import { breadcrumbs } from '../lib/schema';
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'About', href: '/about/' }];
+const values = [
+  { t: 'We show up', d: 'Scheduled means scheduled. If something changes, we call you before the visit, not after.' },
+  { t: 'Details make the difference', d: 'Baseboards, fixtures, corners. Every visit follows a written checklist so nothing depends on memory.' },
+  { t: 'Respect for your space', d: 'Trained cleaners, safe and eco-friendly products, and care with your home and belongings.' },
+  { t: 'Easy to reach', d: 'A local phone number answered by real people, and quotes based on your actual space.' },
+];
+const heroBg = await bgVars('frame-sofa.jpg');
+---
+<Base
+  title="About Clean Solutions | Local Cleaning Company in Chesapeake, VA"
+  description={`Meet Clean Solutions CO. LLC, a locally owned cleaning company in Chesapeake, Virginia with ${business.yearsInBusiness} years of residential and commercial cleaning experience.`}
+  schema={[breadcrumbs(crumbs, Astro.site!)]}
+>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div class="page-hero__grid" style="align-items:center">
+        <div>
+          <span class="eyebrow">About us</span>
+          <h1>A Local Cleaning Company in <span class="swipe">Chesapeake, VA</span></h1>
+          <p class="answer">Clean Solutions CO. LLC is a locally owned cleaning company based in Chesapeake, Virginia. For {business.yearsInBusiness} years we have cleaned homes, rentals, new construction and offices across South Hampton Roads.</p>
+          <p class="prose" style="color:var(--muted);margin-top:18px">Our motto is simple: let us handle the mess, you enjoy the clean. We specialize in recurring house cleaning, deep cleaning, move in/out cleaning, Airbnb properties and post-construction cleanup.</p>
+        </div>
+        <div style="display:flex;justify-content:center">
+          <Image src={ownerPortrait} alt="Dolores, co-owner of Clean Solutions CO. LLC" widths={[320, 480, 640]} sizes="(max-width: 920px) 80vw, 420px" style="width:min(100%,420px);height:auto;border-radius:28px" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="values-title">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">How we work</span><h2 id="values-title">What you can expect from us</h2></div>
+      <div class="grid grid--2">
+        {values.map((v, i) => (
+          <div class="panel reveal" style="background:#fff">
+            <p class="big-type" style="font-size:2.4rem" aria-hidden="true"><span class="soft">0{i + 1}</span></p>
+            <h3>{v.t}</h3>
+            <p style="margin:0;color:var(--muted)">{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <OwnersScene />
+  <CtaBand />
+</Base>

@@ -1,0 +1,46 @@
+---
+import { bgVars } from '../lib/images';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Icon from '../components/Icon.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import MakeItRight from '../components/Promise.astro';
+import Faq from '../components/Faq.astro';
+import { business } from '../config/site';
+import { generalFaqs } from '../data/services';
+import { breadcrumbs } from '../lib/schema';
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Contact', href: '/contact/' }];
+const heroBg = await bgVars('frame-kitchen.jpg');
+---
+<Base
+  title="Free Cleaning Quote in Chesapeake, VA | Clean Solutions"
+  description="Request a free house or commercial cleaning quote in Chesapeake and Hampton Roads. Call (757) 305-8237, email info@cleansolutionsva.com or use the quote form."
+  schema={[breadcrumbs(crumbs, Astro.site!)]}
+>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div class="page-hero__grid">
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h1>Get Your Free Cleaning Quote</h1>
+          <p class="answer">Fill out the form and we will reply with a price and the next available date. Prefer to talk? Call {business.phone.display}.</p>
+          <ul class="list-check" style="margin-top:24px">
+            <li><Icon name="phone" /><span><strong>Phone:</strong> <a href={business.phone.href} data-track="call_click">{business.phone.display}</a></span></li>
+            <li><Icon name="mail" /><span><strong>Email:</strong> <a href={`mailto:${business.email}`} data-track="email_click">{business.email}</a></span></li>
+            <li><Icon name="pin" /><span><strong>Address:</strong> {business.address.street}, {business.address.locality}, {business.address.region} {business.address.postalCode}. Serving {business.serviceAreas.join(', ')}.</span></li>
+            <li><Icon name="clock" /><span><strong>Hours:</strong> {business.hours.map((h) => `${h.days} ${h.label}`).join(' · ')}</span></li>
+          </ul>
+          <MakeItRight />
+        </div>
+        <QuoteForm source="contact" glass />
+      </div>
+    </div>
+  </section>
+  <section class="section section--tint" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="faq-title">Before you book</h2></div>
+      <Faq faqs={generalFaqs} />
+    </div>
+  </section>
+</Base>

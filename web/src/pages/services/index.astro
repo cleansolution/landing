@@ -1,0 +1,63 @@
+---
+import { bgVars } from '../../lib/images';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ServiceSwitcher from '../../components/ServiceSwitcher.astro';
+import ServiceRows from '../../components/ServiceRows.astro';
+import FrequencyTable from '../../components/FrequencyTable.astro';
+import Process from '../../components/Process.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { residential, commercial, services, serviceHref } from '../../data/services';
+import { breadcrumbs } from '../../lib/schema';
+
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Services', href: '/services/' }];
+const site = Astro.site!;
+const list = {
+  '@type': 'ItemList',
+  name: 'Cleaning services',
+  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.name, url: new URL(serviceHref(s.slug), site).href })),
+};
+const heroBg = await bgVars('frame-floor.jpg');
+---
+<Base
+  title="Cleaning Services in Chesapeake & Hampton Roads | Clean Solutions"
+  description="House cleaning, deep cleaning, move in/out, Airbnb, post-construction and office cleaning in Chesapeake, Virginia Beach, Norfolk, Portsmouth and Suffolk, VA."
+  schema={[breadcrumbs(crumbs, site), list]}
+>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div style="max-width:820px;margin-top:18px">
+        <span class="eyebrow">Residential & commercial</span>
+        <h1>Cleaning Services in Chesapeake &amp; Hampton Roads</h1>
+        <p class="answer">Clean Solutions offers six cleaning services: recurring house cleaning, deep cleaning, move-in/move-out cleaning, Airbnb turnovers, post-construction cleaning and commercial/office cleaning, in Chesapeake, Virginia Beach, Norfolk, Portsmouth and Suffolk.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="pick-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="pick-title">Find the right service</h2></div>
+      <ServiceSwitcher />
+    </div>
+  </section>
+  <section class="section section--tint" aria-labelledby="res-title">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">For homes</span><h2 id="res-title">Residential cleaning</h2></div>
+      <ServiceRows items={residential} />
+      <div class="section-head" style="margin-top:56px"><span class="eyebrow">For businesses & builders</span><h2>Commercial cleaning</h2></div>
+      <ServiceRows items={commercial} />
+    </div>
+  </section>
+  <section class="section" aria-labelledby="freq-title">
+    <div class="wrap two-col" style="align-items:start">
+      <div>
+        <span class="eyebrow">How often</span>
+        <h2 id="freq-title">Recurring or one-time</h2>
+        <p class="answer">Weekly, bi-weekly, monthly and one-time cleanings are available. Most customers choose bi-weekly.</p>
+      </div>
+      <FrequencyTable />
+    </div>
+  </section>
+  <Process />
+  <CtaBand />
+</Base>

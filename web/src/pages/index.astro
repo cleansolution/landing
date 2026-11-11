@@ -1,0 +1,164 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import IconBadge from '../components/IconBadge.astro';
+import HeroVideo from '../components/HeroVideo.astro';
+import ServicesShowcase from '../components/ServicesShowcase.astro';
+import MakeItRight from '../components/Promise.astro';
+import FrequencyTable from '../components/FrequencyTable.astro';
+import Process from '../components/Process.astro';
+import Projects from '../components/Projects.astro';
+import OwnersScene from '../components/OwnersScene.astro';
+import Stats from '../components/Stats.astro';
+import AreasList from '../components/AreasList.astro';
+import Faq from '../components/Faq.astro';
+import Testimonial from '../components/Testimonial.astro';
+import FixedBand from '../components/FixedBand.astro';
+import { business } from '../config/site';
+import { generalFaqs, services } from '../data/services';
+import { faqPage } from '../lib/schema';
+import { img, bgVars } from '../lib/images';
+
+const title = 'House & Commercial Cleaning in Chesapeake, VA | Clean Solutions';
+const description =
+  'House, deep, move-out, Airbnb, window and office cleaning in Chesapeake, Virginia Beach, Norfolk, Portsmouth & Suffolk. Free quote: (757) 305-8237.';
+const finalBg = await bgVars('frame-floor.jpg');
+---
+<Base {title} {description} schema={[faqPage(generalFaqs)]}>
+  <HeroVideo />
+
+
+  <section class="section bg-aurora svc2" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="svc2__head">
+        <div>
+          <span class="eyebrow">Our featured services</span>
+          <h2 id="services-title">Cleaning services for every <span class="swipe" data-inview>space</span></h2>
+        </div>
+        <div class="svc2__aside">
+          <p>Residential and commercial cleaning tailored to what you need. Every service follows a written checklist, so you know exactly what is included before we arrive.</p>
+          <a class="btn btn--primary" href="/services/">All services <Icon name="arrow" /></a>
+        </div>
+      </div>
+      <ServicesShowcase />
+    </div>
+  </section>
+
+  <section class="section bg-dots" aria-labelledby="about-title">
+    <div class="wrap about2">
+      <div class="about2__media">
+        <div class="about2__main"><Image src={img('cms-about-img4-20260220232432.png')} alt="Dolores, co-owner of Clean Solutions CO. LLC" widths={[320, 480, 640]} sizes="(max-width: 860px) 70vw, 340px" loading="lazy" /></div>
+        <div class="about2__sub" aria-hidden="true"><Image src={img('project-img4.jpg')} alt="" widths={[220, 320]} sizes="200px" loading="lazy" /></div>
+        <div class="about2__badge"><strong><span data-count={business.yearsInBusiness}>{business.yearsInBusiness}</span>+</strong><span>years cleaning<br />Hampton Roads</span></div>
+      </div>
+      <div>
+        <span class="eyebrow">About Clean Solutions CO. LLC</span>
+        <h2 id="about-title">Let us handle the mess, you enjoy the clean</h2>
+        <p class="answer">With {business.yearsInBusiness} years of experience in professional cleaning, we specialize in residential and commercial cleaning: move in/out, Airbnb properties, post-construction cleanup and detailed deep cleaning. We are committed to spotless results for every client.</p>
+        <MakeItRight />
+        <div class="about2__help">
+          <a class="btn btn--primary" href="/about/">About us <Icon name="arrow" /></a>
+          <div class="help"><IconBadge name="phone" size="sm" /><div><small>Need help now?</small><a href={business.phone.href} data-track="call_click">{business.phone.display}</a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FixedBand image="frame-kitchen.jpg" class="detail-band" labelledby="detail-title">
+    <div class="wrap">
+      <span class="eyebrow" id="detail-title">Details make the difference</span>
+      <p class="statement" data-scrub>We will make absolutely any place clean, neat and tidy. Trained professionals, flexible scheduling and a commitment to quality that shows in every detail.</p>
+      <div class="btn-row" style="margin-top:28px">
+        <a class="btn btn--sky" href="#quote" data-magnetic>Get Your Quote <Icon name="arrow" /></a>
+        <a class="btn btn--outline-light" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+      </div>
+    </div>
+  </FixedBand>
+
+  <section class="section bg-aurora" aria-labelledby="why-title">
+    <div class="wrap why">
+      <div class="why__media">
+        <Image src={img('cms-man-cleaning-home-20260220230750.jpg')} alt="Marcial, co-owner of Clean Solutions, preparing a client quote" widths={[480, 720, 900]} sizes="(max-width: 900px) 92vw, 560px" loading="lazy" data-parallax="0.06" />
+      </div>
+      <div>
+        <span class="eyebrow">Why choose us</span>
+        <h2 id="why-title">Why Hampton Roads families and businesses choose Clean Solutions</h2>
+        <p class="lead">At Clean Solutions we take pride in cleaning that exceeds expectations. Our commitment to quality and customer satisfaction sets us apart.</p>
+        <div class="why__list">
+          <div class="why__item"><IconBadge name="users" /><div><h3>Customer focused</h3><p>Your satisfaction is our top priority: attention to detail, reliability and professional service on every visit.</p></div></div>
+          <div class="why__item"><IconBadge name="shield" /><div><h3>We are committed</h3><p>Our team shows up on time, works efficiently and never cuts corners. {business.credentials}.</p></div></div>
+          <div class="why__item"><IconBadge name="calendar" /><div><h3>Regular &amp; monthly cleaning</h3><p>Weekly, bi-weekly, monthly or one-time. Flexible scheduling, including weekends and same-day when available.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Process heading="Get amazing cleaning in 3 simple steps" />
+
+  <section class="section bg-dots" aria-labelledby="freq-title">
+    <div class="wrap two-col" style="align-items:start">
+      <div>
+        <span class="eyebrow">How often</span>
+        <h2 id="freq-title">How often should you schedule house cleaning?</h2>
+        <p class="answer">Most households choose bi-weekly cleaning: the home stays consistently clean between visits. Weekly fits busy families and pets; monthly and one-time visits are also available.</p>
+        <p style="color:var(--muted);margin-top:18px">Not sure? Start with a <a href="/services/deep-cleaning/">deep cleaning</a> to reset the home, then keep it that way with recurring <a href="/services/house-cleaning/">house cleaning</a>.</p>
+        <div class="freq-photo">
+          <Image src={img('slider-img6.jpg')} alt="" widths={[480, 720]} sizes="(max-width: 820px) 92vw, 520px" loading="lazy" />
+          <span class="freq-photo__tag"><IconBadge name="calendar" size="sm" tone="mint" /><span><strong>Bi-weekly</strong> is what most homes choose</span></span>
+        </div>
+      </div>
+      <FrequencyTable />
+    </div>
+  </section>
+
+  <Projects />
+
+  <Testimonial />
+
+  <OwnersScene />
+
+  <section class="section bg-aurora" aria-labelledby="areas-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Service areas</span>
+        <h2 id="areas-title">Cleaning services across Hampton Roads</h2>
+        <p class="lead">Based in Chesapeake, we clean homes and businesses in five cities of South Hampton Roads. Not sure if we cover your street? <a href={business.phone.href} data-track="call_click">Call us</a>.</p>
+      </div>
+      <AreasList />
+    </div>
+  </section>
+
+  <section class="section bg-dots" aria-labelledby="faq-title">
+    <div class="wrap faq2">
+      <aside class="faq2__side">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <div class="faq2__card">
+          <Image src={img('person-taking-care.jpg')} alt="" widths={[420, 640]} sizes="(max-width: 900px) 92vw, 400px" loading="lazy" />
+          <div class="faq2__cardbody">
+            <IconBadge name="phone" size="sm" tone="glass" />
+            <p><strong>Still have a question?</strong>Talk to a real person from our Chesapeake team.</p>
+            <a class="btn btn--sky" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+          </div>
+        </div>
+      </aside>
+      <Faq faqs={generalFaqs} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="final-title">
+    <div class="wrap">
+      <div class="final final--photo" data-spotlight style={finalBg}>
+        <span class="eyebrow">Get in touch</span>
+        <h2 id="final-title">Ready for a spotless space?</h2>
+        <p>Get your free quote today and experience the Clean Solutions difference. Our team is ready to transform your home or business.</p>
+        <div class="btn-row" style="margin-top:24px">
+          <a class="btn btn--sky" href="#quote" data-magnetic>Get Your Quote <Icon name="arrow" /></a>
+          <a class="btn btn--outline-light" href={business.phone.href} data-track="call_click"><Icon name="phone" />Call {business.phone.display}</a>
+        </div>
+        <Stats tone="dark" />
+      </div>
+    </div>
+  </section>
+</Base>

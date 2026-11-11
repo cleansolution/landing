@@ -1,0 +1,22 @@
+---
+/**
+ * Full-width band with a fixed (parallax) photo background from the client's own video.
+ * Desktop: background-attachment: fixed. Touch devices: normal scroll (iOS ignores fixed).
+ */
+import { getImage } from 'astro:assets';
+import { img } from '../lib/images';
+interface Props { image: string; tone?: 'navy' | 'light'; class?: string; id?: string; labelledby?: string }
+const { image, tone = 'navy', class: cls, id, labelledby } = Astro.props;
+const src = img(image);
+const big = await getImage({ src, width: 1920, format: 'webp', quality: 68 });
+const small = await getImage({ src, width: 900, format: 'webp', quality: 62 });
+---
+<section
+  id={id}
+  class:list={['fixed-band', `fixed-band--${tone}`, cls]}
+  style={`--bg-lg:url(${big.src});--bg-sm:url(${small.src})`}
+  aria-labelledby={labelledby}
+>
+  <div class="fixed-band__tex" aria-hidden="true"></div>
+  <slot />
+</section>

@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import { business } from '../config/site';
+---
+<div class="callbar" aria-label="Quick contact">
+  <a class="btn btn--ghost" href={business.phone.href} data-track="call_click"><Icon name="phone" />Call</a>
+  <a class="btn btn--primary" href="#quote" data-quote-link>Get Your Quote</a>
+</div>

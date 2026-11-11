@@ -1,0 +1,108 @@
+---
+import { bgVars } from '../../lib/images';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import QuoteForm from '../../components/QuoteForm.astro';
+import Icon from '../../components/Icon.astro';
+import MakeItRight from '../../components/Promise.astro';
+import ServiceRows from '../../components/ServiceRows.astro';
+import AreasList from '../../components/AreasList.astro';
+import Process from '../../components/Process.astro';
+import Faq from '../../components/Faq.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { areas, areaHref, type Area } from '../../data/areas';
+import { getService, type Service } from '../../data/services';
+import { business } from '../../config/site';
+import { breadcrumbs, faqPage, orgId } from '../../lib/schema';
+
+export function getStaticPaths() {
+  return areas.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+const { a } = Astro.props as { a: Area };
+const site = Astro.site!;
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Service Areas', href: '/service-areas/' },
+  { name: `${a.name}, VA`, href: areaHref(a.slug) },
+];
+const focus = a.focus.map((slug) => getService(slug)).filter(Boolean) as Service[];
+const placeSchema = {
+  '@type': 'WebPage',
+  '@id': new URL(areaHref(a.slug), site).href + '#webpage',
+  name: a.title,
+  about: { '@id': orgId(site) },
+  spatialCoverage: { '@type': 'City', name: `${a.name}, VA` },
+};
+const heroBg = await bgVars(['frame-floor.jpg','frame-sofa.jpg','frame-kitchen.jpg'][areas.indexOf(a) % 3]);
+---
+<Base title={a.title} description={a.description} schema={[placeSchema, breadcrumbs(crumbs, site), faqPage(a.faqs)]}>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div class="page-hero__grid">
+        <div>
+          <span class="eyebrow"><Icon name="pin" class="inline-ico" />{a.isBase ? 'Our home base' : `Serving ${a.name} from Chesapeake`}</span>
+          <h1>Cleaning Services in <span class="swipe">{a.name}, VA</span></h1>
+          <p class="answer">{a.answer}</p>
+          <div class="prose" style="margin-top:20px">{a.intro.map((p) => <p>{p}</p>)}</div>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#quote">Get Your Quote <Icon name="arrow" /></a>
+            <a class="btn btn--ghost" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+          </div>
+          <MakeItRight />
+        </div>
+        <QuoteForm city={a.slug} source={`area-${a.slug}`} glass />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Most requested in {a.name}</span>
+        <h2 id="svc-title">Cleaning services in {a.name}</h2>
+      </div>
+      <ServiceRows items={focus} cityName={a.name} />
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="nb-title">
+    <div class="wrap two-col">
+      <div>
+        <span class="eyebrow">Neighborhoods</span>
+        <h2 id="nb-title">Where we clean in {a.name}</h2>
+        <ul class="chips" style="margin-top:16px">{a.neighborhoods.map((n) => <li>{n}</li>)}</ul>
+        <p style="color:var(--muted);margin-top:18px">Don't see your neighborhood? Call <a href={business.phone.href} data-track="call_click">{business.phone.display}</a> and we will confirm coverage at your address.</p>
+      </div>
+      <div class="grid" style="gap:16px">
+        {a.localTips.map((t) => (
+          <div class="panel tip" style="background:#fff">
+            <h3><Icon name="bulb" />{t.title}</h3>
+            <p style="margin:0;color:var(--muted)">{t.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Process />
+
+  <section class="section" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">FAQ</span>
+        <h2 id="faq-title">Cleaning in {a.name}: questions</h2>
+      </div>
+      <Faq faqs={a.faqs} />
+    </div>
+  </section>
+
+  <section class="section section--tint" aria-labelledby="near-title">
+    <div class="wrap">
+      <div class="section-head"><h2 id="near-title">Nearby cities we serve</h2></div>
+      <AreasList exclude={a.slug} />
+    </div>
+  </section>
+
+  <CtaBand title={`Book a cleaning in ${a.name}`} />
+</Base>

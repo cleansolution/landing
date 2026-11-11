@@ -1,0 +1,13 @@
+---
+import type { Faq } from '../data/services';
+interface Props { faqs: Faq[]; open?: boolean }
+const { faqs, open = false } = Astro.props;
+---
+<div class="faq">
+  {faqs.map((f, i) => (
+    <details open={open && i === 0 ? true : undefined}>
+      <summary><h3>{f.q}</h3></summary>
+      <div class="faq__a"><p>{f.a}</p></div>
+    </details>
+  ))}
+</div>

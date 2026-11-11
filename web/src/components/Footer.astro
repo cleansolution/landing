@@ -1,0 +1,43 @@
+---
+import logo from '../assets/logo.svg';
+import { business, nav } from '../config/site';
+import { services, serviceHref } from '../data/services';
+import { areas, areaHref } from '../data/areas';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="footer-logo" href="/"><img src={logo.src} width="160" height="66" alt={business.name} loading="lazy" style="filter:brightness(0) invert(1)" /></a>
+        <p>House cleaning, deep cleaning, move-out, Airbnb and commercial cleaning in Chesapeake and Hampton Roads, Virginia.</p>
+        <p>
+          <a href={business.phone.href} data-track="call_click">{business.phone.display}</a><br />
+          <a href={`mailto:${business.email}`} data-track="email_click">{business.email}</a><br />
+          {business.address.street}<br />{business.address.locality}, {business.address.region} {business.address.postalCode}
+        </p>
+        <p>{business.hours.map((h) => <>{h.days}: {h.label}<br /></>)}</p>
+      </div>
+      <div>
+        <h2>Services</h2>
+        <ul>{services.map((s) => <li><a href={serviceHref(s.slug)}>{s.name}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>Service areas</h2>
+        <ul>{areas.map((a) => <li><a href={areaHref(a.slug)}>{a.name}, VA</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <ul>
+          {nav.filter((n) => n.href !== '/services/' && n.href !== '/service-areas/').map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+          <li><a href="/contact/#quote">Get Your Quote</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {business.name}. All rights reserved.</span>
+      <span>Serving {business.serviceAreas.join(', ')}, VA</span>
+    </div>
+  </div>
+</footer>

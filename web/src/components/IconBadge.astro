@@ -1,0 +1,7 @@
+---
+/** Soft "bubble" icon that draws itself when it scrolls into view, and wiggles on hover. */
+import Icon from './Icon.astro';
+interface Props { name: string; size?: 'sm' | 'md' | 'lg'; tone?: 'sky' | 'mint' | 'glass'; class?: string }
+const { name, size = 'md', tone = 'sky', class: cls } = Astro.props;
+---
+<span class:list={['ico', `ico--${size}`, `ico--${tone}`, cls]} data-inview aria-hidden="true"><Icon name={name} /></span>

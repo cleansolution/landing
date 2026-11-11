@@ -1,0 +1,25 @@
+{
+  "name": "clean-solutions-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Clean Solutions CO. LLC — house & commercial cleaning website (Astro static, Cloudflare Pages).",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "audit:seo": "node scripts/seo-audit.mjs",
+    "test": "astro build && node scripts/seo-audit.mjs",
+    "test:production": "node scripts/build-production-check.mjs"
+  },
+  "engines": { "node": ">=22.12.0" },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/plus-jakarta-sans": "^5.2.5",
+    "astro": "7.3.8",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0"
+  }
+}

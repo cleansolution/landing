@@ -1,0 +1,50 @@
+---
+/**
+ * Full-bleed hero with the client's own video (Virginia Beach aerial + cleaning shots).
+ * LCP = the poster image (preloaded). Video sources are attached after load
+ * (site.ts → initHeroVideo); paused with reduced motion / data saver; pause button (WCAG 2.2.2).
+ */
+import { Image } from 'astro:assets';
+import poster from '../assets/img/hero-poster.jpg';
+import Icon from './Icon.astro';
+import QuoteForm from './QuoteForm.astro';
+import { business } from '../config/site';
+---
+<section class="vhero" aria-labelledby="hero-title">
+  <div class="vhero__media" aria-hidden="true">
+    <Image src={poster} alt="" widths={[480, 800, 1280]} sizes="100vw" loading="eager" fetchpriority="high" class="vhero__poster" />
+    <video class="vhero__video" muted loop playsinline preload="none" data-hero-video>
+      <source data-src="/video/hero.webm" type="video/webm" />
+      <source data-src="/video/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="vhero__shade"></div>
+  </div>
+  <div class="wrap vhero__grid">
+    <div class="vhero__copy">
+      <p class="vhero__chip"><Icon name="pin" />Virginia Beach · Chesapeake · Norfolk · Portsmouth · Suffolk</p>
+      <p class="vhero__display">
+        <span class="line"><span>We Don't Just Clean.</span></span>
+        <span class="line"><span>We <span class="swipe swipe--light">Elevate</span> Your Space.</span></span>
+      </p>
+      <h1 id="hero-title" class="vhero__h1">Residential &amp; Commercial Cleaning in Chesapeake, VA</h1>
+      <p class="vhero__lead">We focus on the details, because details make the difference. Recurring house cleaning, deep cleaning, move-outs, Airbnb turnovers and offices across Hampton Roads.</p>
+      <div class="vhero__call">
+        <span>Call now</span>
+        <a href={business.phone.href} data-track="call_click">{business.phone.display}</a>
+      </div>
+      <p class="vhero__tag">Fast response. Real people. Real results.</p>
+      <ul class="vhero__trust">
+        <li><Icon name="calendar" />{business.yearsInBusiness}+ years</li>
+        <li><Icon name="shield" />{business.credentials}</li>
+        <li><Icon name="leaf" />Eco-friendly products</li>
+      </ul>
+    </div>
+    <div class="vhero__form">
+      <QuoteForm source="home-hero" glass />
+    </div>
+  </div>
+  <button type="button" class="vhero__pause" aria-pressed="false" data-hero-video-toggle>
+    <span class="sr-only" data-label>Pause video</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14" /><path class="i-play" d="M7 5l12 7-12 7z" /></svg>
+  </button>
+</section>

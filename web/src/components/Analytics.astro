@@ -1,0 +1,21 @@
+---
+/**
+ * GA4 hook. Renders NOTHING unless PUBLIC_GA4_ID is set at build time.
+ * No external request is made in local/dev builds by default.
+ * Events already wired via [data-track]: call_click, sms_click, email_click, form_submit_demo / generate_lead.
+ */
+import { flags } from '../config/site';
+const id = flags.ga4Id;
+---
+{id && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+    <script is:inline define:vars={{ id }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', id);
+    </script>
+  </>
+)}

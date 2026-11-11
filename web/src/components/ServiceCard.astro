@@ -1,0 +1,15 @@
+---
+import Icon from './Icon.astro';
+import type { Service } from '../data/services';
+import { serviceHref } from '../data/services';
+interface Props { service: Service; headingLevel?: 'h2' | 'h3' }
+const { service: s, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+---
+<article class="card reveal">
+  <div class="card__icon"><Icon name={s.icon} /></div>
+  <span class="card__tag">{s.category}</span>
+  <H><a href={serviceHref(s.slug)}>{s.name}</a></H>
+  <p>{s.short}</p>
+  <span class="card__more" aria-hidden="true">See what's included <Icon name="arrow" /></span>
+</article>

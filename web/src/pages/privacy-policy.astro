@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { business } from '../config/site';
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Privacy Policy', href: '/privacy-policy/' }];
+---
+<Base title="Privacy Policy | Clean Solutions CO. LLC" description="How Clean Solutions CO. LLC collects, uses and protects the information you share through our website and quote form, including spam protection.">
+  <section class="section">
+    <div class="wrap prose">
+      <Breadcrumbs items={crumbs} />
+      <h1 style="margin-top:18px">Privacy Policy</h1>
+      <h2>Information we collect</h2>
+      <p>When you request a quote we collect your name, phone number, email, the service you need, your city and any details you choose to share.</p>
+      <h2>How we use it</h2>
+      <p>Only to answer your request, prepare your quote and schedule your cleaning. We do not sell or share your information with third parties for marketing.</p>
+      <h2>Spam protection</h2>
+      <p>Our forms use Cloudflare Turnstile to verify that submissions come from people, not bots. Turnstile may process technical information about your browser for this purpose.</p>
+      <h2>Contact</h2>
+      <p>Questions about your information: <a href={`mailto:${business.email}`}>{business.email}</a> or {business.phone.display}.</p>
+    </div>
+  </section>
+</Base>

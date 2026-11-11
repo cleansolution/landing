@@ -1,0 +1,37 @@
+---
+/** City cards with a photo header (client job photos, decorative), pin badge, neighborhoods and link. */
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { areas, areaHref } from '../data/areas';
+import { img } from '../lib/images';
+import IconBadge from './IconBadge.astro';
+import { business } from '../config/site';
+interface Props { exclude?: string; level?: 'h2' | 'h3' }
+const { exclude, level = 'h3' } = Astro.props;
+const H = level;
+const photos = ['frame-floor.jpg', 'project-img1.jpg', 'frame-sofa.jpg', 'project-img6.jpg', 'frame-kitchen.jpg'];
+const list = areas.filter((a) => a.slug !== exclude);
+---
+<div class="areas2">
+  {list.map((a) => (
+    <article class="area2 reveal">
+      <div class="area2__img">
+        <Image src={img(photos[areas.indexOf(a) % photos.length])} alt="" widths={[360, 560]} sizes="(max-width: 700px) 92vw, 360px" loading="lazy" />
+        <span class="area2__pin"><Icon name="pin" />{a.isBase ? 'Home base' : 'We serve'}</span>
+      </div>
+      <div class="area2__body">
+        <H class="area2__name"><a href={areaHref(a.slug)}>{a.name}, VA</a></H>
+        <p>{a.note}</p>
+        <ul class="chips">{a.neighborhoods.slice(0, 4).map((n) => <li>{n}</li>)}</ul>
+        <span class="area2__more" aria-hidden="true">Cleaning in {a.name} <Icon name="arrow" /></span>
+      </div>
+    </article>
+  ))}
+  {!exclude && (
+    <div class="area2 area2--cta reveal">
+      <IconBadge name="phone" tone="glass" />
+      <p class="area2__ctah"><strong style="display:block;color:#fff;font-size:1.35rem;margin:14px 0 8px">Not on the list?</strong>We also clean nearby neighborhoods across Hampton Roads. Call and we will confirm your address.</p>
+      <a class="btn btn--sky" href={business.phone.href} data-track="call_click"><Icon name="phone" />{business.phone.display}</a>
+    </div>
+  )}
+</div>

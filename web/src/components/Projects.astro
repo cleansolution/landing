@@ -1,0 +1,32 @@
+---
+/** "Our Recent Projects" with the current site's job photos. Desktop: horizontal track driven by scroll. Mobile: swipe strip. */
+import { Image } from 'astro:assets';
+import { img } from '../lib/images';
+const items = [
+  { file: 'project-img1.jpg', title: 'Commercial Cleaning', text: 'Thorough, detailed cleaning for commercial spaces.' },
+  { file: 'project-img2.jpg', title: 'Office Cleaning', text: 'Clean, productive offices for teams and clients.' },
+  { file: 'project-img3.jpg', title: 'Carpet Cleaning', text: 'Deep carpet care that lifts stains and odors.' },
+  { file: 'project-img4.jpg', title: 'Kitchen Detail', text: 'Counters, sinks and backsplash left spotless.' },
+  { file: 'project-img5.jpg', title: 'Window Cleaning', text: 'Interior glass, sills and tracks, streak-free.' },
+  { file: 'project-img6.jpg', title: 'Playroom Deep Clean', text: 'Floors and rugs refreshed in family spaces.' },
+];
+---
+<section class="projects projects--light" aria-labelledby="projects-title" data-hscroll>
+  <div class="projects__stage" data-hscroll-stage>
+    <div class="wrap projects__head">
+      <div>
+        <span class="eyebrow">Our works</span>
+        <h2 id="projects-title">Our recent projects</h2>
+      </div>
+      <p class="projects__note">A look at recent jobs by the Clean Solutions team in homes and businesses across Hampton Roads.</p>
+    </div>
+    <div class="projects__track" data-hscroll-track tabindex="0" aria-label="Recent projects, scrollable">
+      {items.map((p, i) => (
+        <figure class="project" style={`--r:${i % 2 ? 1.5 : -1.5}deg`}>
+          <Image src={img(p.file)} alt={`${p.title} by Clean Solutions`} widths={[360, 480]} sizes="(max-width: 700px) 78vw, 380px" loading="lazy" />
+          <figcaption><strong>{p.title}</strong><span>{p.text}</span></figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

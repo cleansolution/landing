@@ -1,0 +1,11 @@
+# Old React-site URLs → new pages (301). www → apex is a Cloudflare redirect rule (see README).
+/GetQuote           /contact/                 301
+/getquote           /contact/                 301
+/Services           /services/                301
+/Team               /about/                   301
+/team               /about/                   301
+/home-1             /                         301
+/home-2             /                         301
+/admin              /                         301
+/admin/*            /                         301
+/sitemap.xml        /sitemap-index.xml        301

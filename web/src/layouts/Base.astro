@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import '../styles/patterns.css';
+import '../styles/premium.css';
+import '../styles/textures.css';
+import '../styles/fresh.css';
+import fontUrl from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
+import { business, flags } from '../config/site';
+import { pendingPaths, utilityPaths } from '../config/indexing.mjs';
+import { graph, localBusiness, website } from '../lib/schema';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CallBar from '../components/CallBar.astro';
+import Analytics from '../components/Analytics.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** Extra JSON-LD nodes (the LocalBusiness node is always included). */
+  schema?: Record<string, unknown>[];
+  /** Force noindex (404, thank-you). */
+  noindex?: boolean;
+  /** Preload the LCP image. */
+  preloadImage?: string;
+}
+
+const { title, description, ogImage = '/og-default.jpg', ogType = 'website', schema = [], noindex = false, preloadImage } = Astro.props;
+
+const site = Astro.site!;
+const path = Astro.url.pathname;
+const canonical = new URL(path, site).href;
+const isPending = pendingPaths.includes(path);
+const isUtility = utilityPaths.includes(path) || noindex;
+// Three layers: environment switch, per-page approval, utility pages.
+const indexable = flags.allowIndexing && !isPending && !isUtility;
+const robots = indexable ? 'index, follow, max-image-preview:large' : 'noindex, follow';
+const ogImageUrl = new URL(ogImage, site).href;
+const nodes = [localBusiness(site), ...(path === '/' ? [website(site)] : []), ...schema];
+const jsonLd = graph(nodes);
+---
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
+    <style is:inline define:vars={{ fontUrl: `url(${fontUrl})` }}>
+      @font-face {
+        font-family: 'Plus Jakarta Sans Variable';
+        font-style: normal;
+        font-display: swap;
+        font-weight: 200 800;
+        src: var(--fontUrl) format('woff2-variations');
+      }
+    </style>
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={business.shortName} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${business.shortName}: house and commercial cleaning in Chesapeake, VA`} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#184a8c" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <Analytics />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-progress" data-page-progress aria-hidden="true"></div>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <CallBar />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

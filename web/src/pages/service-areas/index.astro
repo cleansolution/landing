@@ -1,0 +1,31 @@
+---
+import { bgVars } from '../../lib/images';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AreasList from '../../components/AreasList.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { business } from '../../config/site';
+import { breadcrumbs } from '../../lib/schema';
+const crumbs = [{ name: 'Home', href: '/' }, { name: 'Service Areas', href: '/service-areas/' }];
+const heroBg = await bgVars('frame-sofa.jpg');
+---
+<Base
+  title="Cleaning Service Areas in Hampton Roads | Clean Solutions"
+  description="Based in Chesapeake, VA, we clean homes and businesses in Chesapeake, Virginia Beach, Norfolk, Portsmouth and Suffolk. See neighborhoods and services."
+  schema={[breadcrumbs(crumbs, Astro.site!)]}
+>
+  <section class="page-hero page-hero--dark" style={heroBg}>
+    <div class="wrap">
+      <Breadcrumbs items={crumbs} />
+      <div style="max-width:820px;margin-top:18px">
+        <span class="eyebrow">South Hampton Roads</span>
+        <h1>Cleaning Service Areas in Hampton Roads, VA</h1>
+        <p class="answer">We are based in Chesapeake, Virginia, and clean homes and businesses in Chesapeake, Virginia Beach, Norfolk, Portsmouth and Suffolk. Call {business.phone.display} to confirm coverage at your address.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" aria-label="Cities">
+    <div class="wrap"><AreasList level="h2" /></div>
+  </section>
+  <CtaBand />
+</Base>

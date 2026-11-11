@@ -1,0 +1,22 @@
+---
+/**
+ * Single testimonial supplied by the client in their web corrections (Notion, Feb 2026).
+ * Shown as plain text, never as Review/AggregateRating markup. Replace with real Google reviews when exported.
+ */
+import { Image } from 'astro:assets';
+import { img } from '../lib/images';
+---
+<section class="section testi" aria-labelledby="testi-title">
+  <div class="wrap testi__grid">
+    <div class="testi__media" aria-hidden="true">
+      <Image src={img('person-taking-care.jpg')} alt="" widths={[600, 900]} sizes="(max-width: 860px) 92vw, 520px" loading="lazy" data-parallax="0.05" />
+    </div>
+    <figure class="testi__card">
+      <span class="eyebrow" id="testi-title">What our clients say</span>
+      <blockquote>
+        <p>“We are very satisfied with the cleaning services in our home; they exceeded our expectations, and we would 100% recommend them for future occasions.”</p>
+      </blockquote>
+      <figcaption><strong>Evangeline Lee</strong><span>House owner</span></figcaption>
+    </figure>
+  </div>
+</section>

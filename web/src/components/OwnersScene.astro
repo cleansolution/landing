@@ -1,0 +1,33 @@
+---
+/**
+ * "Locally owned in Chesapeake": fixed photo background (client video frame) + glass card.
+ * No couple photo (client feedback). Names come from the current live site.
+ */
+import Icon from './Icon.astro';
+import FixedBand from './FixedBand.astro';
+import { business } from '../config/site';
+---
+<FixedBand image="frame-sofa.jpg" labelledby="owners-title" class="owners2">
+  <div class="wrap owners2__grid">
+    <div class="glass-card owners2__card">
+      <span class="eyebrow">Locally owned in Chesapeake</span>
+      <h2 id="owners-title">You'll know exactly who is <span class="swipe swipe--light" data-inview>cleaning your home</span></h2>
+      <p class="owners2__lead">Clean Solutions is run by its owners, Marcial and Dolores, right here in Chesapeake. When you call, you talk to the people responsible for the work.</p>
+      <ul class="owners2__list">
+        <li><Icon name="calendar" />{business.yearsInBusiness} years cleaning homes and businesses in Hampton Roads</li>
+        <li><Icon name="users" />A local team, not a franchise or a call center</li>
+        <li><Icon name="leaf" />Trained cleaners and safe, eco-friendly products</li>
+        <li><Icon name="shield" />{business.credentials}</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn--sky" href="#quote" data-quote-link data-magnetic>Get Your Quote <Icon name="arrow" /></a>
+        <a class="btn btn--outline-light" href="/about/">About us</a>
+      </div>
+    </div>
+    <div class="owners2__stats" aria-hidden="true">
+      <div class="glass-chip"><strong><span data-count={business.yearsInBusiness}>{business.yearsInBusiness}</span>+</strong><span>years</span></div>
+      <div class="glass-chip"><strong><span data-count="5">5</span></strong><span>cities</span></div>
+      <div class="glass-chip"><strong><span data-count="24">24</span>h</strong><span>make-it-right</span></div>
+    </div>
+  </div>
+</FixedBand>
