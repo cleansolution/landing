@@ -51,7 +51,15 @@ Regenera los favicons, `logo-512.png` y `og-default.jpg`.
   `ffmpeg -i CleanSolutions.mp4 -an -vf scale=1280:-2,fps=24 -c:v libx264 -crf 30 -movflags +faststart hero.mp4`
 - `public/_redirects`: 301 de las URLs viejas de React. `public/_headers`: seguridad, caché y noindex en `*.pages.dev`.
 
-## Despliegue en Cloudflare Pages (cuando se apruebe)
+## Despliegue en Netlify (actual)
+- Proyecto Netlify `clean-solutions-va`, conectado a `github.com/cleansolution/landing`, rama `main` (auto publish).
+- `netlify.toml` en la raíz: base `web`, `npm run build`, publica `dist`, funciones en `web/netlify/functions`, Node 22, `PUBLIC_FORM_MODE=live`.
+- Formulario: `web/netlify/functions/contact-message.mjs` reutiliza `functions/api/contact-message.js` (Resend). Rutas: `/api/contact-message`, `/api/contact.php`, `/api/contact-message.php`.
+- Variables en Netlify (Project configuration → Environment variables): `RESEND_API_KEY`, `CONTACT_FROM` (remitente verificado en Resend), `CONTACT_TO`; opcional `TURNSTILE_SECRET_KEY` + `PUBLIC_TURNSTILE_SITE_KEY`; `PUBLIC_GA4_ID`.
+- `PUBLIC_ALLOW_INDEXING=true` solo cuando el dominio apunte a Netlify (hoy el DNS de Namecheap apunta a 162.213.255.45, el hosting viejo).
+- Diagnóstico del correo: `GET /api/contact-message` dice qué variable falta.
+
+## (Alternativa) Despliegue en Cloudflare Pages
 1. Proyecto de Pages → *Settings → Build*:
    - Root directory: `web`
    - Build command: `npm run build`

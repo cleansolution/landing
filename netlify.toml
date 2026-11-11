@@ -1,0 +1,19 @@
+# Netlify builds the new Astro site in web/ (the old React app at the repo root is no longer deployed).
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # The quote form really sends (POST /api/contact-message → Netlify Function → Resend).
+  PUBLIC_FORM_MODE = "live"
+  SITE_URL = "https://cleansolutionsva.com"
+  # PUBLIC_ALLOW_INDEXING is set to "true" in the Netlify UI only once the domain points to Netlify.
+
+# Deploy previews and branch deploys are never indexed.
+[context.deploy-preview.environment]
+  PUBLIC_ALLOW_INDEXING = "false"
+[context.branch-deploy.environment]
+  PUBLIC_ALLOW_INDEXING = "false"
