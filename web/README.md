@@ -54,8 +54,8 @@ Regenera los favicons, `logo-512.png` y `og-default.jpg`.
 ## Despliegue en Netlify (actual)
 - Proyecto Netlify `clean-solutions-va`, conectado a `github.com/cleansolution/landing`, rama `main` (auto publish).
 - `netlify.toml` en la raíz: base `web`, `npm run build`, publica `dist`, funciones en `web/netlify/functions`, Node 22, `PUBLIC_FORM_MODE=live`.
-- Formulario: **Netlify Forms** (formulario `quote`, en todas las páginas). Netlify guarda cada solicitud y envía el aviso por correo (Netlify → Forms → Form notifications → Email a info@cleansolutionsva.com). Antispam: honeypot `company` + reCAPTCHA de Netlify ("I'm not a robot"). Tras enviar, Netlify muestra `/thank-you/`.
-- Requisito único: Netlify → Forms → **Enable form detection** y volver a desplegar.
+- Formulario: **FormSubmit** (igual que Castellanos y MadeIn). `action="https://formsubmit.co/info@cleansolutionsva.com"`, con `_subject`, `_template=table`, `_captcha=true` (pantalla "I'm not a robot" de FormSubmit), `_honey` (trampa) y `_next` → `/thank-you/` del mismo dominio.
+- **Activación:** el primer envío hace que FormSubmit mande un correo a info@cleansolutionsva.com con el botón "Activate Form". Hasta que se pulse, no llegan solicitudes. Tras activar, cada solicitud llega al correo con reply-to al cliente.
 - `web/netlify/functions/contact-message.mjs` (Resend) queda como alternativa; el formulario ya no la usa.
 - Variables en Netlify: `PUBLIC_GA4_ID=G-39NGNSXF8M`; `PUBLIC_ALLOW_INDEXING=true` al pasar el dominio.
 - `PUBLIC_ALLOW_INDEXING=true` solo cuando el dominio apunte a Netlify (hoy el DNS de Namecheap apunta a 162.213.255.45, el hosting viejo).

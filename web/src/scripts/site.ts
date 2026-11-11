@@ -97,9 +97,9 @@ if ('IntersectionObserver' in window && counters.length && !matchMedia('(prefers
   counters.forEach((c) => cio.observe(c));
 }
 
-/* ---------- Quote form (Netlify Forms) ----------
- * Netlify receives the POST, filters spam (honeypot + its "I'm not a robot" reCAPTCHA)
- * and emails the owner. Here we only validate before letting the native submit go through.
+/* ---------- Quote form (FormSubmit) ----------
+ * The native POST goes to formsubmit.co, which shows its "I'm not a robot" check, emails the
+ * owner and sends the visitor back to /thank-you/ on this same site. Here we only validate.
  * Local demo mode (no Netlify): never sends, jumps to /thank-you/?demo=1.
  */
 const forms = document.querySelectorAll<HTMLFormElement>('[data-quote-form]');
@@ -107,6 +107,9 @@ const phoneOk = (v: string) => v.replace(/\D/g, '').length >= 10;
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
 forms.forEach((form) => {
+  // Come back to the thank-you page of whatever host serves the site (domain, netlify.app preview…)
+  const next = form.querySelector<HTMLInputElement>('[data-next]');
+  if (next) next.value = `${location.origin}/thank-you/`;
   const status = form.querySelector<HTMLElement>('.form-status')!;
   const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
 
@@ -121,7 +124,7 @@ forms.forEach((form) => {
   form.addEventListener('submit', (e) => {
     const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
     const checks: [string, boolean, string][] = [
-      ['fullName', !!data.fullName?.trim(), 'Please enter your name.'],
+      ['name', !!data.name?.trim(), 'Please enter your name.'],
       ['email', emailOk(data.email || ''), 'Please enter a valid email.'],
       ['phone', phoneOk(data.phone || ''), 'Please enter a valid phone number.'],
     ];
@@ -133,13 +136,6 @@ forms.forEach((form) => {
     if (first) {
       e.preventDefault();
       (form.elements.namedItem(first) as HTMLElement).focus();
-      return;
-    }
-    // Netlify's reCAPTCHA checkbox (only present on the live Netlify site)
-    if (form.querySelector('[data-netlify-recaptcha] iframe, .g-recaptcha') && !data['g-recaptcha-response']) {
-      e.preventDefault();
-      status.dataset.state = 'error';
-      status.textContent = 'Please check the "I am not a robot" box.';
       return;
     }
     status.dataset.state = '';

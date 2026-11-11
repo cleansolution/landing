@@ -7,7 +7,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # Quote form is live: Netlify Forms ("quote") emails the owner. Set it up in Netlify → Forms.
+  # Quote form is live: it posts to FormSubmit, which emails info@cleansolutionsva.com.
   PUBLIC_FORM_MODE = "live"
   SITE_URL = "https://cleansolutionsva.com"
   # PUBLIC_ALLOW_INDEXING is set to "true" in the Netlify UI only once the domain points to Netlify.
