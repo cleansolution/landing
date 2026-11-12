@@ -2,6 +2,7 @@
 /** 3 steps (live-site copy), each with a client photo, numbered badge and an animated connector. Light section. */
 import { Image } from 'astro:assets';
 import IconBadge from './IconBadge.astro';
+import Icon from './Icon.astro';
 import { img } from '../lib/images';
 interface Props { heading?: string }
 const { heading = 'Booking takes about two minutes' } = Astro.props;
@@ -17,6 +18,7 @@ const steps = [
       <span class="eyebrow">How it works</span>
       <h2 id="process-title">{heading}</h2>
     </div>
+    <p class="swipe-hint" aria-hidden="true">Swipe through the 3 steps <Icon name="arrow" /></p>
     <div class="flow__wrap process">
     <div class="flow__line" aria-hidden="true"><i></i></div>
     <ol class="flow__steps">

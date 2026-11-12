@@ -10,6 +10,7 @@ import { services, serviceHref } from '../data/services';
 import { img } from '../lib/images';
 const size = (i: number) => (i === 0 ? 'big' : i >= 5 ? 'wide' : 'sq');
 ---
+<p class="swipe-hint" aria-hidden="true">Swipe to see all services <Icon name="arrow" /></p>
 <div class="bento">
   {services.map((s, i) => (
     <article class={`bento__tile bento__tile--${size(i)}`} data-tilt="3">

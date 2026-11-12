@@ -12,6 +12,7 @@ const H = level;
 const photos = ['frame-floor.jpg', 'project-img1.jpg', 'frame-sofa.jpg', 'project-img6.jpg', 'frame-kitchen.jpg'];
 const list = areas.filter((a) => a.slug !== exclude);
 ---
+<p class="swipe-hint" aria-hidden="true">Swipe to see every city <Icon name="arrow" /></p>
 <div class="areas2">
   {list.map((a) => (
     <article class="area2 reveal">

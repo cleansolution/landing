@@ -18,3 +18,7 @@
   PUBLIC_ALLOW_INDEXING = "false"
 [context.branch-deploy.environment]
   PUBLIC_ALLOW_INDEXING = "false"
+
+# The live domain points to Netlify: production builds are indexable.
+[context.production.environment]
+  PUBLIC_ALLOW_INDEXING = "true"

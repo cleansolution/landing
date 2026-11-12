@@ -369,3 +369,58 @@ body { background: var(--ice); }
   .page-hero--dark::before { background: linear-gradient(180deg, rgb(246 250 253 / 96%), rgb(246 250 253 / 92%)); }
   .page-hero--dark .qf { background: rgb(12 33 64 / 88%); }
 }
+
+/* ======================= Mobile pass (round 4) ======================= */
+/* Owners band: nothing may be wider than the phone */
+.owners2__grid > * { min-width: 0; }
+@media (max-width: 860px) {
+  .owners2 .swipe { white-space: normal; }
+  .owners2__stats { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; justify-items: stretch; }
+  .glass-chip { min-width: 0; flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 12px; }
+  .glass-chip strong { font-size: 1.9rem; min-width: 0; }
+  .glass-chip span { font-size: 0.82rem; }
+  .owners2__card .btn-row .btn { flex: 1 1 auto; }
+}
+
+/* Hero on phones: the client's video/photo becomes a visual banner on top, copy below on light */
+@media (max-width: 960px) {
+  .vhero { padding-top: clamp(230px, 62vw, 330px); background: var(--ice); align-items: flex-start; }
+  .vhero__media { bottom: auto; height: calc(clamp(230px, 62vw, 330px) + 70px); }
+  .vhero__shade { background:
+      linear-gradient(180deg, rgb(8 22 45 / 25%) 0%, rgb(8 22 45 / 0%) 35%, rgb(246 250 253 / 0%) 55%, rgb(246 250 253 / 85%) 82%, var(--ice) 100%) !important; }
+  .vhero__chip { box-shadow: 0 10px 24px -12px rgb(15 47 92 / 45%); }
+  .vhero__display { font-size: clamp(2.1rem, 9vw, 2.7rem); }
+  .vhero__call { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px 12px 18px; border-radius: 18px;
+    background: #fff; border: 1px solid rgb(24 74 140 / 12%); box-shadow: 0 14px 30px -20px rgb(15 47 92 / 45%); font-size: 1.05rem; }
+  .vhero__call a { font-size: 1.25rem; }
+  .vhero__trust { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding: 4px var(--gutter) 8px; }
+  .vhero__trust::-webkit-scrollbar { display: none; }
+  .vhero__trust li { flex: none; }
+  .vhero__pause { top: calc(clamp(230px, 62vw, 330px) - 64px); bottom: auto; }
+}
+
+/* Swipe rows on phones: services, steps and cities slide sideways (with a peek of the next card) */
+@media (max-width: 620px) {
+  .bento, .flow__steps, .areas2 {
+    display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 84%;
+    grid-auto-rows: auto; gap: 14px; overflow-x: auto; overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(-1 * var(--gutter)); padding: 6px var(--gutter) 18px; scroll-padding-inline: var(--gutter);
+  }
+  .bento::-webkit-scrollbar, .flow__steps::-webkit-scrollbar, .areas2::-webkit-scrollbar { display: none; }
+  .bento > *, .flow__steps > *, .areas2 > * { scroll-snap-align: start; }
+  .bento__tile, .bento__tile--big, .bento__tile--wide { grid-column: auto; grid-row: auto; height: 340px; }
+  .bento__tile--big .bento__body h3 { font-size: 1.5rem; }
+  .flow__step { transition-delay: 0s; }
+  .swipe-hint { display: flex; }
+}
+.swipe-hint { display: none; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sky-600); }
+.swipe-hint svg { width: 18px; height: 18px; }
+@media (prefers-reduced-motion: no-preference) { .swipe-hint svg { animation: nudge 1.6s var(--ease) 1s 3; } }
+@keyframes nudge { 50% { transform: translateX(6px); } }
+
+@media (max-width: 620px) { .swipe-hint { display: flex; } }
+
+/* numbers always on the same line, labels below (any label length) */
+.stats2__item { display: grid; grid-template-rows: auto 1fr; justify-items: center; align-content: start; }
+.stats2__n { order: -1; }
