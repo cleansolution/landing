@@ -8,6 +8,7 @@
 [build.environment]
   NODE_VERSION = "22"
   # Quote form is live: it posts to FormSubmit, which emails info@cleansolutionsva.com.
+  # Google reCAPTCHA checkbox: set PUBLIC_RECAPTCHA_SITE_KEY in the Netlify UI.
   PUBLIC_FORM_MODE = "live"
   SITE_URL = "https://cleansolutionsva.com"
   # PUBLIC_ALLOW_INDEXING is set to "true" in the Netlify UI only once the domain points to Netlify.

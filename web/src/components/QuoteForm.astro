@@ -5,7 +5,8 @@
  * Delivery: FormSubmit (same service as our other client sites). The POST goes to
  * formsubmit.co/<owner email>; the very first submission sends an activation email to that inbox,
  * and after "Activate" every request arrives as an email (reply goes straight to the client).
- * Spam: FormSubmit "I'm not a robot" check (_captcha) + honeypot (_honey).
+ * Spam: Google reCAPTCHA checkbox inside the form (PUBLIC_RECAPTCHA_SITE_KEY) + honeypot (_honey).
+ * Without a site key, FormSubmit shows its own captcha page after Submit (_captcha=true).
  * Labels are visually hidden (screen readers still read them); the visible cue is the placeholder, as on the live site.
  */
 import { flags, business } from '../config/site';
@@ -64,10 +65,11 @@ const id = (n: string) => `${n}-${uid}`;
     novalidate
     data-quote-form
     data-mode={flags.formMode}
+    data-recaptcha={flags.recaptchaSiteKey || undefined}
   >
     <input type="hidden" name="_subject" value="New Quote Request - Clean Solutions website" />
     <input type="hidden" name="_template" value="table" />
-    <input type="hidden" name="_captcha" value="true" />
+    <input type="hidden" name="_captcha" value={flags.recaptchaSiteKey ? 'false' : 'true'} />
     <input type="hidden" name="_next" value="https://cleansolutionsva.com/thank-you/" data-next />
     <input type="hidden" name="source" value={source} />
     <input type="hidden" name="city" value={cityName} />
@@ -103,6 +105,7 @@ const id = (n: string) => `${n}-${uid}`;
       <label for={id('honey')}>Leave this empty</label>
       <input id={id('honey')} name="_honey" type="text" tabindex="-1" autocomplete="off" />
     </div>
+    {flags.recaptchaSiteKey && <div class="qf__captcha" data-recaptcha-slot></div>}
     <button class="qf__submit" type="submit">Submit Request</button>
     <p class="form-status" role="status" aria-live="polite"></p>
   </form>
@@ -145,6 +148,9 @@ const id = (n: string) => `${n}-${uid}`;
   .qf .field .qf__ta { min-height: 100px; resize: vertical; }
   .qf .field__error { color: #ffd1d1; font-size: 0.8rem; font-weight: 600; }
   .qf [aria-invalid='true'] { border-color: #ffb3b3; }
+  .qf__captcha { margin-top: 14px; min-height: 78px; }
+  .qf__captcha > div { margin-inline: auto; }
+  @media (max-width: 380px) { .qf__captcha { transform: scale(0.9); transform-origin: left top; } }
   .qf__submit {
     width: 100%; margin-top: 14px; border: none; border-radius: 10px; padding: 14px 16px;
     font: inherit; font-size: 15px; font-weight: 700; color: #184a8c; background: #fff; cursor: pointer;

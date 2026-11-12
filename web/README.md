@@ -54,10 +54,10 @@ Regenera los favicons, `logo-512.png` y `og-default.jpg`.
 ## Despliegue en Netlify (actual)
 - Proyecto Netlify `clean-solutions-va`, conectado a `github.com/cleansolution/landing`, rama `main` (auto publish).
 - `netlify.toml` en la raíz: base `web`, `npm run build`, publica `dist`, funciones en `web/netlify/functions`, Node 22, `PUBLIC_FORM_MODE=live`.
-- Formulario: **FormSubmit** (igual que Castellanos y MadeIn). `action="https://formsubmit.co/info@cleansolutionsva.com"`, con `_subject`, `_template=table`, `_captcha=true` (pantalla "I'm not a robot" de FormSubmit), `_honey` (trampa) y `_next` → `/thank-you/` del mismo dominio.
+- Formulario: **FormSubmit** (igual que Castellanos y MadeIn). `action="https://formsubmit.co/info@cleansolutionsva.com"`, con `_subject`, `_template=table`, casilla **Google reCAPTCHA v2** dentro del formulario (`PUBLIC_RECAPTCHA_SITE_KEY` en Netlify; sin clave, FormSubmit muestra su propia pantalla de captcha con `_captcha=true`), `_honey` (trampa) y `_next` → `/thank-you/` del mismo dominio.
 - **Activación:** el primer envío hace que FormSubmit mande un correo a info@cleansolutionsva.com con el botón "Activate Form". Hasta que se pulse, no llegan solicitudes. Tras activar, cada solicitud llega al correo con reply-to al cliente.
 - `web/netlify/functions/contact-message.mjs` (Resend) queda como alternativa; el formulario ya no la usa.
-- Variables en Netlify: `PUBLIC_GA4_ID=G-39NGNSXF8M`; `PUBLIC_ALLOW_INDEXING=true` al pasar el dominio.
+- Variables en Netlify: `PUBLIC_RECAPTCHA_SITE_KEY` (clave v2 "Casilla" de google.com/recaptcha/admin, dominios cleansolutionsva.com, www.cleansolutionsva.com, clean-solutions-va.netlify.app, localhost); `PUBLIC_GA4_ID=G-39NGNSXF8M`; `PUBLIC_ALLOW_INDEXING=true` al pasar el dominio.
 - `PUBLIC_ALLOW_INDEXING=true` solo cuando el dominio apunte a Netlify (hoy el DNS de Namecheap apunta a 162.213.255.45, el hosting viejo).
 
 ## (Alternativa) Despliegue en Cloudflare Pages

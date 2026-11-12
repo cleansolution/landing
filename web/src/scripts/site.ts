@@ -106,6 +106,42 @@ const forms = document.querySelectorAll<HTMLFormElement>('[data-quote-form]');
 const phoneOk = (v: string) => v.replace(/\D/g, '').length >= 10;
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
+/* Google reCAPTCHA v2 checkbox, loaded on first interaction so it never slows the first paint. */
+declare global {
+  interface Window {
+    grecaptcha?: { render: (el: HTMLElement, o: Record<string, unknown>) => number; getResponse: (id?: number) => string; ready: (cb: () => void) => void };
+    __rcReady?: () => void;
+  }
+}
+const rcIds = new WeakMap<HTMLFormElement, number>();
+let rcLoad: Promise<void> | null = null;
+const loadRecaptcha = () =>
+  (rcLoad ??= new Promise<void>((resolve, reject) => {
+    window.__rcReady = () => resolve();
+    const sc = document.createElement('script');
+    sc.src = 'https://www.google.com/recaptcha/api.js?onload=__rcReady&render=explicit&hl=en';
+    sc.async = true;
+    sc.onerror = () => { rcLoad = null; reject(new Error('recaptcha')); };
+    document.head.appendChild(sc);
+  }));
+async function mountRecaptcha(form: HTMLFormElement) {
+  const key = form.dataset.recaptcha;
+  const slot = form.querySelector<HTMLElement>('[data-recaptcha-slot]');
+  if (!key || !slot || rcIds.has(form)) return;
+  rcIds.set(form, -1);
+  try {
+    await loadRecaptcha();
+    rcIds.set(form, window.grecaptcha!.render(slot, { sitekey: key, theme: 'dark' }));
+  } catch { rcIds.delete(form); }
+}
+const rcForms = [...forms].filter((f) => f.dataset.recaptcha);
+if (rcForms.length) {
+  rcForms.forEach((f) => f.addEventListener('focusin', () => mountRecaptcha(f), { once: true }));
+  const evs = ['scroll', 'pointerdown', 'pointermove', 'touchstart', 'keydown'];
+  const firstUse = () => { evs.forEach((ev) => removeEventListener(ev, firstUse)); rcForms.forEach(mountRecaptcha); };
+  evs.forEach((ev) => addEventListener(ev, firstUse, { once: true, passive: true }));
+}
+
 forms.forEach((form) => {
   // Come back to the thank-you page of whatever host serves the site (domain, netlify.app preview…)
   const next = form.querySelector<HTMLInputElement>('[data-next]');
@@ -138,6 +174,20 @@ forms.forEach((form) => {
       (form.elements.namedItem(first) as HTMLElement).focus();
       return;
     }
+    // reCAPTCHA checkbox must be ticked
+    if (form.dataset.recaptcha) {
+      const id = rcIds.get(form);
+      const ok = id !== undefined && id >= 0 && !!window.grecaptcha?.getResponse(id);
+      if (!ok) {
+        e.preventDefault();
+        mountRecaptcha(form);
+        status.dataset.state = 'error';
+        status.textContent = 'Please check the "I am not a robot" box.';
+        return;
+      }
+      // don't send the long token as a field in the owner's email
+      form.querySelectorAll<HTMLTextAreaElement>('textarea[name="g-recaptcha-response"]').forEach((t) => (t.disabled = true));
+    }
     status.dataset.state = '';
     status.textContent = '';
     track('generate_lead', { service: data.service, city: data.city, mode: form.dataset.mode, transport_type: 'beacon' });
@@ -155,6 +205,7 @@ forms.forEach((form) => {
 addEventListener('pageshow', () => forms.forEach((f) => {
   const b = f.querySelector<HTMLButtonElement>('button[type=submit]');
   if (b) { b.disabled = false; b.textContent = 'Submit Request'; }
+  f.querySelectorAll<HTMLTextAreaElement>('textarea[name="g-recaptcha-response"]').forEach((t) => (t.disabled = false));
 }));
 
 /* ---------- Hero video: sources attached after load; pausable; respects reduced motion + data saver ---------- */

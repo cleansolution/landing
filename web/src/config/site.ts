@@ -44,12 +44,15 @@ export const flags = {
   allowIndexing: import.meta.env.PUBLIC_ALLOW_INDEXING === 'true',
   ga4Id: (import.meta.env.PUBLIC_GA4_ID ?? '').trim(),
   /**
-   * Cloudflare Turnstile site key. Defaults to Cloudflare's public TEST key
-   * (always passes, shows the checkbox) so the form works locally.
-   * Production: set PUBLIC_TURNSTILE_SITE_KEY in Cloudflare Pages.
+   * Google reCAPTCHA v2 ("I'm not a robot" checkbox) shown inside the quote form.
+   * Production: PUBLIC_RECAPTCHA_SITE_KEY (Netlify env). Without a key:
+   *  - local/demo builds use Google's public TEST key (shows a "testing only" notice),
+   *  - live builds fall back to FormSubmit's own captcha page after Submit.
    */
-  turnstileSiteKey: (import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '').trim() || '1x00000000000000000000AA',
-  /** "live" posts to /api/contact-message (Cloudflare Function). "demo" only validates. */
+  recaptchaSiteKey:
+    (import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY ?? '').trim() ||
+    (import.meta.env.PUBLIC_FORM_MODE === 'live' ? '' : '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'),
+  /** "live" posts to FormSubmit. "demo" only validates and never sends. */
   formMode: (import.meta.env.PUBLIC_FORM_MODE === 'live' ? 'live' : 'demo') as 'live' | 'demo',
 };
 
