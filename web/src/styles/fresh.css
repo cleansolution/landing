@@ -424,3 +424,14 @@ body { background: var(--ice); }
 /* numbers always on the same line, labels below (any label length) */
 .stats2__item { display: grid; grid-template-rows: auto 1fr; justify-items: center; align-content: start; }
 .stats2__n { order: -1; }
+
+/* Hero order (client request): H1 with service + cities first and big, slogan second */
+.vhero__h1 { font-size: clamp(2rem, 3.6vw, 3.25rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; text-transform: none; color: var(--brand-ink); margin: 0 0 14px; max-width: 18ch; }
+.vhero__h1 .swipe { white-space: normal; }
+.vhero__display { font-size: clamp(1.25rem, 2vw, 1.6rem); font-weight: 700; line-height: 1.3; letter-spacing: -0.01em; color: var(--brand); margin: 0 0 16px; }
+.vhero__display .line { display: inline; }
+.vhero__display .line + .line::before { content: ' '; }
+@media (max-width: 960px) {
+  .vhero__h1 { font-size: clamp(1.9rem, 8.4vw, 2.5rem); max-width: none; }
+  .vhero__display { font-size: 1.2rem; }
+}
