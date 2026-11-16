@@ -9,3 +9,5 @@
 /admin              /                         301
 /admin/*            /                         301
 /sitemap.xml        /sitemap-index.xml        301
+/Privacy            /privacy-policy/          301
+/Privacy/           /privacy-policy/          301
